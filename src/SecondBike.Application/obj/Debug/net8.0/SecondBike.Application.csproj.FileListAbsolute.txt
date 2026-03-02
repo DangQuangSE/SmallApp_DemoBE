@@ -1,0 +1,15 @@
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\bin\Debug\net8.0\SecondBike.Application.deps.json
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\bin\Debug\net8.0\SecondBike.Application.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\bin\Debug\net8.0\SecondBike.Application.pdb
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\bin\Debug\net8.0\SecondBike.Domain.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\bin\Debug\net8.0\SecondBike.Domain.pdb
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.csproj.AssemblyReference.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.AssemblyInfoInputs.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.AssemblyInfo.cs
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.csproj.CoreCompileInputs.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBi.0D7D6C08.Up2Date
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\refint\SecondBike.Application.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\SecondBike.Application.pdb
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Application\obj\Debug\net8.0\ref\SecondBike.Application.dll

@@ -1,0 +1,14 @@
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\bin\Debug\net8.0\SecondBike.Domain.deps.json
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\bin\Debug\net8.0\SecondBike.Domain.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\bin\Debug\net8.0\SecondBike.Domain.pdb
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.AssemblyInfoInputs.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.AssemblyInfo.cs
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.csproj.CoreCompileInputs.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\refint\SecondBike.Domain.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.pdb
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\ref\SecondBike.Domain.dll
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\bin\Debug\net8.0\SecondBike.Domain.runtimeconfig.json
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.csproj.AssemblyReference.cache
+D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.Domain\obj\Debug\net8.0\SecondBike.Domain.genruntimeconfig.cache

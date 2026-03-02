@@ -1,0 +1,156 @@
+﻿@page "/my-posts"
+@rendermode InteractiveServer
+@inject IBikePostService BikePostService
+@inject NavigationManager Nav
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+<PageTitle>SecondBike — My Posts</PageTitle>
+
+<MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-4">
+    <MudText Typo="Typo.h4" Style="font-weight: 700;">
+        <MudIcon Icon="@Icons.Material.Filled.Inventory" Class="mr-2" /> My Posts
+    </MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary"
+               StartIcon="@Icons.Material.Filled.Add"
+               OnClick="@(() => Nav.NavigateTo("/sell"))">
+        New Post
+    </MudButton>
+</MudStack>
+
+@if (_loading)
+{
+    <MudProgressLinear Indeterminate="true" Color="Color.Primary" />
+}
+else if (_posts.Count == 0)
+{
+    <MudPaper Class="pa-8 d-flex flex-column align-center rounded-lg" Elevation="0"
+              Style="border: 2px dashed #E8E8E8;">
+        <MudIcon Icon="@Icons.Material.Filled.PostAdd" Size="Size.Large" Color="Color.Secondary" />
+        <MudText Typo="Typo.h6" Class="mt-3">No posts yet</MudText>
+        <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+            Start selling by posting your first bike!
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.Add"
+                   OnClick="@(() => Nav.NavigateTo("/sell"))">
+            Post Your First Bike
+        </MudButton>
+    </MudPaper>
+}
+else
+{
+    <MudTable Items="@_posts" Hover Breakpoint="Breakpoint.Sm"
+              Elevation="0" Style="border: 1px solid #E8E8E8; border-radius: 8px;">
+        <HeaderContent>
+            <MudTh>Image</MudTh>
+            <MudTh>Title</MudTh>
+            <MudTh>Price</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Views</MudTh>
+            <MudTh>Created</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                <MudImage Src="@(context.Images.FirstOrDefault()?.ImageUrl ?? "https://via.placeholder.com/60")"
+                          Width="60" Height="45" ObjectFit="ObjectFit.Cover" Class="rounded" />
+            </MudTd>
+            <MudTd>
+                <MudLink Href="@($"/bike/{context.Id}")" Typo="Typo.body2" Style="font-weight: 500;">
+                    @context.Title
+                </MudLink>
+            </MudTd>
+            <MudTd>
+                <MudText Typo="Typo.body2" Style="font-weight: 600; color: #FF6B00;">
+                    @context.Price.ToString("N0") ₫
+                </MudText>
+            </MudTd>
+            <MudTd>
+                <MudChip T="string" Size="Size.Small" Variant="Variant.Filled"
+                         Color="@GetStatusColor(context.Status)">
+                    @context.Status
+                </MudChip>
+            </MudTd>
+            <MudTd>@context.ViewCount</MudTd>
+            <MudTd>@context.CreatedAt.ToString("MMM dd")</MudTd>
+            <MudTd>
+                <MudStack Row Spacing="1">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small"
+                                   Color="Color.Primary"
+                                   OnClick="@(() => Nav.NavigateTo($"/sell/{context.Id}"))" />
+                    <MudIconButton Icon="@(context.Status == PostStatus.Hidden ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
+                                   Size="Size.Small" Color="Color.Warning"
+                                   OnClick="@(() => ToggleVisibility(context.Id))" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small"
+                                   Color="Color.Error"
+                                   OnClick="@(() => ConfirmDelete(context))" />
+                </MudStack>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+    private List<BikePostDto> _posts = new();
+    private bool _loading = true;
+
+    // Placeholder seller ID
+    private Guid _currentSellerId = Guid.NewGuid();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPosts();
+    }
+
+    private async Task LoadPosts()
+    {
+        _loading = true;
+        var result = await BikePostService.GetBySellerAsync(_currentSellerId);
+        if (result.IsSuccess && result.Data is not null)
+            _posts = result.Data;
+        _loading = false;
+    }
+
+    private async Task ToggleVisibility(Guid postId)
+    {
+        var result = await BikePostService.ToggleVisibilityAsync(_currentSellerId, postId);
+        if (result.IsSuccess)
+        {
+            Snackbar.Add("Visibility toggled", Severity.Success);
+            await LoadPosts();
+        }
+    }
+
+    private async Task ConfirmDelete(BikePostDto post)
+    {
+        var parameters = new DialogParameters
+        {
+            { "ContentText", $"Are you sure you want to delete \"{post.Title}\"? This action cannot be undone." },
+            { "ButtonText", "Delete" },
+            { "Color", Color.Error }
+        };
+        var dialog = await DialogService.ShowAsync<MudDialogInstance>("Delete Post", parameters);
+        var dialogResult = await dialog.Result;
+        if (dialogResult is not null && !dialogResult.Canceled)
+        {
+            var result = await BikePostService.DeleteAsync(_currentSellerId, post.Id);
+            if (result.IsSuccess)
+            {
+                Snackbar.Add("Post deleted", Severity.Success);
+                await LoadPosts();
+            }
+        }
+    }
+
+    private static Color GetStatusColor(PostStatus status) => status switch
+    {
+        PostStatus.Active => Color.Success,
+        PostStatus.PendingModeration => Color.Warning,
+        PostStatus.Draft => Color.Default,
+        PostStatus.Rejected => Color.Error,
+        PostStatus.Hidden => Color.Dark,
+        PostStatus.Sold => Color.Info,
+        _ => Color.Default
+    };
+}

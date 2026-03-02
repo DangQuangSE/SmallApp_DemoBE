@@ -1,0 +1,63 @@
+## 1. Visual Studio & .NET Core Build Files
+## ---------------------------------------
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*.pdb
+*.dll
+*.exe
+
+## 2. Environment & Secrets (QUAN TRỌNG - BẢO MẬT)
+## ---------------------------------------
+# Bỏ qua file cấu hình môi trường Development (thường chứa connection string local)
+appsettings.Development.json
+appsettings.Local.json
+.env
+
+# Chỉ giữ lại appsettings.json (cấu hình gốc)
+!appsettings.json
+
+## 3. Web/Blazor Specifics
+## ---------------------------------------
+wwwroot/lib/
+# Nếu dùng NPM/NodeJS để quản lý thư viện CSS/JS
+node_modules/
+package-lock.json
+
+## 4. User Generated Content (Project Specific)
+## ---------------------------------------
+# Không upload ảnh xe đạp test lên git để tránh nặng repo
+src/SecondBike.WebUI/wwwroot/uploads/
+src/SecondBike.WebUI/wwwroot/images/products/
+src/SecondBike.WebUI/wwwroot/temp/
+
+## 5. Testing & Coverage
+## ---------------------------------------
+TestResults/
+*.trx
+coverage.json
+coverage.xml
+*.coverage
+
+## 6. OS Specific (Mac/Windows)
+## ---------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## 7. Entity Framework (Optional)
+## ---------------------------------------
+# Nếu bạn dùng SQL Server LocalDB file
+*.mdf
+*.ldf
+
+## 8. Rider / JetBrains (Nếu thành viên nhóm dùng Rider)
+## ---------------------------------------
+.idea/
+*.sln.iml

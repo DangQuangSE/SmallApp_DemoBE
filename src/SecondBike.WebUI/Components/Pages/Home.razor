@@ -1,0 +1,84 @@
+﻿@page "/"
+
+<PageTitle>SecondBike — Home</PageTitle>
+
+<MudGrid Spacing="4" Class="mt-2">
+    @* ─── Hero Section ─── *@
+    <MudItem xs="12">
+        <MudPaper Class="pa-8 rounded-lg"
+                  Style="background: linear-gradient(135deg, #0056D2 0%, #003B91 100%); color: white;">
+            <MudGrid>
+                <MudItem xs="12" md="7">
+                    <MudText Typo="Typo.h3" Style="font-weight: 700; color: white;">
+                        Find Your Perfect Ride
+                    </MudText>
+                    <MudText Typo="Typo.h6" Class="mt-2" Style="color: rgba(255,255,255,0.85); font-weight: 400;">
+                        Buy and sell quality used sports bicycles.
+                        Trusted by cyclists, better for the planet. 🌍
+                    </MudText>
+                    <MudStack Row Class="mt-4" Spacing="2">
+                        <MudButton Variant="Variant.Filled"
+                                   Color="Color.Secondary"
+                                   Size="Size.Large"
+                                   StartIcon="@Icons.Material.Filled.Search">
+                            Browse Bikes
+                        </MudButton>
+                        <MudButton Variant="Variant.Outlined"
+                                   Size="Size.Large"
+                                   Style="color: white; border-color: rgba(255,255,255,0.6);"
+                                   StartIcon="@Icons.Material.Filled.Sell">
+                            Sell Your Bike
+                        </MudButton>
+                    </MudStack>
+                </MudItem>
+            </MudGrid>
+        </MudPaper>
+    </MudItem>
+
+    @* ─── Feature Cards ─── *@
+    <MudItem xs="12" sm="4">
+        <MudCard Elevation="0" Class="rounded-lg border" Style="border-color: #E8E8E8 !important;">
+            <MudCardContent Class="d-flex flex-column align-center pa-6">
+                <MudAvatar Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large">
+                    <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" />
+                </MudAvatar>
+                <MudText Typo="Typo.h6" Class="mt-3" Align="Align.Center">
+                    Verified Sellers
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mt-1">
+                    Every seller is verified for your peace of mind.
+                </MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="4">
+        <MudCard Elevation="0" Class="rounded-lg border" Style="border-color: #E8E8E8 !important;">
+            <MudCardContent Class="d-flex flex-column align-center pa-6">
+                <MudAvatar Color="Color.Secondary" Variant="Variant.Filled" Size="Size.Large">
+                    <MudIcon Icon="@Icons.Material.Filled.EnergySavingsLeaf" />
+                </MudAvatar>
+                <MudText Typo="Typo.h6" Class="mt-3" Align="Align.Center">
+                    Eco-Friendly
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mt-1">
+                    Give bikes a second life. Reduce waste, ride green.
+                </MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="4">
+        <MudCard Elevation="0" Class="rounded-lg border" Style="border-color: #E8E8E8 !important;">
+            <MudCardContent Class="d-flex flex-column align-center pa-6">
+                <MudAvatar Style="background-color: #27AE60;" Variant="Variant.Filled" Size="Size.Large">
+                    <MudIcon Icon="@Icons.Material.Filled.LocalShipping" />
+                </MudAvatar>
+                <MudText Typo="Typo.h6" Class="mt-3" Align="Align.Center">
+                    Safe Delivery
+                </MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mt-1">
+                    Secure shipping with tracking and buyer protection.
+                </MudText>
+            </MudCardContent>
+        </MudCard>
+    </MudItem>
+</MudGrid>

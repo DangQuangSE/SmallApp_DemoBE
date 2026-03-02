@@ -1,0 +1,258 @@
+@page "/inspect"
+@page "/inspect/{BikePostId:guid}"
+@rendermode InteractiveServer
+@inject IInspectionService InspectionService
+@inject IBikeSearchService BikeSearchService
+@inject NavigationManager Nav
+@inject ISnackbar Snackbar
+
+<PageTitle>SecondBike — Vehicle Inspection</PageTitle>
+
+<MudText Typo="Typo.h4" Class="mb-4" Style="font-weight: 700;">
+    <MudIcon Icon="@Icons.Material.Filled.FactCheck" Class="mr-2" /> Vehicle Inspection
+</MudText>
+
+@if (BikePostId.HasValue && _bike is not null)
+{
+    <MudAlert Severity="Severity.Info" Class="mb-4">
+        Inspecting: <strong>@_bike.Title</strong> — @_bike.Brand @_bike.Model (@_bike.Year)
+    </MudAlert>
+
+    <MudPaper Class="pa-6 rounded-lg" Elevation="0" Style="border: 1px solid #E8E8E8;">
+        <MudGrid Spacing="3">
+            @* ??? Overall Assessment ??? *@
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6" Style="font-weight: 600;" Class="mb-2">Overall Assessment</MudText>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudSelect T="OverallCondition" @bind-Value="_dto.OverallCondition"
+                           Label="Overall Condition" Variant="Variant.Outlined" Required="true">
+                    @foreach (OverallCondition oc in Enum.GetValues<OverallCondition>())
+                    {
+                        <MudSelectItem Value="@oc">@oc</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudNumericField @bind-Value="_dto.EstimatedValue" Label="Estimated Value (VN?)"
+                                 Variant="Variant.Outlined" Format="N0" Min="0" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudSwitch @bind-Value="_dto.IsRecommended" Label="Recommended to Buy"
+                           Color="Color.Success" Class="mt-3" />
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_dto.Summary" Label="Inspector Summary"
+                              Variant="Variant.Outlined" Lines="3" Required="true"
+                              Placeholder="Provide an overall assessment..." />
+            </MudItem>
+
+            @* ??? Component Scores (1-10) ??? *@
+            <MudItem xs="12">
+                <MudDivider Class="my-2" />
+                <MudText Typo="Typo.h6" Style="font-weight: 600;" Class="mb-2">
+                    Component Scores (1-10)
+                </MudText>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Frame: @_dto.FrameScore</MudText>
+                <MudSlider @bind-Value="_dto.FrameScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.FrameScore)" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Brakes: @_dto.BrakesScore</MudText>
+                <MudSlider @bind-Value="_dto.BrakesScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.BrakesScore)" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Gears: @_dto.GearsScore</MudText>
+                <MudSlider @bind-Value="_dto.GearsScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.GearsScore)" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Wheels: @_dto.WheelsScore</MudText>
+                <MudSlider @bind-Value="_dto.WheelsScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.WheelsScore)" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Tires: @_dto.TiresScore</MudText>
+                <MudSlider @bind-Value="_dto.TiresScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.TiresScore)" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudText Typo="Typo.body2">Chain: @_dto.ChainScore</MudText>
+                <MudSlider @bind-Value="_dto.ChainScore" Min="1" Max="10" Step="1"
+                           Color="@ScoreColor(_dto.ChainScore)" />
+            </MudItem>
+
+            @* ??? Damage Checklist ??? *@
+            <MudItem xs="12">
+                <MudDivider Class="my-2" />
+                <MudText Typo="Typo.h6" Style="font-weight: 600;" Class="mb-2">Damage Checklist</MudText>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudCheckBox @bind-Value="_dto.HasFrameDamage" Label="Frame Damage" Color="Color.Error" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudCheckBox @bind-Value="_dto.HasRust" Label="Has Rust" Color="Color.Warning" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudCheckBox @bind-Value="_dto.HasCracks" Label="Has Cracks" Color="Color.Error" />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudCheckBox @bind-Value="_dto.AllComponentsOriginal"
+                             Label="All Components Original" Color="Color.Success" />
+            </MudItem>
+            @if (!_dto.AllComponentsOriginal)
+            {
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.ReplacedComponents"
+                                  Label="Replaced Components"
+                                  Variant="Variant.Outlined" />
+                </MudItem>
+            }
+            @if (_dto.HasFrameDamage)
+            {
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_dto.FrameNotes"
+                                  Label="Frame Damage Notes"
+                                  Variant="Variant.Outlined" Lines="2" />
+                </MudItem>
+            }
+
+            @* ??? Submit ??? *@
+            <MudItem xs="12">
+                <MudDivider Class="my-2" />
+                <MudStack Row Justify="Justify.FlexEnd" Spacing="2">
+                    <MudButton Variant="Variant.Outlined" Color="Color.Default"
+                               OnClick="@(() => Nav.NavigateTo("/browse"))">
+                        Cancel
+                    </MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Success"
+                               StartIcon="@Icons.Material.Filled.CheckCircle"
+                               Disabled="@_submitting" OnClick="SubmitReport">
+                        @if (_submitting)
+                        {
+                            <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                        }
+                        Submit Report
+                    </MudButton>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+}
+else if (BikePostId.HasValue)
+{
+    <MudProgressLinear Indeterminate="true" Color="Color.Primary" />
+}
+else
+{
+    @* Inspector's report list *@
+    <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-4">
+        Your assigned inspection reports
+    </MudText>
+    @if (_reports.Count == 0)
+    {
+        <MudPaper Class="pa-6 d-flex flex-column align-center rounded-lg" Elevation="0"
+                  Style="border: 2px dashed #E8E8E8;">
+            <MudIcon Icon="@Icons.Material.Filled.Assignment" Size="Size.Large" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Class="mt-3">No inspection reports</MudText>
+        </MudPaper>
+    }
+    else
+    {
+        <MudTable Items="@_reports" Hover Elevation="0" Style="border: 1px solid #E8E8E8; border-radius: 8px;">
+            <HeaderContent>
+                <MudTh>Report #</MudTh>
+                <MudTh>Bike</MudTh>
+                <MudTh>Condition</MudTh>
+                <MudTh>Recommended</MudTh>
+                <MudTh>Status</MudTh>
+                <MudTh>Date</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd><MudText Typo="Typo.body2" Style="font-weight:500;">@context.ReportNumber</MudText></MudTd>
+                <MudTd>@context.BikeTitle</MudTd>
+                <MudTd>
+                    <MudChip T="string" Size="Size.Small" Color="@ConditionColor(context.OverallCondition)">
+                        @context.OverallCondition
+                    </MudChip>
+                </MudTd>
+                <MudTd>
+                    <MudIcon Icon="@(context.IsRecommended ? Icons.Material.Filled.ThumbUp : Icons.Material.Filled.ThumbDown)"
+                             Color="@(context.IsRecommended ? Color.Success : Color.Error)" Size="Size.Small" />
+                </MudTd>
+                <MudTd>
+                    <MudChip T="string" Size="Size.Small"
+                             Color="@(context.Status == InspectionStatus.Completed ? Color.Success : Color.Warning)">
+                        @context.Status
+                    </MudChip>
+                </MudTd>
+                <MudTd>@context.InspectedAt?.ToString("MMM dd, yyyy")</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+}
+
+@code {
+    [Parameter] public Guid? BikePostId { get; set; }
+
+    private CreateInspectionDto _dto = new()
+    {
+        FrameScore = 5, BrakesScore = 5, GearsScore = 5,
+        WheelsScore = 5, TiresScore = 5, ChainScore = 5
+    };
+    private BikePostDto? _bike;
+    private List<InspectionReportDto> _reports = new();
+    private bool _submitting;
+    private Guid _inspectorId = Guid.NewGuid();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (BikePostId.HasValue)
+        {
+            _dto.BikePostId = BikePostId.Value;
+            var result = await BikeSearchService.GetDetailAsync(BikePostId.Value);
+            if (result.IsSuccess) _bike = result.Data;
+        }
+        else
+        {
+            var result = await InspectionService.GetByInspectorAsync(_inspectorId);
+            if (result.IsSuccess && result.Data is not null)
+                _reports = result.Data;
+        }
+    }
+
+    private async Task SubmitReport()
+    {
+        _submitting = true;
+        var result = await InspectionService.CreateAsync(_inspectorId, _dto);
+        if (result.IsSuccess && result.Data is not null)
+        {
+            await InspectionService.CompleteAsync(_inspectorId, result.Data.Id);
+            Snackbar.Add("Inspection report submitted!", Severity.Success);
+            Nav.NavigateTo("/inspect");
+        }
+        else
+        {
+            Snackbar.Add(result.ErrorMessage ?? "Submission failed", Severity.Error);
+        }
+        _submitting = false;
+    }
+
+    private static Color ScoreColor(int score) => score switch
+    {
+        >= 8 => Color.Success,
+        >= 5 => Color.Warning,
+        _ => Color.Error
+    };
+
+    private static Color ConditionColor(OverallCondition c) => c switch
+    {
+        OverallCondition.Excellent or OverallCondition.VeryGood => Color.Success,
+        OverallCondition.Good => Color.Info,
+        OverallCondition.Fair => Color.Warning,
+        _ => Color.Error
+    };
+}

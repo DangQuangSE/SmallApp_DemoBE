@@ -1,0 +1,249 @@
+@page "/bike/{Id:guid}"
+@rendermode InteractiveServer
+@inject IBikeSearchService BikeSearchService
+@inject IWishlistService WishlistService
+@inject NavigationManager Nav
+@inject ISnackbar Snackbar
+
+<PageTitle>SecondBike — @(_bike?.Title ?? "Bike Detail")</PageTitle>
+
+@if (_loading)
+{
+    <MudGrid Spacing="4">
+        <MudItem xs="12" md="7">
+            <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="400px" Class="rounded-lg" />
+        </MudItem>
+        <MudItem xs="12" md="5">
+            <MudSkeleton Width="80%" Height="40px" />
+            <MudSkeleton Width="40%" Height="30px" Class="mt-2" />
+            <MudSkeleton Width="100%" Height="200px" Class="mt-4" />
+        </MudItem>
+    </MudGrid>
+}
+else if (_bike is null)
+{
+    <MudPaper Class="pa-8 d-flex flex-column align-center rounded-lg" Elevation="0">
+        <MudIcon Icon="@Icons.Material.Filled.Error" Size="Size.Large" Color="Color.Error" />
+        <MudText Typo="Typo.h5" Class="mt-3">Bike not found</MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4"
+                   OnClick="@(() => Nav.NavigateTo("/browse"))">
+            Back to Browse
+        </MudButton>
+    </MudPaper>
+}
+else
+{
+    @* ??? Breadcrumbs ??? *@
+    <MudBreadcrumbs Items="_breadcrumbs" Class="mb-4 px-0" />
+
+    <MudGrid Spacing="4">
+        @* ??? Image Gallery ??? *@
+        <MudItem xs="12" md="7">
+            <MudPaper Class="rounded-lg overflow-hidden" Elevation="0" Style="border: 1px solid #E8E8E8;">
+                @if (_bike.Images.Any())
+                {
+                    <MudImage Src="@(_selectedImage ?? _bike.Images.First().ImageUrl)"
+                              Alt="@_bike.Title"
+                              Width="100"
+                              Height="400"
+                              ObjectFit="ObjectFit.Cover"
+                              Class="rounded-lg"
+                              Style="width:100%; height:400px;" />
+
+                    @if (_bike.Images.Count > 1)
+                    {
+                        <MudStack Row Spacing="2" Class="pa-3" Style="overflow-x: auto;">
+                            @foreach (var img in _bike.Images)
+                            {
+                                <MudImage Src="@img.ImageUrl"
+                                          Alt="thumbnail"
+                                          Width="80" Height="60"
+                                          ObjectFit="ObjectFit.Cover"
+                                          Class="rounded cursor-pointer"
+                                          Style="@($"border: 2px solid {(_selectedImage == img.ImageUrl ? "#0056D2" : "transparent")}; cursor:pointer;")"
+                                          @onclick="() => _selectedImage = img.ImageUrl" />
+                            }
+                        </MudStack>
+                    }
+                }
+                else
+                {
+                    <MudPaper Class="d-flex align-center justify-center" Style="height:400px; background:#f5f5f5;">
+                        <MudIcon Icon="@Icons.Material.Filled.Image" Size="Size.Large" Color="Color.Default" />
+                    </MudPaper>
+                }
+            </MudPaper>
+        </MudItem>
+
+        @* ??? Info Panel ??? *@
+        <MudItem xs="12" md="5">
+            <MudPaper Class="pa-5 rounded-lg" Elevation="0" Style="border: 1px solid #E8E8E8;">
+                @* Title & Status *@
+                <MudStack Row AlignItems="AlignItems.Start" Justify="Justify.SpaceBetween">
+                    <MudText Typo="Typo.h5" Style="font-weight: 700;">@_bike.Title</MudText>
+                    @if (_bike.HasInspection)
+                    {
+                        <MudChip T="string" Color="Color.Success" Size="Size.Small" Variant="Variant.Filled"
+                                 Icon="@Icons.Material.Filled.VerifiedUser">
+                            Inspected
+                        </MudChip>
+                    }
+                </MudStack>
+
+                @* Price *@
+                <MudText Typo="Typo.h4" Color="Color.Secondary" Style="font-weight: 800;" Class="mt-2">
+                    @_bike.Price.ToString("N0") ?
+                </MudText>
+
+                <MudDivider Class="my-3" />
+
+                @* Quick Specs *@
+                <MudSimpleTable Dense Bordered Hover Style="border-radius: 8px; overflow: hidden;">
+                    <tbody>
+                        <tr><td><strong>Brand</strong></td><td>@_bike.Brand</td></tr>
+                        <tr><td><strong>Model</strong></td><td>@_bike.Model</td></tr>
+                        <tr><td><strong>Year</strong></td><td>@_bike.Year</td></tr>
+                        <tr><td><strong>Category</strong></td><td>@_bike.Category</td></tr>
+                        <tr><td><strong>Size</strong></td><td>@_bike.Size</td></tr>
+                        <tr><td><strong>Condition</strong></td><td>@_bike.Condition</td></tr>
+                        <tr><td><strong>Frame</strong></td><td>@_bike.FrameMaterial</td></tr>
+                        <tr><td><strong>Color</strong></td><td>@_bike.Color</td></tr>
+                        <tr><td><strong>Weight</strong></td><td>@_bike.WeightKg kg</td></tr>
+                        @if (_bike.OdometerKm.HasValue)
+                        {
+                            <tr><td><strong>Odometer</strong></td><td>@_bike.OdometerKm km</td></tr>
+                        }
+                        <tr><td><strong>Location</strong></td><td>@_bike.District, @_bike.City</td></tr>
+                    </tbody>
+                </MudSimpleTable>
+
+                <MudDivider Class="my-3" />
+
+                @* Action Buttons *@
+                <MudStack Spacing="2">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true"
+                               Size="Size.Large" StartIcon="@Icons.Material.Filled.ShoppingCart"
+                               OnClick="PlaceOrder">
+                        Buy Now — Deposit @((_bike.Price * 0.15m).ToString("N0")) ?
+                    </MudButton>
+                    <MudStack Row Spacing="2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true"
+                                   StartIcon="@(_isInWishlist ? Icons.Material.Filled.Favorite : Icons.Material.Outlined.FavoriteBorder)"
+                                   OnClick="ToggleWishlist">
+                            @(_isInWishlist ? "Saved" : "Save")
+                        </MudButton>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Default" FullWidth="true"
+                                   StartIcon="@Icons.Material.Filled.Chat"
+                                   OnClick="ContactSeller">
+                            Message
+                        </MudButton>
+                    </MudStack>
+                </MudStack>
+            </MudPaper>
+
+            @* ??? Seller Card ??? *@
+            <MudPaper Class="pa-4 rounded-lg mt-3" Elevation="0" Style="border: 1px solid #E8E8E8;">
+                <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
+                    <MudAvatar Size="Size.Large" Color="Color.Primary">
+                        @_bike.SellerName[0]
+                    </MudAvatar>
+                    <MudStack Spacing="0">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                            <MudText Typo="Typo.subtitle1" Style="font-weight: 600;">
+                                @_bike.SellerName
+                            </MudText>
+                            @if (_bike.IsVerifiedSeller)
+                            {
+                                <MudIcon Icon="@Icons.Material.Filled.Verified" Size="Size.Small" Color="Color.Primary" />
+                            }
+                        </MudStack>
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+                            <MudRating ReadOnly="true" SelectedValue="@((int)_bike.SellerRating)" Size="Size.Small" />
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                                (@_bike.SellerRating.ToString("F1"))
+                            </MudText>
+                        </MudStack>
+                    </MudStack>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+
+        @* ??? Description ??? *@
+        <MudItem xs="12">
+            <MudPaper Class="pa-5 rounded-lg" Elevation="0" Style="border: 1px solid #E8E8E8;">
+                <MudText Typo="Typo.h6" Style="font-weight: 600;" Class="mb-3">
+                    <MudIcon Icon="@Icons.Material.Filled.Description" Class="mr-1" /> Description
+                </MudText>
+                <MudText Typo="Typo.body1" Style="white-space: pre-line;">
+                    @_bike.Description
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        @* ??? Stats ??? *@
+        <MudItem xs="12">
+            <MudStack Row Spacing="4">
+                <MudChip T="string" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.Visibility">
+                    @_bike.ViewCount views
+                </MudChip>
+                <MudChip T="string" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.Favorite">
+                    @_bike.WishlistCount saves
+                </MudChip>
+                <MudChip T="string" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.CalendarToday">
+                    Posted @_bike.CreatedAt.ToString("MMM dd, yyyy")
+                </MudChip>
+            </MudStack>
+        </MudItem>
+    </MudGrid>
+}
+
+@code {
+    [Parameter] public Guid Id { get; set; }
+
+    private BikePostDto? _bike;
+    private bool _loading = true;
+    private bool _isInWishlist;
+    private string? _selectedImage;
+    private List<BreadcrumbItem> _breadcrumbs = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _loading = true;
+        var result = await BikeSearchService.GetDetailAsync(Id);
+        if (result.IsSuccess)
+        {
+            _bike = result.Data;
+            _selectedImage = _bike?.Images.FirstOrDefault()?.ImageUrl;
+            _breadcrumbs = new List<BreadcrumbItem>
+            {
+                new("Home", "/", icon: Icons.Material.Filled.Home),
+                new("Browse", "/browse", icon: Icons.Material.Filled.DirectionsBike),
+                new(_bike?.Title ?? "Detail", null, disabled: true)
+            };
+        }
+        _loading = false;
+    }
+
+    private async Task ToggleWishlist()
+    {
+        if (_bike is null) return;
+        // Placeholder user ID — replace with actual auth
+        var userId = Guid.Empty;
+        if (_isInWishlist)
+            await WishlistService.RemoveAsync(userId, _bike.Id);
+        else
+            await WishlistService.AddAsync(userId, _bike.Id);
+        _isInWishlist = !_isInWishlist;
+        Snackbar.Add(_isInWishlist ? "Added to wishlist" : "Removed from wishlist", Severity.Success);
+    }
+
+    private void PlaceOrder()
+    {
+        if (_bike is not null) Nav.NavigateTo($"/order/create/{_bike.Id}");
+    }
+
+    private void ContactSeller()
+    {
+        if (_bike is not null) Nav.NavigateTo($"/chat/{_bike.SellerId}?bike={_bike.Id}");
+    }
+}

@@ -1,0 +1,101 @@
+@* Reusable Order Card component used in MyOrders page *@
+
+<MudCard Elevation="0" Class="rounded-lg mb-3" Style="border: 1px solid #E8E8E8;">
+    <MudCardContent>
+        <MudStack Row AlignItems="AlignItems.Start" Justify="Justify.SpaceBetween">
+            <MudStack Row Spacing="3">
+                <MudImage Src="@(Order.BikeImageUrl ?? "https://via.placeholder.com/80")"
+                          Width="80" Height="60" ObjectFit="ObjectFit.Cover" Class="rounded" />
+                <MudStack Spacing="0">
+                    <MudText Typo="Typo.subtitle1" Style="font-weight: 600;">@Order.BikeTitle</MudText>
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">
+                        Order #@Order.OrderNumber · @Order.CreatedAt.ToString("MMM dd, yyyy")
+                    </MudText>
+                    <MudText Typo="Typo.body2" Class="mt-1">
+                        @(IsBuyer ? $"Seller: {Order.SellerName}" : $"Buyer: {Order.BuyerName}")
+                    </MudText>
+                </MudStack>
+            </MudStack>
+
+            <MudStack AlignItems="AlignItems.End" Spacing="1">
+                <MudChip T="string" Size="Size.Small" Variant="Variant.Filled"
+                         Color="@GetStatusColor(Order.Status)">
+                    @Order.Status
+                </MudChip>
+                <MudText Typo="Typo.h6" Style="font-weight: 700; color: #FF6B00;">
+                    @Order.TotalAmount.ToString("N0") ?
+                </MudText>
+            </MudStack>
+        </MudStack>
+
+        @* Price breakdown *@
+        <MudStack Row Spacing="4" Class="mt-2">
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Deposit: @Order.DepositAmount.ToString("N0") ?
+            </MudText>
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Remaining: @Order.RemainingAmount.ToString("N0") ?
+            </MudText>
+            @if (!string.IsNullOrEmpty(Order.TrackingNumber))
+            {
+                <MudText Typo="Typo.caption" Color="Color.Primary">
+                    Tracking: @Order.TrackingNumber
+                </MudText>
+            }
+        </MudStack>
+
+        @* Buyer Actions *@
+        @if (IsBuyer && Order.Status != OrderStatus.Completed && Order.Status != OrderStatus.Cancelled)
+        {
+            <MudDivider Class="my-2" />
+            <MudStack Row Spacing="2">
+                @if (Order.Status == OrderStatus.Delivered)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Small"
+                               StartIcon="@Icons.Material.Filled.CheckCircle"
+                               OnClick="@(() => OnConfirmDelivery.InvokeAsync(Order.Id))">
+                        Confirm Received
+                    </MudButton>
+                }
+                @if (Order.Status is OrderStatus.Pending or OrderStatus.DepositPaid)
+                {
+                    <MudButton Variant="Variant.Outlined" Color="Color.Error" Size="Size.Small"
+                               StartIcon="@Icons.Material.Filled.Cancel"
+                               OnClick="@(() => OnCancelOrder.InvokeAsync(Order.Id))">
+                        Cancel
+                    </MudButton>
+                }
+                @if (Order.Status is not OrderStatus.Pending and not OrderStatus.Cancelled)
+                {
+                    <MudButton Variant="Variant.Outlined" Color="Color.Warning" Size="Size.Small"
+                               StartIcon="@Icons.Material.Filled.ReportProblem"
+                               OnClick="@(() => OnOpenDispute.InvokeAsync(Order.Id))">
+                        Report Issue
+                    </MudButton>
+                }
+            </MudStack>
+        }
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public OrderDto Order { get; set; } = null!;
+    [Parameter] public bool IsBuyer { get; set; }
+    [Parameter] public EventCallback<Guid> OnConfirmDelivery { get; set; }
+    [Parameter] public EventCallback<Guid> OnCancelOrder { get; set; }
+    [Parameter] public EventCallback<Guid> OnOpenDispute { get; set; }
+
+    private static Color GetStatusColor(OrderStatus status) => status switch
+    {
+        OrderStatus.Pending => Color.Default,
+        OrderStatus.DepositPaid => Color.Info,
+        OrderStatus.FullyPaid => Color.Primary,
+        OrderStatus.Shipping => Color.Warning,
+        OrderStatus.Delivered => Color.Success,
+        OrderStatus.Completed => Color.Success,
+        OrderStatus.Cancelled => Color.Error,
+        OrderStatus.Disputed => Color.Error,
+        OrderStatus.Refunded => Color.Dark,
+        _ => Color.Default
+    };
+}

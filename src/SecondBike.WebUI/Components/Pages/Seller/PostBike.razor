@@ -1,0 +1,363 @@
+@page "/sell"
+@page "/sell/{PostId:guid}"
+@rendermode InteractiveServer
+@inject IBikePostService BikePostService
+@inject NavigationManager Nav
+@inject ISnackbar Snackbar
+
+<PageTitle>SecondBike — @(_isEdit ? "Edit Post" : "Sell Your Bike")</PageTitle>
+
+<MudText Typo="Typo.h4" Class="mb-4" Style="font-weight: 700;">
+    <MudIcon Icon="@(_isEdit ? Icons.Material.Filled.Edit : Icons.Material.Filled.Sell)" Class="mr-2" />
+    @(_isEdit ? "Edit Your Post" : "Post Your Bike for Sale")
+</MudText>
+
+<MudStepper @bind-ActiveIndex="_step" Color="Color.Primary" Variant="Variant.Filled" Class="mb-4">
+    <MudStep Title="Basic Info" Icon="@Icons.Material.Filled.Info" />
+    <MudStep Title="Specifications" Icon="@Icons.Material.Filled.Build" />
+    <MudStep Title="Photos & Location" Icon="@Icons.Material.Filled.Photo" />
+    <MudStep Title="Review & Submit" Icon="@Icons.Material.Filled.CheckCircle" />
+</MudStepper>
+
+<MudPaper Class="pa-6 rounded-lg" Elevation="0" Style="border: 1px solid #E8E8E8;">
+    <EditForm Model="_dto" OnValidSubmit="HandleSubmit">
+
+        @* ??? Step 1: Basic Info ??? *@
+        @if (_step == 0)
+        {
+            <MudGrid Spacing="3">
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_dto.Title" Label="Title"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Placeholder="e.g. Giant TCR Advanced Pro 2024"
+                                  HelperText="Give your bike a clear, catchy title" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_dto.Description" Label="Description"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Lines="6" Placeholder="Describe your bike's condition, history, and why you're selling..."
+                                  HelperText="Be detailed — buyers love transparency!" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudNumericField @bind-Value="_dto.Price" Label="Price (VN?)"
+                                     Variant="Variant.Outlined" Required="true"
+                                     Min="0" Format="N0"
+                                     Adornment="Adornment.Start" AdornmentText="?" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudSelect T="BikeCategory" @bind-Value="_dto.Category"
+                               Label="Category" Variant="Variant.Outlined" Required="true">
+                        @foreach (BikeCategory cat in Enum.GetValues<BikeCategory>())
+                        {
+                            <MudSelectItem Value="@cat">@cat</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+        }
+
+        @* ??? Step 2: Specifications ??? *@
+        @if (_step == 1)
+        {
+            <MudGrid Spacing="3">
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.Brand" Label="Brand"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Placeholder="e.g. Giant, Trek, Specialized" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.Model" Label="Model"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Placeholder="e.g. TCR Advanced Pro" />
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudNumericField @bind-Value="_dto.Year" Label="Year"
+                                     Variant="Variant.Outlined" Required="true"
+                                     Min="1990" Max="@(DateTime.Now.Year + 1)" />
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudSelect T="BikeSize" @bind-Value="_dto.Size"
+                               Label="Size" Variant="Variant.Outlined" Required="true">
+                        @foreach (BikeSize s in Enum.GetValues<BikeSize>())
+                        {
+                            <MudSelectItem Value="@s">@s</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudSelect T="BikeCondition" @bind-Value="_dto.Condition"
+                               Label="Condition" Variant="Variant.Outlined" Required="true">
+                        @foreach (BikeCondition c in Enum.GetValues<BikeCondition>())
+                        {
+                            <MudSelectItem Value="@c">@c</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudTextField @bind-Value="_dto.FrameMaterial" Label="Frame Material"
+                                  Variant="Variant.Outlined"
+                                  Placeholder="e.g. Carbon, Aluminum" />
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudTextField @bind-Value="_dto.Color" Label="Color"
+                                  Variant="Variant.Outlined" Placeholder="e.g. Matte Black" />
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudNumericField @bind-Value="_dto.WeightKg" Label="Weight (kg)"
+                                     Variant="Variant.Outlined" Min="0" Step="0.1M" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudNumericField @bind-Value="_dto.OdometerKm" Label="Odometer (km)"
+                                     Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.UsageHistory" Label="Usage History"
+                                  Variant="Variant.Outlined"
+                                  Placeholder="e.g. Weekend rides only, well maintained" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudCheckBox @bind-Value="_dto.HasAccidents" Label="Has this bike been in any accidents?"
+                                 Color="Color.Warning" />
+                </MudItem>
+                @if (_dto.HasAccidents)
+                {
+                    <MudItem xs="12">
+                        <MudTextField @bind-Value="_dto.AccidentDescription"
+                                      Label="Accident Description"
+                                      Variant="Variant.Outlined" Lines="3" />
+                    </MudItem>
+                }
+            </MudGrid>
+        }
+
+        @* ??? Step 3: Photos & Location ??? *@
+        @if (_step == 2)
+        {
+            <MudGrid Spacing="3">
+                <MudItem xs="12">
+                    <MudText Typo="Typo.subtitle1" Style="font-weight: 600;" Class="mb-2">
+                        <MudIcon Icon="@Icons.Material.Filled.PhotoCamera" Class="mr-1" /> Photos
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-3">
+                        Add up to 10 photo URLs. The first image will be the cover photo.
+                    </MudText>
+
+                    @for (int i = 0; i < _dto.ImageUrls.Count; i++)
+                    {
+                        var index = i;
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="mb-2">
+                            <MudTextField @bind-Value="_dto.ImageUrls[index]"
+                                          Variant="Variant.Outlined"
+                                          Placeholder="https://example.com/photo.jpg"
+                                          Adornment="Adornment.Start"
+                                          AdornmentIcon="@Icons.Material.Filled.Link" />
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                           Color="Color.Error" Size="Size.Small"
+                                           OnClick="() => RemoveImage(index)" />
+                        </MudStack>
+                    }
+
+                    @if (_dto.ImageUrls.Count < 10)
+                    {
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary"
+                                   StartIcon="@Icons.Material.Filled.Add"
+                                   OnClick="AddImageSlot" Class="mt-1">
+                            Add Photo URL
+                        </MudButton>
+                    }
+                </MudItem>
+
+                <MudItem xs="12">
+                    <MudDivider Class="my-2" />
+                    <MudText Typo="Typo.subtitle1" Style="font-weight: 600;" Class="mb-2">
+                        <MudIcon Icon="@Icons.Material.Filled.LocationOn" Class="mr-1" /> Location
+                    </MudText>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.City" Label="City"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Placeholder="e.g. Ho Chi Minh City" />
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudTextField @bind-Value="_dto.District" Label="District"
+                                  Variant="Variant.Outlined" Required="true"
+                                  Placeholder="e.g. District 1" />
+                </MudItem>
+            </MudGrid>
+        }
+
+        @* ??? Step 4: Review ??? *@
+        @if (_step == 3)
+        {
+            <MudGrid Spacing="3">
+                <MudItem xs="12">
+                    <MudAlert Severity="Severity.Info" Class="mb-3">
+                        Please review your listing before submitting. Your post will be sent for moderation.
+                    </MudAlert>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudField Label="Title" Variant="Variant.Outlined">@_dto.Title</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudField Label="Price" Variant="Variant.Outlined">@_dto.Price.ToString("N0") ?</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Brand" Variant="Variant.Outlined">@_dto.Brand</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Model" Variant="Variant.Outlined">@_dto.Model</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Year" Variant="Variant.Outlined">@_dto.Year</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Category" Variant="Variant.Outlined">@_dto.Category</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Size" Variant="Variant.Outlined">@_dto.Size</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="4">
+                    <MudField Label="Condition" Variant="Variant.Outlined">@_dto.Condition</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudField Label="Location" Variant="Variant.Outlined">@_dto.District, @_dto.City</MudField>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudField Label="Photos" Variant="Variant.Outlined">@_dto.ImageUrls.Count image(s)</MudField>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudField Label="Description" Variant="Variant.Outlined">@_dto.Description</MudField>
+                </MudItem>
+            </MudGrid>
+        }
+
+        @* ??? Navigation Buttons ??? *@
+        <MudStack Row Justify="Justify.SpaceBetween" Class="mt-6">
+            <MudButton Variant="Variant.Outlined" Color="Color.Default"
+                       Disabled="@(_step == 0)"
+                       OnClick="PreviousStep"
+                       StartIcon="@Icons.Material.Filled.ArrowBack">
+                Back
+            </MudButton>
+
+            @if (_step < 3)
+            {
+                <MudButton Variant="Variant.Filled" Color="Color.Primary"
+                           OnClick="NextStep"
+                           EndIcon="@Icons.Material.Filled.ArrowForward">
+                    Next
+                </MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled" Color="Color.Success"
+                           ButtonType="ButtonType.Submit"
+                           Disabled="@_submitting"
+                           StartIcon="@Icons.Material.Filled.Publish">
+                    @if (_submitting)
+                    {
+                        <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                        @:Submitting...
+                    }
+                    else
+                    {
+                        @:Submit for Review
+                    }
+                </MudButton>
+            }
+        </MudStack>
+    </EditForm>
+</MudPaper>
+
+@code {
+    [Parameter] public Guid? PostId { get; set; }
+
+    private CreateBikePostDto _dto = new() { ImageUrls = new List<string> { "" } };
+    private int _step;
+    private bool _submitting;
+    private bool _isEdit => PostId.HasValue;
+
+    // Placeholder seller ID — replace with actual auth
+    private Guid _currentSellerId = Guid.NewGuid();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (_isEdit)
+        {
+            var result = await BikePostService.GetByIdAsync(PostId!.Value);
+            if (result.IsSuccess && result.Data is not null)
+            {
+                var bike = result.Data;
+                _dto = new CreateBikePostDto
+                {
+                    Title = bike.Title,
+                    Description = bike.Description,
+                    Price = bike.Price,
+                    Brand = bike.Brand,
+                    Model = bike.Model,
+                    Year = bike.Year,
+                    Category = bike.Category,
+                    Size = bike.Size,
+                    FrameMaterial = bike.FrameMaterial,
+                    Color = bike.Color,
+                    Condition = bike.Condition,
+                    WeightKg = bike.WeightKg,
+                    OdometerKm = bike.OdometerKm,
+                    City = bike.City,
+                    District = bike.District,
+                    ImageUrls = bike.Images.Select(i => i.ImageUrl).ToList()
+                };
+            }
+        }
+    }
+
+    private void NextStep() { if (_step < 3) _step++; }
+    private void PreviousStep() { if (_step > 0) _step--; }
+    private void AddImageSlot() => _dto.ImageUrls.Add("");
+    private void RemoveImage(int index)
+    {
+        if (_dto.ImageUrls.Count > 1)
+            _dto.ImageUrls.RemoveAt(index);
+    }
+
+    private async Task HandleSubmit()
+    {
+        _submitting = true;
+        _dto.ImageUrls = _dto.ImageUrls.Where(u => !string.IsNullOrWhiteSpace(u)).ToList();
+
+        if (_isEdit)
+        {
+            var updateDto = new UpdateBikePostDto
+            {
+                Id = PostId!.Value,
+                Title = _dto.Title, Description = _dto.Description, Price = _dto.Price,
+                Brand = _dto.Brand, Model = _dto.Model, Year = _dto.Year,
+                Category = _dto.Category, Size = _dto.Size, FrameMaterial = _dto.FrameMaterial,
+                Color = _dto.Color, Condition = _dto.Condition, WeightKg = _dto.WeightKg,
+                OdometerKm = _dto.OdometerKm, City = _dto.City, District = _dto.District,
+                ImageUrls = _dto.ImageUrls
+            };
+            var result = await BikePostService.UpdateAsync(_currentSellerId, updateDto);
+            if (result.IsSuccess)
+            {
+                Snackbar.Add("Post updated successfully!", Severity.Success);
+                Nav.NavigateTo("/my-posts");
+            }
+            else
+                Snackbar.Add(result.ErrorMessage ?? "Update failed", Severity.Error);
+        }
+        else
+        {
+            var result = await BikePostService.CreateAsync(_currentSellerId, _dto);
+            if (result.IsSuccess && result.Data is not null)
+            {
+                await BikePostService.SubmitForModerationAsync(_currentSellerId, result.Data.Id);
+                Snackbar.Add("Bike posted! Waiting for moderation.", Severity.Success);
+                Nav.NavigateTo("/my-posts");
+            }
+            else
+                Snackbar.Add(result.ErrorMessage ?? "Post failed", Severity.Error);
+        }
+        _submitting = false;
+    }
+}
