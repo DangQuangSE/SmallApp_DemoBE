@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\GitHub\\SecondBike_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -390,50 +394,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 94,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
-              "ViewState": "AgIAAA8AAAAAAAAAAIBJwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-02T14:53:50.063Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Api\\Program.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
-              "RelativeToolTip": "src\\SecondBike.Api\\Program.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T14:53:40.363Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 93,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T14:53:19.096Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 92,
               "Title": "InspectionsController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
@@ -447,6 +412,71 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
+              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAkwEoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:31:48.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PROJECT_DOCUMENTATION.md",
+              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md",
+              "RelativeDocumentMoniker": "docs\\PROJECT_DOCUMENTATION.md",
+              "ToolTip": "D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md",
+              "RelativeToolTip": "docs\\PROJECT_DOCUMENTATION.md",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAA8DAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-03-02T17:19:13.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Api\\Program.cs",
+              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
+              "RelativeToolTip": "src\\SecondBike.Api\\Program.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T14:53:40.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T14:53:19.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
+              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAIBJwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-02T14:53:50.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RatingsController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\RatingsController.cs",
@@ -459,20 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAiwEoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:31:48.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 92,
               "Title": "WishlistController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\WishlistController.cs",
@@ -485,7 +502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MessagesController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\MessagesController.cs",
@@ -498,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\OrdersController.cs",
@@ -511,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 91,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AuthController.cs",
@@ -524,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 90,
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
@@ -537,7 +554,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "SecondBike.Infrastructure.csproj",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
@@ -550,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AppUserConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
@@ -563,7 +580,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
@@ -576,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\DependencyInjection.cs",
@@ -589,7 +606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "JwtService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
@@ -602,7 +619,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IJwtService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
@@ -615,7 +632,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "SecondBike.Api",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\SecondBike.Api.csproj",
@@ -628,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "BikesController.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BikesController.cs",
@@ -641,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
@@ -653,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Repository.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
@@ -665,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
@@ -677,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Common\\BaseEntity.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Common\\BaseEntity.cs",
@@ -689,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "BikeSearchService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
@@ -701,7 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AppUser.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\AppUser.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\AppUser.cs",
@@ -713,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "InspectionReport.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
@@ -725,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "SecondBike.Domain.csproj",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\SecondBike.Domain.csproj",
@@ -738,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "BikePost.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikePost.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\BikePost.cs",
@@ -750,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "BikeImage.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikeImage.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\BikeImage.cs",
@@ -762,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Message.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Message.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Message.cs",
@@ -774,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "WalletTransaction.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
@@ -786,7 +803,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Order.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Order.cs",
@@ -798,7 +815,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Payment.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Payment.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Payment.cs",
@@ -810,7 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "Rating.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Rating.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Rating.cs",
@@ -822,7 +839,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "Wallet.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wallet.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Wallet.cs",
@@ -834,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Wishlist.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wishlist.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Wishlist.cs",
@@ -846,7 +863,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "IWishlistService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
@@ -858,7 +875,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "IRatingService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
@@ -870,7 +887,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
@@ -882,7 +899,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "IMessageService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
@@ -894,7 +911,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "IInspectionService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
@@ -906,7 +923,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "IBikeSearchService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
@@ -918,7 +935,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "IBikePostService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
@@ -930,7 +947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
@@ -942,7 +959,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
@@ -954,7 +971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "InspectionStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
@@ -966,7 +983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "DisputeStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
@@ -978,7 +995,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "BikeCondition.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
@@ -990,7 +1007,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "BikeCategory.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
@@ -1002,7 +1019,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "RatingService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
@@ -1014,7 +1031,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 87,
               "Title": "WishlistService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
@@ -1026,7 +1043,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 88,
               "Title": "InspectionService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
@@ -1038,7 +1055,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 89,
               "Title": "AdminService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
@@ -1050,7 +1067,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "MessageService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
@@ -1062,7 +1079,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 86,
               "Title": "OrderService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
@@ -1074,7 +1091,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "RatingConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
@@ -1086,7 +1103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "BikePostService.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
@@ -1098,7 +1115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 83,
               "Title": "InspectionReportConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
@@ -1110,7 +1127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 84,
               "Title": "WishlistConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
@@ -1122,7 +1139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 85,
               "Title": "WalletConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
@@ -1134,7 +1151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "UserRole.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserRole.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\UserRole.cs",
@@ -1146,7 +1163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "OrderConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
@@ -1158,7 +1175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "BikePostConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
@@ -1170,7 +1187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 82,
               "Title": "MessageConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
@@ -1182,7 +1199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "UserStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\UserStatus.cs",
@@ -1194,7 +1211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "BikeSize.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeSize.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeSize.cs",
@@ -1206,7 +1223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "PostStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PostStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PostStatus.cs",
@@ -1218,7 +1235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "OrderStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
@@ -1230,7 +1247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 81,
               "Title": "PaymentConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
@@ -1242,7 +1259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 80,
               "Title": "BikeImageConfiguration.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
@@ -1254,7 +1271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 79,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DependencyInjection.cs",
@@ -1266,7 +1283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 78,
               "Title": "CreateRatingValidator.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
@@ -1278,7 +1295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 77,
               "Title": "RegisterValidator.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
@@ -1290,7 +1307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 76,
               "Title": "CreateBikePostValidator.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
@@ -1302,7 +1319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "AdminDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
@@ -1314,7 +1331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "InspectionDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
@@ -1326,7 +1343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "RatingDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
@@ -1338,7 +1355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "ChatDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
@@ -1350,7 +1367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "UserDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
@@ -1362,7 +1379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "OrderDtos.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
@@ -1374,7 +1391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "BikeFilterDto.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
@@ -1386,7 +1403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "BikePostDto.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
@@ -1398,7 +1415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "UpdateBikePostDto.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
@@ -1410,7 +1427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "CreateBikePostDto.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
@@ -1422,7 +1439,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "PagedResult.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\PagedResult.cs",
@@ -1434,7 +1451,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "Result.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\Result.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\Result.cs",
@@ -1446,7 +1463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "WalletTransactionType.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
@@ -1458,7 +1475,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "MessageType.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\MessageType.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\MessageType.cs",
@@ -1470,7 +1487,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "OverallCondition.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
@@ -1482,7 +1499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "PaymentGateway.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
@@ -1494,7 +1511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "PaymentStatus.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
@@ -1506,7 +1523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "PaymentMethod.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
@@ -1518,7 +1535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "PaymentType.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentType.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentType.cs",
@@ -1530,7 +1547,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
@@ -1542,7 +1559,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "IRepository.cs",
               "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IRepository.cs",
