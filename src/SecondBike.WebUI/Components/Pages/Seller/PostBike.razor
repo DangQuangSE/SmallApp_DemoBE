@@ -5,7 +5,7 @@
 @inject NavigationManager Nav
 @inject ISnackbar Snackbar
 
-<PageTitle>SecondBike — @(_isEdit ? "Edit Post" : "Sell Your Bike")</PageTitle>
+<PageTitle>SecondBike ï¿½ @(_isEdit ? "Edit Post" : "Sell Your Bike")</PageTitle>
 
 <MudText Typo="Typo.h4" Class="mb-4" Style="font-weight: 700;">
     <MudIcon Icon="@(_isEdit ? Icons.Material.Filled.Edit : Icons.Material.Filled.Sell)" Class="mr-2" />
@@ -21,6 +21,7 @@
 
 <MudPaper Class="pa-6 rounded-lg" Elevation="0" Style="border: 1px solid #E8E8E8;">
     <EditForm Model="_dto" OnValidSubmit="HandleSubmit">
+        <FluentValidationValidator />
 
         @* ??? Step 1: Basic Info ??? *@
         @if (_step == 0)
@@ -36,7 +37,7 @@
                     <MudTextField @bind-Value="_dto.Description" Label="Description"
                                   Variant="Variant.Outlined" Required="true"
                                   Lines="6" Placeholder="Describe your bike's condition, history, and why you're selling..."
-                                  HelperText="Be detailed — buyers love transparency!" />
+                                  HelperText="Be detailed ï¿½ buyers love transparency!" />
                 </MudItem>
                 <MudItem xs="12" sm="6">
                     <MudNumericField @bind-Value="_dto.Price" Label="Price (VN?)"
@@ -277,8 +278,8 @@
     private bool _submitting;
     private bool _isEdit => PostId.HasValue;
 
-    // Placeholder seller ID — replace with actual auth
-    private Guid _currentSellerId = Guid.NewGuid();
+    // Placeholder seller ID - using seeded @AppSeller1 from DB script
+    private Guid _currentSellerId = Guid.Parse("33333333-3333-3333-3333-333333333333");
 
     protected override async Task OnInitializedAsync()
     {

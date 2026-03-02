@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.FluentValidation" Version="2.2.0" />
     <PackageReference Include="MudBlazor" Version="9.0.0" />
     <ProjectReference Include="..\SecondBike.WebUI.Client\SecondBike.WebUI.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.23" />

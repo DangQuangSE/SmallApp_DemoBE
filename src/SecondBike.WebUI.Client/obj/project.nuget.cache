@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R6Ods6IEpHw=",
+  "dgSpecHash": "kL1CiKQUbMI=",
   "success": true,
-  "projectFilePath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
+  "projectFilePath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.23\\microsoft.aspnetcore.authorization.8.0.23.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.23\\microsoft.aspnetcore.components.8.0.23.nupkg.sha512",
@@ -10,6 +10,7 @@
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.23\\microsoft.aspnetcore.components.forms.8.0.23.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.23\\microsoft.aspnetcore.components.web.8.0.23.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\8.0.23\\microsoft.aspnetcore.components.webassembly.8.0.23.nupkg.sha512",
+    "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\8.0.24\\microsoft.aspnetcore.components.webassembly.devserver.8.0.24.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.23\\microsoft.aspnetcore.metadata.8.0.23.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

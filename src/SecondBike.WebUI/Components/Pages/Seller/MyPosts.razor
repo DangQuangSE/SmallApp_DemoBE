@@ -4,7 +4,7 @@
 @inject NavigationManager Nav
 @inject ISnackbar Snackbar
 
-<PageTitle>SecondBike — My Posts</PageTitle>
+<PageTitle>SecondBike ï¿½ My Posts</PageTitle>
 
 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-4">
     <MudText Typo="Typo.h4" Style="font-weight: 700;">
@@ -94,8 +94,8 @@ else
     private List<BikePostDto> _posts = new();
     private bool _loading = true;
 
-    // Placeholder seller ID
-    private Guid _currentSellerId = Guid.NewGuid();
+    // Placeholder seller ID - using seeded @AppSeller1 from DB script
+    private Guid _currentSellerId = Guid.Parse("33333333-3333-3333-3333-333333333333");
 
     protected override async Task OnInitializedAsync()
     {

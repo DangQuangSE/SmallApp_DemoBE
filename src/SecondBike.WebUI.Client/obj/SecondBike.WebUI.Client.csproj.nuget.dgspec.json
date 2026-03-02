@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {}
+    "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {}
   },
   "projects": {
-    "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {
+    "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
         "projectName": "SecondBike.WebUI.Client",
-        "projectPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
+        "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\obj\\",
+        "outputPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,6 +53,10 @@
             "Microsoft.AspNetCore.Components.WebAssembly": {
               "target": "Package",
               "version": "[8.0.23, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "target": "Package",
+              "version": "[8.0.*, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",

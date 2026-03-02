@@ -9,7 +9,7 @@ using SecondBike.Domain.Enums;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Seller Core — Manages bike post CRUD operations.
+/// Seller Core ï¿½ Manages bike post CRUD operations.
 /// </summary>
 public class BikePostService : IBikePostService
 {
@@ -105,7 +105,8 @@ public class BikePostService : IBikePostService
         await _uow.SaveChangesAsync(ct);
 
         var seller = await _userRepo.GetByIdAsync(sellerId, ct);
-        return Result<BikePostDto>.Success(MapToDto(post, seller!));
+        if (seller is null) return Result<BikePostDto>.Failure("Seller not found");
+        return Result<BikePostDto>.Success(MapToDto(post, seller));
     }
 
     public async Task<Result> DeleteAsync(Guid sellerId, Guid postId, CancellationToken ct = default)
@@ -145,16 +146,18 @@ public class BikePostService : IBikePostService
 
     public async Task<Result<BikePostDto>> GetByIdAsync(Guid postId, CancellationToken ct = default)
     {
-        var post = await _postRepo.GetByIdAsync(postId, ct);
+        var post = await _postRepo.GetByIdWithIncludesAsync(postId, ct, p => p.Images);
         if (post is null) return Result<BikePostDto>.Failure("Post not found");
 
         var seller = await _userRepo.GetByIdAsync(post.SellerId, ct);
-        return Result<BikePostDto>.Success(MapToDto(post, seller!));
+        if (seller is null) return Result<BikePostDto>.Failure("Seller not found");
+
+        return Result<BikePostDto>.Success(MapToDto(post, seller));
     }
 
     public async Task<Result<List<BikePostDto>>> GetBySellerAsync(Guid sellerId, CancellationToken ct = default)
     {
-        var posts = await _postRepo.FindAsync(p => p.SellerId == sellerId, ct);
+        var posts = await _postRepo.FindWithIncludesAsync(p => p.SellerId == sellerId, ct, p => p.Images);
         var seller = await _userRepo.GetByIdAsync(sellerId, ct);
         if (seller is null) return Result<List<BikePostDto>>.Failure("Seller not found");
 

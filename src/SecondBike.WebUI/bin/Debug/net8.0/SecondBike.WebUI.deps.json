@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "SecondBike.WebUI/1.0.0": {
         "dependencies": {
+          "Blazored.FluentValidation": "2.2.0",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "8.0.23",
           "MudBlazor": "9.0.0",
           "SecondBike.Application": "1.0.0",
@@ -50,6 +51,18 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.11.4.0",
             "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
+      "Blazored.FluentValidation/2.2.0": {
+        "dependencies": {
+          "FluentValidation": "12.1.1",
+          "Microsoft.AspNetCore.Components.Web": "8.0.23"
+        },
+        "runtime": {
+          "lib/net8.0/Blazored.FluentValidation.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -141,6 +154,7 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.24": {},
       "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.23": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.Server.dll": {
@@ -864,7 +878,8 @@
       },
       "SecondBike.WebUI.Client/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.23"
+          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.23",
+          "Microsoft.AspNetCore.Components.WebAssembly.DevServer": "8.0.24"
         },
         "runtime": {
           "SecondBike.WebUI.Client.dll": {
@@ -894,6 +909,13 @@
       "sha512": "sha512-Sf4BoE6Q3jTgFkgBkx7qztYOFELBCo+wQgpYDwal/qJ1unBH73ywPztIJKXBXORRzAeNijsuxhk94h0TIMvfYg==",
       "path": "azure.identity/1.11.4",
       "hashPath": "azure.identity.1.11.4.nupkg.sha512"
+    },
+    "Blazored.FluentValidation/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lBSHW7faCJqwn7KtZt6vqHSiyGvTL5McpS4sQUW3RLu2R5eMmf4oolFeufZfcAB8TV8iI+/PYouz7sn773E8Og==",
+      "path": "blazored.fluentvalidation/2.2.0",
+      "hashPath": "blazored.fluentvalidation.2.2.0.nupkg.sha512"
     },
     "FluentValidation/12.1.1": {
       "type": "package",
@@ -950,6 +972,13 @@
       "sha512": "sha512-xIkW2B81V6+ps603ZThyDU7rsP3tprFrmTcSfIZh4QBdlJFFnUZ9i5ZgN4ELluW0lOc7T5L8eCDffdqL2j8tng==",
       "path": "microsoft.aspnetcore.components.webassembly/8.0.23",
       "hashPath": "microsoft.aspnetcore.components.webassembly.8.0.23.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.24": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ArlLVNtk3RBuRZtOblWRQrXUFvRae9cya3OxWsG9JsP0+qauUNSu3+oePXiPrxTJ60q62XwN4JTH27t/WCaabg==",
+      "path": "microsoft.aspnetcore.components.webassembly.devserver/8.0.24",
+      "hashPath": "microsoft.aspnetcore.components.webassembly.devserver.8.0.24.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.23": {
       "type": "package",

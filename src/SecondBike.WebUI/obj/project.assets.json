@@ -47,6 +47,19 @@
           }
         }
       },
+      "Blazored.FluentValidation/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.9.1",
+          "Microsoft.AspNetCore.Components.Web": "8.0.6"
+        },
+        "compile": {
+          "lib/net8.0/Blazored.FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Blazored.FluentValidation.dll": {}
+        }
+      },
       "FluentValidation/12.1.1": {
         "type": "package",
         "compile": {
@@ -176,6 +189,12 @@
         },
         "build": {
           "build/net8.0/_._": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.24": {
+        "type": "package",
+        "build": {
+          "build/_._": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.23": {
@@ -1522,7 +1541,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.23"
+          "Microsoft.AspNetCore.Components.WebAssembly": "8.0.23",
+          "Microsoft.AspNetCore.Components.WebAssembly.DevServer": "8.0.0"
         },
         "compile": {
           "bin/placeholder/SecondBike.WebUI.Client.dll": {}
@@ -1570,6 +1590,21 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Blazored.FluentValidation/2.2.0": {
+      "sha512": "lBSHW7faCJqwn7KtZt6vqHSiyGvTL5McpS4sQUW3RLu2R5eMmf4oolFeufZfcAB8TV8iI+/PYouz7sn773E8Og==",
+      "type": "package",
+      "path": "blazored.fluentvalidation/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.fluentvalidation.2.2.0.nupkg.sha512",
+        "blazored.fluentvalidation.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.FluentValidation.dll",
+        "lib/net7.0/Blazored.FluentValidation.dll",
+        "lib/net8.0/Blazored.FluentValidation.dll"
       ]
     },
     "FluentValidation/12.1.1": {
@@ -1697,6 +1732,173 @@
         "lib/net8.0/Microsoft.AspNetCore.Components.WebAssembly.xml",
         "microsoft.aspnetcore.components.webassembly.8.0.23.nupkg.sha512",
         "microsoft.aspnetcore.components.webassembly.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.24": {
+      "sha512": "ArlLVNtk3RBuRZtOblWRQrXUFvRae9cya3OxWsG9JsP0+qauUNSu3+oePXiPrxTJ60q62XwN4JTH27t/WCaabg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.webassembly.devserver/8.0.24",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/Microsoft.AspNetCore.Components.WebAssembly.DevServer.targets",
+        "microsoft.aspnetcore.components.webassembly.devserver.8.0.24.nupkg.sha512",
+        "microsoft.aspnetcore.components.webassembly.devserver.nuspec",
+        "tools/ARM64/aspnetcorev2_inprocess.dll",
+        "tools/BlazorDebugProxy/BrowserDebugHost.dll",
+        "tools/BlazorDebugProxy/BrowserDebugHost.runtimeconfig.json",
+        "tools/BlazorDebugProxy/BrowserDebugProxy.dll",
+        "tools/BlazorDebugProxy/Microsoft.CodeAnalysis.CSharp.Scripting.dll",
+        "tools/BlazorDebugProxy/Microsoft.CodeAnalysis.CSharp.dll",
+        "tools/BlazorDebugProxy/Microsoft.CodeAnalysis.Scripting.dll",
+        "tools/BlazorDebugProxy/Microsoft.CodeAnalysis.dll",
+        "tools/BlazorDebugProxy/Microsoft.FileFormats.dll",
+        "tools/BlazorDebugProxy/Microsoft.NET.WebAssembly.Webcil.dll",
+        "tools/BlazorDebugProxy/Microsoft.SymbolStore.dll",
+        "tools/BlazorDebugProxy/Newtonsoft.Json.dll",
+        "tools/Microsoft.AspNetCore.Antiforgery.dll",
+        "tools/Microsoft.AspNetCore.Antiforgery.xml",
+        "tools/Microsoft.AspNetCore.Authentication.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Authentication.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Authentication.Core.dll",
+        "tools/Microsoft.AspNetCore.Authentication.Core.xml",
+        "tools/Microsoft.AspNetCore.Authentication.dll",
+        "tools/Microsoft.AspNetCore.Authentication.xml",
+        "tools/Microsoft.AspNetCore.Authorization.Policy.dll",
+        "tools/Microsoft.AspNetCore.Authorization.Policy.xml",
+        "tools/Microsoft.AspNetCore.Authorization.dll",
+        "tools/Microsoft.AspNetCore.Authorization.xml",
+        "tools/Microsoft.AspNetCore.Components.Authorization.dll",
+        "tools/Microsoft.AspNetCore.Components.Authorization.xml",
+        "tools/Microsoft.AspNetCore.Components.Endpoints.dll",
+        "tools/Microsoft.AspNetCore.Components.Endpoints.xml",
+        "tools/Microsoft.AspNetCore.Components.Forms.dll",
+        "tools/Microsoft.AspNetCore.Components.Forms.xml",
+        "tools/Microsoft.AspNetCore.Components.Web.dll",
+        "tools/Microsoft.AspNetCore.Components.Web.xml",
+        "tools/Microsoft.AspNetCore.Components.WebAssembly.Server.dll",
+        "tools/Microsoft.AspNetCore.Components.WebAssembly.Server.xml",
+        "tools/Microsoft.AspNetCore.Components.dll",
+        "tools/Microsoft.AspNetCore.Components.xml",
+        "tools/Microsoft.AspNetCore.Connections.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Connections.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "tools/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "tools/Microsoft.AspNetCore.DataProtection.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.DataProtection.Extensions.dll",
+        "tools/Microsoft.AspNetCore.DataProtection.Extensions.xml",
+        "tools/Microsoft.AspNetCore.DataProtection.dll",
+        "tools/Microsoft.AspNetCore.DataProtection.xml",
+        "tools/Microsoft.AspNetCore.Diagnostics.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Diagnostics.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Diagnostics.dll",
+        "tools/Microsoft.AspNetCore.Diagnostics.xml",
+        "tools/Microsoft.AspNetCore.HostFiltering.dll",
+        "tools/Microsoft.AspNetCore.HostFiltering.xml",
+        "tools/Microsoft.AspNetCore.Hosting.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Hosting.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Hosting.Server.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Hosting.dll",
+        "tools/Microsoft.AspNetCore.Hosting.xml",
+        "tools/Microsoft.AspNetCore.Html.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Html.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Http.Extensions.dll",
+        "tools/Microsoft.AspNetCore.Http.Extensions.xml",
+        "tools/Microsoft.AspNetCore.Http.Features.dll",
+        "tools/Microsoft.AspNetCore.Http.Features.xml",
+        "tools/Microsoft.AspNetCore.Http.dll",
+        "tools/Microsoft.AspNetCore.Http.xml",
+        "tools/Microsoft.AspNetCore.HttpOverrides.dll",
+        "tools/Microsoft.AspNetCore.HttpOverrides.xml",
+        "tools/Microsoft.AspNetCore.Metadata.dll",
+        "tools/Microsoft.AspNetCore.Metadata.xml",
+        "tools/Microsoft.AspNetCore.Routing.Abstractions.dll",
+        "tools/Microsoft.AspNetCore.Routing.Abstractions.xml",
+        "tools/Microsoft.AspNetCore.Routing.dll",
+        "tools/Microsoft.AspNetCore.Routing.xml",
+        "tools/Microsoft.AspNetCore.Server.HttpSys.dll",
+        "tools/Microsoft.AspNetCore.Server.HttpSys.xml",
+        "tools/Microsoft.AspNetCore.Server.IIS.dll",
+        "tools/Microsoft.AspNetCore.Server.IIS.xml",
+        "tools/Microsoft.AspNetCore.Server.IISIntegration.dll",
+        "tools/Microsoft.AspNetCore.Server.IISIntegration.xml",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Core.dll",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Core.xml",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes.dll",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes.xml",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.dll",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Quic.xml",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.xml",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.dll",
+        "tools/Microsoft.AspNetCore.Server.Kestrel.xml",
+        "tools/Microsoft.AspNetCore.StaticFiles.dll",
+        "tools/Microsoft.AspNetCore.StaticFiles.xml",
+        "tools/Microsoft.AspNetCore.WebUtilities.dll",
+        "tools/Microsoft.AspNetCore.WebUtilities.xml",
+        "tools/Microsoft.AspNetCore.dll",
+        "tools/Microsoft.AspNetCore.xml",
+        "tools/Microsoft.Extensions.Configuration.Abstractions.dll",
+        "tools/Microsoft.Extensions.Configuration.Binder.dll",
+        "tools/Microsoft.Extensions.Configuration.CommandLine.dll",
+        "tools/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
+        "tools/Microsoft.Extensions.Configuration.FileExtensions.dll",
+        "tools/Microsoft.Extensions.Configuration.Json.dll",
+        "tools/Microsoft.Extensions.Configuration.UserSecrets.dll",
+        "tools/Microsoft.Extensions.Configuration.dll",
+        "tools/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "tools/Microsoft.Extensions.DependencyInjection.dll",
+        "tools/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "tools/Microsoft.Extensions.Diagnostics.dll",
+        "tools/Microsoft.Extensions.Features.dll",
+        "tools/Microsoft.Extensions.Features.xml",
+        "tools/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "tools/Microsoft.Extensions.FileProviders.Composite.dll",
+        "tools/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "tools/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "tools/Microsoft.Extensions.FileProviders.Physical.dll",
+        "tools/Microsoft.Extensions.FileSystemGlobbing.dll",
+        "tools/Microsoft.Extensions.Hosting.Abstractions.dll",
+        "tools/Microsoft.Extensions.Hosting.dll",
+        "tools/Microsoft.Extensions.Logging.Abstractions.dll",
+        "tools/Microsoft.Extensions.Logging.Configuration.dll",
+        "tools/Microsoft.Extensions.Logging.Console.dll",
+        "tools/Microsoft.Extensions.Logging.Debug.dll",
+        "tools/Microsoft.Extensions.Logging.EventLog.dll",
+        "tools/Microsoft.Extensions.Logging.EventSource.dll",
+        "tools/Microsoft.Extensions.Logging.dll",
+        "tools/Microsoft.Extensions.ObjectPool.dll",
+        "tools/Microsoft.Extensions.ObjectPool.xml",
+        "tools/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "tools/Microsoft.Extensions.Options.dll",
+        "tools/Microsoft.Extensions.Primitives.dll",
+        "tools/Microsoft.Extensions.WebEncoders.dll",
+        "tools/Microsoft.Extensions.WebEncoders.xml",
+        "tools/Microsoft.JSInterop.dll",
+        "tools/Microsoft.JSInterop.xml",
+        "tools/Microsoft.Net.Http.Headers.dll",
+        "tools/Microsoft.Net.Http.Headers.xml",
+        "tools/System.Diagnostics.EventLog.dll",
+        "tools/System.IO.Pipelines.dll",
+        "tools/System.Security.Cryptography.Pkcs.dll",
+        "tools/System.Security.Cryptography.Xml.dll",
+        "tools/blazor-devserver.deps.json",
+        "tools/blazor-devserver.dll",
+        "tools/blazor-devserver.exe",
+        "tools/blazor-devserver.runtimeconfig.json",
+        "tools/blazor-devserver.xml",
+        "tools/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll",
+        "tools/runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll",
+        "tools/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "tools/x64/aspnetcorev2_inprocess.dll",
+        "tools/x86/aspnetcorev2_inprocess.dll"
       ]
     },
     "Microsoft.AspNetCore.Components.WebAssembly.Server/8.0.23": {
@@ -3889,6 +4091,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Blazored.FluentValidation >= 2.2.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 8.0.23",
       "MudBlazor >= 9.0.0",
       "SecondBike.Application >= 1.0.0",
@@ -3903,11 +4106,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI\\SecondBike.WebUI.csproj",
+      "projectUniqueName": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI\\SecondBike.WebUI.csproj",
       "projectName": "SecondBike.WebUI",
-      "projectPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI\\SecondBike.WebUI.csproj",
+      "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI\\SecondBike.WebUI.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI\\obj\\",
+      "outputPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3928,14 +4131,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
-              "projectPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj"
+            "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
+              "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj"
             },
-            "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {
-              "projectPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj"
+            "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {
+              "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj"
             },
-            "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {
-              "projectPath": "D:\\DOCUMENTFPT\\SEMESTER_7\\SWD\\SmallApp_Demo\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj"
+            "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj": {
+              "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.WebUI.Client\\SecondBike.WebUI.Client.csproj"
             }
           }
         }
@@ -3956,6 +4159,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Blazored.FluentValidation": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly.Server": {
             "target": "Package",
             "version": "[8.0.23, )"

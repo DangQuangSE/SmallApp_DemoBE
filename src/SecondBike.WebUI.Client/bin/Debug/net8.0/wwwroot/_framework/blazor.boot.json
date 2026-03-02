@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "SecondBike.WebUI.Client",
   "resources": {
-    "hash": "sha256-U3WjlKGETUhHqvmGib9Kn2iD0rVx2CX5nB2r0zbWVJ8=",
+    "hash": "sha256-KrItNpRo+8sHjbzv6fypln0IYTR2MRD1JqwwjfNhlkM=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-NljIbpK/1KCj0+knpX8U77Rbl5kTtfFIuFjK7AuczEw="
     },
@@ -209,10 +209,10 @@
       "mscorlib.wasm": "sha256-oV7k+vcNqj7FS6Y/lMtdhVlq3myDH55/wVxmO4QPrw4=",
       "netstandard.wasm": "sha256-XMXMB0WW//vbNNgQiFAqYo7IJ2C4yQX590aoAbOtTB4=",
       "System.Private.CoreLib.wasm": "sha256-tuhzUgbFn7ji3yhMSxyBLHAps9h0RsFnq+8pUoizHiw=",
-      "SecondBike.WebUI.Client.wasm": "sha256-4Bq0nzXOT4zq/JpMv+7p+6y2LaeowYjEnFvFFKqrl5s="
+      "SecondBike.WebUI.Client.wasm": "sha256-fS3EQqV5YRWPF0/AoG3dtYmoZNfDqUHDs7SRjGRBE8A="
     },
     "pdb": {
-      "SecondBike.WebUI.Client.pdb": "sha256-tsdhzs27IrGvE/WXvbMNWChRf+V3kDLvniVB7c/IuuI="
+      "SecondBike.WebUI.Client.pdb": "sha256-+2GfEBYJQUnfSkg7V/0ZrbDX92TssGRBJI4AucqCAqo="
     }
   },
   "cacheBootResources": true,
