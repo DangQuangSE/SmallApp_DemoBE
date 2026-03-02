@@ -8,7 +8,7 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Quality & Auth — Registration, login, and profile management.
+/// Quality & Auth ï¿½ Registration, login, and profile management.
 /// </summary>
 public class AuthService : IAuthService
 {
@@ -124,6 +124,11 @@ public class AuthService : IAuthService
         await _uow.SaveChangesAsync(ct);
 
         return Result<UserProfileDto>.Success(MapToDto(user));
+    }
+
+    public async Task LogoutAsync()
+    {
+        await _signInManager.SignOutAsync();
     }
 
     private static UserProfileDto MapToDto(AppUser u)

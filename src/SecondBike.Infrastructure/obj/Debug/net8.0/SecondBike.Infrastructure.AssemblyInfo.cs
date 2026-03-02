@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+39b1f8003b661264d07b8ae0fcd5a71daad42c60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c15e82ec5999f3b7209d0b5117dc412f36875e59")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

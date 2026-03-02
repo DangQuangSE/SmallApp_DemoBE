@@ -28,15 +28,10 @@ public class UnitOfWork : IUnitOfWork
     /// </summary>
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposed)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-
-            _disposed = true;
-        }
+        // AppDbContext is managed by the DI container.
+        // We do NOT dispose it here to avoid ObjectDisposedException in other services
+        // sharing the same context instance in the same scope (especially in Blazor).
+        _disposed = true;
     }
 
     /// <inheritdoc />

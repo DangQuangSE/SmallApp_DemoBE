@@ -1,6 +1,0 @@
-D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json
-D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json
-D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json
-D:\DOCUMENTFPT\SEMESTER_7\SWD\SmallApp_Demo\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json
-D:\GitHub\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json
-D:\GitHub\SecondBike\src\SecondBike.WebUI.Client\obj\Debug\net8.0\staticwebassets.build.json

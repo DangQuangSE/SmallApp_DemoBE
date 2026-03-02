@@ -10,7 +10,7 @@ using SecondBike.Infrastructure.Data;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Buyer Experience — Search and filter bikes.
+/// Buyer Experience ï¿½ Search and filter bikes.
 /// </summary>
 public class BikeSearchService : IBikeSearchService
 {
@@ -81,12 +81,8 @@ public class BikeSearchService : IBikeSearchService
         var items = await query.Skip((filter.Page - 1) * filter.PageSize).Take(filter.PageSize).ToListAsync(ct);
 
         var sellerIds = items.Select(p => p.SellerId).Distinct().ToList();
-        var sellers = new Dictionary<Guid, AppUser>();
-        foreach (var sid in sellerIds)
-        {
-            var seller = await _userRepo.GetByIdAsync(sid, ct);
-            if (seller is not null) sellers[sid] = seller;
-        }
+        var users = await _userRepo.FindAsync(u => sellerIds.Contains(u.Id), ct);
+        var sellers = users.ToDictionary(u => u.Id);
 
         var dtos = items.Select(p => MapToDto(p, sellers.GetValueOrDefault(p.SellerId))).ToList();
 

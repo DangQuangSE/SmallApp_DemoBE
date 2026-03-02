@@ -23,11 +23,14 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Register Entity Framework Core with SQL Server
-        services.AddDbContext<AppDbContext>(options =>
+        // Register Entity Framework Core with SQL Server using Factory
+        services.AddDbContextFactory<AppDbContext>(options =>
             options.UseSqlServer(
                 configuration.GetConnectionString("DefaultConnection"),
                 sqlOptions => sqlOptions.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+
+        // Also register the scoped context for services that still inject it directly
+        services.AddScoped(p => p.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContext());
 
         // Register ASP.NET Core Identity
         services.AddIdentity<IdentityUser, IdentityRole>(options =>
