@@ -55,6 +55,7 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Register Application Services
+        services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IBikePostService, BikePostService>();
         services.AddScoped<IBikeSearchService, BikeSearchService>();
         services.AddScoped<IOrderService, OrderService>();

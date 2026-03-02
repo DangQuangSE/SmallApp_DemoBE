@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {}
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
         "projectName": "SecondBike.Application",
-        "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj",
+        "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\obj\\",
+        "outputPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
-                "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
+              "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
+                "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
               }
             }
           }
@@ -79,14 +79,14 @@
         }
       }
     },
-    "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
         "projectName": "SecondBike.Domain",
-        "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+        "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\obj\\",
+        "outputPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -170,14 +170,14 @@
         }
       }
     },
-    "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
         "projectName": "SecondBike.Infrastructure",
-        "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+        "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Infrastructure\\obj\\",
+        "outputPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -198,11 +198,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
-                "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Application\\SecondBike.Application.csproj"
+              "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
+                "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj"
               },
-              "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
-                "projectPath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
+              "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
+                "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
               }
             }
           }

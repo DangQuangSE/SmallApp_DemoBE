@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aHYmzsfmT7A=",
+  "dgSpecHash": "zqLBfwlW8Dg=",
   "success": true,
-  "projectFilePath": "D:\\GitHub\\SecondBike\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+  "projectFilePath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

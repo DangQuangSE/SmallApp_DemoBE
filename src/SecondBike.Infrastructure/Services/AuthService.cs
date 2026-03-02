@@ -17,19 +17,22 @@ public class AuthService : IAuthService
     private readonly IRepository<AppUser> _appUserRepo;
     private readonly IRepository<Wallet> _walletRepo;
     private readonly IUnitOfWork _uow;
+    private readonly IJwtService _jwtService;
 
     public AuthService(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         IRepository<AppUser> appUserRepo,
         IRepository<Wallet> walletRepo,
-        IUnitOfWork uow)
+        IUnitOfWork uow,
+        IJwtService jwtService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _appUserRepo = appUserRepo;
         _walletRepo = walletRepo;
         _uow = uow;
+        _jwtService = jwtService;
     }
 
     public async Task<Result<AuthResultDto>> RegisterAsync(RegisterDto dto, CancellationToken ct = default)
@@ -74,6 +77,7 @@ public class AuthService : IAuthService
         return Result<AuthResultDto>.Success(new AuthResultDto
         {
             Succeeded = true,
+            Token = _jwtService.GenerateToken(appUser),
             User = MapToDto(appUser)
         });
     }
@@ -98,6 +102,7 @@ public class AuthService : IAuthService
         return Result<AuthResultDto>.Success(new AuthResultDto
         {
             Succeeded = true,
+            Token = _jwtService.GenerateToken(appUser),
             User = MapToDto(appUser)
         });
     }
