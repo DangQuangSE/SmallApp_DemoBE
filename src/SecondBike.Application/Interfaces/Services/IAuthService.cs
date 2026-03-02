@@ -10,6 +10,7 @@ public interface IAuthService
 {
     Task<Result<AuthResultDto>> RegisterAsync(RegisterDto dto, CancellationToken ct = default);
     Task<Result<AuthResultDto>> LoginAsync(LoginDto dto, CancellationToken ct = default);
+    Task<Result<AuthResultDto>> GoogleLoginAsync(GoogleLoginDto dto, CancellationToken ct = default);
     Task<Result<UserProfileDto>> GetProfileAsync(Guid userId, CancellationToken ct = default);
     Task<Result<UserProfileDto>> UpdateProfileAsync(Guid userId, UpdateProfileDto dto, CancellationToken ct = default);
     Task LogoutAsync();

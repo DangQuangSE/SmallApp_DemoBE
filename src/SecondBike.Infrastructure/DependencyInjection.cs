@@ -32,8 +32,8 @@ public static class DependencyInjection
         // Also register the scoped context for services that still inject it directly
         services.AddScoped(p => p.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContext());
 
-        // Register ASP.NET Core Identity
-        services.AddIdentity<IdentityUser, IdentityRole>(options =>
+        // Register ASP.NET Core Identity (use AddIdentityCore to avoid overriding JWT as default scheme)
+        services.AddIdentityCore<IdentityUser>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -47,6 +47,7 @@ public static class DependencyInjection
 
                 options.User.RequireUniqueEmail = true;
             })
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 

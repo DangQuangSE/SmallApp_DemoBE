@@ -25,6 +25,10 @@ public class AuthController : BaseApiController
     public async Task<IActionResult> Login([FromBody] LoginDto dto, CancellationToken ct)
         => ToResponse(await _authService.LoginAsync(dto, ct));
 
+    [HttpPost("google")]
+    public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginDto dto, CancellationToken ct)
+        => ToResponse(await _authService.GoogleLoginAsync(dto, ct));
+
     [Authorize]
     [HttpGet("profile")]
     public async Task<IActionResult> GetProfile(CancellationToken ct)
