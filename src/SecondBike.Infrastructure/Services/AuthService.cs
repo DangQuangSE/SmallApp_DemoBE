@@ -8,7 +8,8 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Authentication — Registration with OTP email verification, login, and profile management.
+/// Authentication only — registration, login, OTP verification.
+/// Profile management is handled by ProfileService (SRP).
 /// </summary>
 public class AuthService : IAuthService
 {
@@ -138,53 +139,6 @@ public class AuthService : IAuthService
         return Result<AuthResultDto>.Failure("Google login is not configured for this deployment");
     }
 
-    public async Task<Result<UserProfileDto>> GetProfileAsync(int userId, CancellationToken ct = default)
-    {
-        var user = await _userRepo.GetByIdAsync(userId, ct);
-        if (user is null) return Result<UserProfileDto>.Failure("User not found");
-
-        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
-        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
-        var profile = profiles.FirstOrDefault();
-
-        return Result<UserProfileDto>.Success(MapToDto(user, profile, role?.RoleName ?? "Buyer"));
-    }
-
-    public async Task<Result<UserProfileDto>> UpdateProfileAsync(int userId, UpdateProfileDto dto, CancellationToken ct = default)
-    {
-        var user = await _userRepo.GetByIdAsync(userId, ct);
-        if (user is null) return Result<UserProfileDto>.Failure("User not found");
-
-        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
-        var profile = profiles.FirstOrDefault();
-
-        if (profile is null)
-        {
-            profile = new UserProfile
-            {
-                UserId = userId,
-                FullName = dto.FullName,
-                PhoneNumber = dto.PhoneNumber,
-                AvatarUrl = dto.AvatarUrl,
-                Address = dto.Address
-            };
-            await _profileRepo.AddAsync(profile, ct);
-        }
-        else
-        {
-            if (dto.FullName is not null) profile.FullName = dto.FullName;
-            if (dto.PhoneNumber is not null) profile.PhoneNumber = dto.PhoneNumber;
-            if (dto.AvatarUrl is not null) profile.AvatarUrl = dto.AvatarUrl;
-            if (dto.Address is not null) profile.Address = dto.Address;
-            _profileRepo.Update(profile);
-        }
-
-        await _uow.SaveChangesAsync(ct);
-
-        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
-        return Result<UserProfileDto>.Success(MapToDto(user, profile, role?.RoleName ?? "Buyer"));
-    }
-
     public async Task<Result> ConfirmEmailAsync(string email, string otp, CancellationToken ct = default)
     {
         var users = await _userRepo.FindAsync(u => u.Email == email, ct);
@@ -268,7 +222,7 @@ public class AuthService : IAuthService
         await _emailService.SendEmailAsync(user.Email, subject, body);
     }
 
-    private static UserProfileDto MapToDto(User user, UserProfile? profile, string roleName)
+    internal static UserProfileDto MapToDto(User user, UserProfile? profile, string roleName)
     {
         return new UserProfileDto
         {

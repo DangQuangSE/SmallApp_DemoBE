@@ -6,7 +6,7 @@ using SecondBike.Application.Interfaces.Services;
 namespace SecondBike.Api.Controllers;
 
 /// <summary>
-/// Authentication, registration, and profile management endpoints.
+/// Authentication endpoints — register, login, OTP verification.
 /// </summary>
 public class AuthController : BaseApiController
 {
@@ -18,14 +18,14 @@ public class AuthController : BaseApiController
     }
 
     /// <summary>
-    /// Register a new user. A confirmation email will be sent.
+    /// Register a new user. An OTP code will be sent via email.
     /// </summary>
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto, CancellationToken ct)
         => ToResponse(await _authService.RegisterAsync(dto, ct));
 
     /// <summary>
-    /// Login with email and password. Requires confirmed email.
+    /// Login with email and password. Requires verified email.
     /// </summary>
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto dto, CancellationToken ct)
@@ -51,22 +51,15 @@ public class AuthController : BaseApiController
     }
 
     /// <summary>
-    /// Resend confirmation email to the specified address.
+    /// Resend OTP verification code to the specified email.
     /// </summary>
     [HttpPost("resend-confirmation")]
     public async Task<IActionResult> ResendConfirmation([FromBody] ResendConfirmationDto dto, CancellationToken ct)
         => ToResponse(await _authService.ResendConfirmationEmailAsync(dto.Email, ct));
 
-    [Authorize]
-    [HttpGet("profile")]
-    public async Task<IActionResult> GetProfile(CancellationToken ct)
-        => ToResponse(await _authService.GetProfileAsync(GetCurrentUserId(), ct));
-
-    [Authorize]
-    [HttpPut("profile")]
-    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileDto dto, CancellationToken ct)
-        => ToResponse(await _authService.UpdateProfileAsync(GetCurrentUserId(), dto, ct));
-
+    /// <summary>
+    /// Logout the current user.
+    /// </summary>
     [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()

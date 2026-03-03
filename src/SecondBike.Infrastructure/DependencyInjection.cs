@@ -33,7 +33,9 @@ public static class DependencyInjection
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+        services.AddScoped<IImageStorageService, CloudinaryService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IProfileService, ProfileService>();
         services.AddScoped<IBikePostService, BikePostService>();
         services.AddScoped<IBikeSearchService, BikeSearchService>();
         services.AddScoped<IOrderService, OrderService>();

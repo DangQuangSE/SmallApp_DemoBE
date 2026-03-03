@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e75928c878f58ee6e23bf7939ccec4b2da2d0bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+caa58eb1178e250d2ba7a9eeec3fa5962a4d579c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecondBike.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
