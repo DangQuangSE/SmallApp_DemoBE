@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecondBike.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab63cf8a4ca2a9d5f3c23d5342bb9c94b38c4b1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+404085f3e27c3076762cd0e143617ffcf808e602")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecondBike.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecondBike.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

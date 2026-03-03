@@ -15,10 +15,10 @@ public abstract class BaseApiController : ControllerBase
     /// <summary>
     /// Extracts the current authenticated user's AppUser Id from the JWT claims.
     /// </summary>
-    protected Guid GetCurrentUserId()
+    protected int GetCurrentUserId()
     {
         var claim = User.FindFirst(ClaimTypes.NameIdentifier);
-        return claim is not null ? Guid.Parse(claim.Value) : Guid.Empty;
+        return claim is not null ? int.Parse(claim.Value) : 0;
     }
 
     /// <summary>

@@ -6,7 +6,7 @@ using SecondBike.Application.Interfaces.Services;
 namespace SecondBike.Api.Controllers;
 
 /// <summary>
-/// Bike search &amp; browsing endpoints (public) + seller post management (authenticated).
+/// Bike search &amp; browsing endpoints (public) + seller listing management (authenticated).
 /// </summary>
 public class BikesController : BaseApiController
 {
@@ -19,25 +19,17 @@ public class BikesController : BaseApiController
         _bikePostService = bikePostService;
     }
 
-    // ????? Public Endpoints (Buyer Experience) ?????
-
     [HttpGet]
     public async Task<IActionResult> Search([FromQuery] BikeFilterDto filter, CancellationToken ct)
         => ToResponse(await _bikeSearchService.SearchAsync(filter, ct));
 
-    [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetDetail(Guid id, CancellationToken ct)
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetDetail(int id, CancellationToken ct)
         => ToResponse(await _bikeSearchService.GetDetailAsync(id, ct));
 
     [HttpGet("brands")]
     public async Task<IActionResult> GetBrands(CancellationToken ct)
         => ToResponse(await _bikeSearchService.GetBrandsAsync(ct));
-
-    [HttpGet("cities")]
-    public async Task<IActionResult> GetCities(CancellationToken ct)
-        => ToResponse(await _bikeSearchService.GetCitiesAsync(ct));
-
-    // ????? Seller Endpoints (Seller Core) ?????
 
     [Authorize]
     [HttpPost]
@@ -50,19 +42,14 @@ public class BikesController : BaseApiController
         => ToResponse(await _bikePostService.UpdateAsync(GetCurrentUserId(), dto, ct));
 
     [Authorize]
-    [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> Delete(Guid id, CancellationToken ct)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
         => ToResponse(await _bikePostService.DeleteAsync(GetCurrentUserId(), id, ct));
 
     [Authorize]
-    [HttpPatch("{id:guid}/visibility")]
-    public async Task<IActionResult> ToggleVisibility(Guid id, CancellationToken ct)
+    [HttpPatch("{id:int}/visibility")]
+    public async Task<IActionResult> ToggleVisibility(int id, CancellationToken ct)
         => ToResponse(await _bikePostService.ToggleVisibilityAsync(GetCurrentUserId(), id, ct));
-
-    [Authorize]
-    [HttpPatch("{id:guid}/submit")]
-    public async Task<IActionResult> SubmitForModeration(Guid id, CancellationToken ct)
-        => ToResponse(await _bikePostService.SubmitForModerationAsync(GetCurrentUserId(), id, ct));
 
     [Authorize]
     [HttpGet("my-posts")]

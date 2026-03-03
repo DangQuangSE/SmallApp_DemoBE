@@ -3,30 +3,32 @@ using SecondBike.Application.DTOs.Chat;
 using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
-using SecondBike.Domain.Enums;
 
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Interaction — Messaging between users.
+/// Interaction — Messaging between users via ChatSession/ChatMessage.
 /// </summary>
 public class MessageService : IMessageService
 {
-    private readonly IRepository<Message> _msgRepo;
-    private readonly IRepository<AppUser> _userRepo;
+    private readonly IRepository<ChatSession> _sessionRepo;
+    private readonly IRepository<ChatMessage> _msgRepo;
+    private readonly IRepository<User> _userRepo;
     private readonly IUnitOfWork _uow;
 
     public MessageService(
-        IRepository<Message> msgRepo,
-        IRepository<AppUser> userRepo,
+        IRepository<ChatSession> sessionRepo,
+        IRepository<ChatMessage> msgRepo,
+        IRepository<User> userRepo,
         IUnitOfWork uow)
     {
+        _sessionRepo = sessionRepo;
         _msgRepo = msgRepo;
         _userRepo = userRepo;
         _uow = uow;
     }
 
-    public async Task<Result<MessageDto>> SendAsync(Guid senderId, SendMessageDto dto, CancellationToken ct = default)
+    public async Task<Result<MessageDto>> SendAsync(int senderId, SendMessageDto dto, CancellationToken ct = default)
     {
         var sender = await _userRepo.GetByIdAsync(senderId, ct);
         if (sender is null) return Result<MessageDto>.Failure("Sender not found");
@@ -34,13 +36,32 @@ public class MessageService : IMessageService
         var receiver = await _userRepo.GetByIdAsync(dto.ReceiverId, ct);
         if (receiver is null) return Result<MessageDto>.Failure("Receiver not found");
 
-        var message = new Message
+        // Find or create chat session
+        var sessions = await _sessionRepo.FindAsync(s =>
+            (s.BuyerId == senderId && s.SellerId == dto.ReceiverId) ||
+            (s.BuyerId == dto.ReceiverId && s.SellerId == senderId), ct);
+        var session = sessions.FirstOrDefault();
+
+        if (session is null)
         {
+            session = new ChatSession
+            {
+                BuyerId = senderId,
+                SellerId = dto.ReceiverId,
+                ListingId = dto.ListingId,
+                StartedAt = DateTime.UtcNow
+            };
+            await _sessionRepo.AddAsync(session, ct);
+            await _uow.SaveChangesAsync(ct);
+        }
+
+        var message = new ChatMessage
+        {
+            SessionId = session.SessionId,
             SenderId = senderId,
-            ReceiverId = dto.ReceiverId,
-            BikePostId = dto.BikePostId,
             Content = dto.Content,
-            Type = MessageType.Text
+            SentAt = DateTime.UtcNow,
+            IsRead = false
         };
 
         await _msgRepo.AddAsync(message, ct);
@@ -48,103 +69,124 @@ public class MessageService : IMessageService
 
         return Result<MessageDto>.Success(new MessageDto
         {
-            Id = message.Id,
+            MessageId = message.MessageId,
             SenderId = senderId,
-            SenderName = sender.FullName,
-            SenderAvatar = sender.AvatarUrl,
+            SenderName = sender.Username,
             ReceiverId = dto.ReceiverId,
             Content = dto.Content,
             IsRead = false,
-            CreatedAt = message.CreatedAt
+            SentAt = message.SentAt
         });
     }
 
-    public async Task<Result<List<MessageDto>>> GetConversationAsync(Guid userId, Guid otherUserId, CancellationToken ct = default)
+    public async Task<Result<List<MessageDto>>> GetConversationAsync(int userId, int otherUserId, CancellationToken ct = default)
     {
-        var messages = await _msgRepo.FindAsync(m =>
-            (m.SenderId == userId && m.ReceiverId == otherUserId) ||
-            (m.SenderId == otherUserId && m.ReceiverId == userId), ct);
+        // Find sessions between these two users
+        var sessions = await _sessionRepo.FindAsync(s =>
+            (s.BuyerId == userId && s.SellerId == otherUserId) ||
+            (s.BuyerId == otherUserId && s.SellerId == userId), ct);
 
-        var userMap = new Dictionary<Guid, AppUser>();
+        var sessionIds = sessions.Select(s => s.SessionId).ToList();
+        if (sessionIds.Count == 0)
+            return Result<List<MessageDto>>.Success(new List<MessageDto>());
+
+        var allMessages = new List<ChatMessage>();
+        foreach (var sid in sessionIds)
+        {
+            var msgs = await _msgRepo.FindAsync(m => m.SessionId == sid, ct);
+            allMessages.AddRange(msgs);
+        }
+
+        var userMap = new Dictionary<int, User>();
         foreach (var uid in new[] { userId, otherUserId })
         {
             var user = await _userRepo.GetByIdAsync(uid, ct);
             if (user is not null) userMap[uid] = user;
         }
 
-        var dtos = messages.OrderBy(m => m.CreatedAt).Select(m => new MessageDto
+        // Determine the other user id from session perspective
+        var dtos = allMessages.OrderBy(m => m.SentAt).Select(m =>
         {
-            Id = m.Id,
-            SenderId = m.SenderId,
-            SenderName = userMap.GetValueOrDefault(m.SenderId)?.FullName ?? "Unknown",
-            SenderAvatar = userMap.GetValueOrDefault(m.SenderId)?.AvatarUrl,
-            ReceiverId = m.ReceiverId,
-            Content = m.Content,
-            IsRead = m.IsRead,
-            CreatedAt = m.CreatedAt
+            var otherUid = m.SenderId == userId ? otherUserId : userId;
+            return new MessageDto
+            {
+                MessageId = m.MessageId,
+                SenderId = m.SenderId,
+                SenderName = userMap.GetValueOrDefault(m.SenderId)?.Username ?? "Unknown",
+                ReceiverId = m.SenderId == userId ? otherUserId : userId,
+                Content = m.Content ?? string.Empty,
+                IsRead = m.IsRead,
+                SentAt = m.SentAt
+            };
         }).ToList();
 
         return Result<List<MessageDto>>.Success(dtos);
     }
 
-    public async Task<Result<List<ConversationDto>>> GetConversationsAsync(Guid userId, CancellationToken ct = default)
+    public async Task<Result<List<ConversationDto>>> GetConversationsAsync(int userId, CancellationToken ct = default)
     {
-        var allMessages = await _msgRepo.FindAsync(m =>
-            m.SenderId == userId || m.ReceiverId == userId, ct);
-
-        var groups = allMessages
-            .GroupBy(m => m.SenderId == userId ? m.ReceiverId : m.SenderId)
-            .Select(g =>
-            {
-                var lastMsg = g.OrderByDescending(m => m.CreatedAt).First();
-                return new
-                {
-                    OtherUserId = g.Key,
-                    LastMessage = lastMsg.Content,
-                    LastMessageAt = lastMsg.CreatedAt,
-                    UnreadCount = g.Count(m => m.ReceiverId == userId && !m.IsRead)
-                };
-            })
-            .OrderByDescending(x => x.LastMessageAt)
-            .ToList();
+        var sessions = await _sessionRepo.FindAsync(s =>
+            s.BuyerId == userId || s.SellerId == userId, ct);
 
         var conversations = new List<ConversationDto>();
-        foreach (var g in groups)
+        foreach (var session in sessions)
         {
-            var otherUser = await _userRepo.GetByIdAsync(g.OtherUserId, ct);
+            var otherUserId = session.BuyerId == userId ? session.SellerId : session.BuyerId;
+            var otherUser = await _userRepo.GetByIdAsync(otherUserId, ct);
+
+            var messages = await _msgRepo.FindAsync(m => m.SessionId == session.SessionId, ct);
+            var lastMsg = messages.OrderByDescending(m => m.SentAt).FirstOrDefault();
+            var unread = messages.Count(m => m.SenderId != userId && m.IsRead == false);
+
             conversations.Add(new ConversationDto
             {
-                OtherUserId = g.OtherUserId,
-                OtherUserName = otherUser?.FullName ?? "Unknown",
-                OtherUserAvatar = otherUser?.AvatarUrl,
-                LastMessage = g.LastMessage,
-                LastMessageAt = g.LastMessageAt,
-                UnreadCount = g.UnreadCount
+                OtherUserId = otherUserId,
+                OtherUserName = otherUser?.Username ?? "Unknown",
+                LastMessage = lastMsg?.Content ?? string.Empty,
+                LastMessageAt = lastMsg?.SentAt,
+                UnreadCount = unread
             });
         }
 
-        return Result<List<ConversationDto>>.Success(conversations);
+        return Result<List<ConversationDto>>.Success(
+            conversations.OrderByDescending(c => c.LastMessageAt).ToList());
     }
 
-    public async Task<Result> MarkAsReadAsync(Guid userId, Guid otherUserId, CancellationToken ct = default)
+    public async Task<Result> MarkAsReadAsync(int userId, int otherUserId, CancellationToken ct = default)
     {
-        var unread = await _msgRepo.FindAsync(m =>
-            m.SenderId == otherUserId && m.ReceiverId == userId && !m.IsRead, ct);
+        var sessions = await _sessionRepo.FindAsync(s =>
+            (s.BuyerId == userId && s.SellerId == otherUserId) ||
+            (s.BuyerId == otherUserId && s.SellerId == userId), ct);
 
-        foreach (var msg in unread)
+        foreach (var session in sessions)
         {
-            msg.IsRead = true;
-            msg.ReadAt = DateTime.UtcNow;
-            _msgRepo.Update(msg);
+            var unread = await _msgRepo.FindAsync(m =>
+                m.SessionId == session.SessionId && m.SenderId == otherUserId && m.IsRead == false, ct);
+
+            foreach (var msg in unread)
+            {
+                msg.IsRead = true;
+                _msgRepo.Update(msg);
+            }
         }
 
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result<int>> GetUnreadCountAsync(Guid userId, CancellationToken ct = default)
+    public async Task<Result<int>> GetUnreadCountAsync(int userId, CancellationToken ct = default)
     {
-        var count = await _msgRepo.CountAsync(m => m.ReceiverId == userId && !m.IsRead, ct);
-        return Result<int>.Success(count);
+        var sessions = await _sessionRepo.FindAsync(s =>
+            s.BuyerId == userId || s.SellerId == userId, ct);
+
+        int totalUnread = 0;
+        foreach (var session in sessions)
+        {
+            var count = await _msgRepo.CountAsync(m =>
+                m.SessionId == session.SessionId && m.SenderId != userId && m.IsRead == false, ct);
+            totalUnread += count;
+        }
+
+        return Result<int>.Success(totalUnread);
     }
 }

@@ -1,390 +1,261 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\GitHub\\SecondBike_BE\\",
+  "WorkspaceRootPath": "D:\\FPTSupport\\SmallApp_DemoBE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\users\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\users\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\bikepost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\bikepost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\bikeimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\bikeimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\wishlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\wallettransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\wallettransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\secondbike.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\secondbike.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\common\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\bikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\bikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\secondbike.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\secondbike.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\inspectionreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\inspectionreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\entities\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iwishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iwishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iinspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iinspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\ibikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ibikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\ibikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ibikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\inspectionstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\inspectionstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\disputestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\disputestatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\bikecondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\bikecondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\bikecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\bikecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\bikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\bikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\ratingconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\bikepostconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\bikepostconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\orderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\orderconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\bikesize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\bikesize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\poststatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\poststatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\paymenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\paymenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\paymentgateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\paymentgateway.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\overallcondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\overallcondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\messagetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\messagetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\github\\secondbike_be\\src\\secondbike.domain\\enums\\wallettransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\enums\\wallettransactiontype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\common\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\common\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\bikes\\createbikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\createbikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\bikes\\updatebikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\updatebikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\bikes\\bikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\bikes\\bikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\bikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\bikes\\bikefilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\bikefilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\orders\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\orders\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\chat\\chatdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\chat\\chatdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\ratings\\ratingdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\ratings\\ratingdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\inspections\\inspectiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\inspections\\inspectiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dtos\\admin\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\admin\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\admin\\admindtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\validators\\createbikepostvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\createbikepostvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\users\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\users\\userdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\entities\\secondbikedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\secondbikedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\validators\\createratingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\createratingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dell\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1160433716\\SecondBikeDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\github\\secondbike_be\\src\\secondbike.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\bikeimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\bikeimageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\paymentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\paymentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\entities\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\messageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\messageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\inspectionreportconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\inspectionreportconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\secondbike.domain.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\secondbike.domain.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\wishlistconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\wishlistconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\data\\configurations\\walletconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\data\\configurations\\walletconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\wishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\wishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\inspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\inspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\github\\secondbike_be\\src\\secondbike.infrastructure\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\wishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\wishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPTSupport\\SmallApp_DemoBE\\docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPTSupport\\SmallApp_DemoBE\\docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\PROJECT_DOCUMENTATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\secondbike.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\secondbike.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\bikescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\bikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\bikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\secondbike.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\secondbike.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iwishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iwishlistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iinspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iinspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\ibikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ibikesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\ibikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ibikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\ratingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\bikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\bikepostservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\common\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\common\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\common\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\bikes\\createbikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\createbikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\bikes\\updatebikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\updatebikepostdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\bikes\\bikefilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\bikes\\bikefilterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\orders\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\orders\\orderdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\chat\\chatdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\chat\\chatdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\ratings\\ratingdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\ratings\\ratingdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dtos\\inspections\\inspectiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dtos\\inspections\\inspectiondtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\validators\\createbikepostvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\createbikepostvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\validators\\createratingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\validators\\createratingvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\inspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\inspectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\inspectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\inspectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\inspectionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\github\\secondbike_be\\src\\secondbike.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPTSupport\\SmallApp_DemoBE\\database\\SecondBikeDb_CreateAndSeed.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\SecondBikeDb_CreateAndSeed.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -394,368 +265,382 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
+              "Title": "SecondBikeDbContext.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
+              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAiwEUAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T03:13:41.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAA7wCgAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAA1wEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:25:43.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "AdminDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:26:19.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BikePostDto.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:24:57.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SecondBikeDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Dell\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1160433716\\SecondBikeDbContext.cs",
+              "ToolTip": "C:\\Users\\Dell\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1160433716\\SecondBikeDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T03:13:11.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ShoppingCart.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
+              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T02:15:35.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "IAuthService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:27:04.898Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SecondBike.Infrastructure.csproj",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+              "DocumentIndex": 5,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T14:41:16.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\User.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T02:15:34.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SecondBike.Domain.csproj.Backup.tmp",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
+              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
+              "RelativeToolTip": "src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-03T02:13:52.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAUwKEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:36:12.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WishlistService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAEBVwH4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:35:09.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "SecondBikeDb_CreateAndSeed.sql",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\database\\SecondBikeDb_CreateAndSeed.sql",
+              "RelativeDocumentMoniker": "database\\SecondBikeDb_CreateAndSeed.sql",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\database\\SecondBikeDb_CreateAndSeed.sql",
+              "RelativeToolTip": "database\\SecondBikeDb_CreateAndSeed.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-03-03T02:04:49.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SecondBike.Infrastructure.csproj",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
+              "ViewState": "AgIAABUAAAAAAAAAAIBJwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-02T12:27:49.883Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-02T14:53:50.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "ViewState": "AgIAAMAAAAAAAAAAAAAAAAwBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAABRwMkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:35:47.816Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAiwBQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-02T14:53:50.063Z",
-              "EditorCaption": ""
+              "DocumentIndex": 15,
+              "Title": "GOOGLE_LOGIN_GUIDE_FOR_FE.md",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
+              "RelativeDocumentMoniker": "docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
+              "RelativeToolTip": "docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
+              "ViewState": "AgIAADUBAAAAAAAAAAAQwCoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-03-02T17:50:19.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\DependencyInjection.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAuwEQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAABRwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:36:31.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Wallet.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wallet.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Wallet.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wallet.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Wallet.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:24:02.226Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Payment.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Payment.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Payment.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Payment.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:26.852Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Message.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Message.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Message.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Message.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Message.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:40.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BikePost.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikePost.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\BikePost.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikePost.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\BikePost.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAuwCwAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:06.213Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BikeImage.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikeImage.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\BikeImage.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\BikeImage.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\BikeImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:10.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\AppUser.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\AppUser.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\AppUser.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\AppUser.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAADwvwoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:54.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Wishlist.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wishlist.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Wishlist.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Wishlist.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Wishlist.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:55.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "WalletTransaction.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\WalletTransaction.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:24:07.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Order.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Order.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Order.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Order.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:20.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Program.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Program.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Program.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Program.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAwCkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIEAAAAAAAAAAEBVwIUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:53:40.363Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "PROJECT_DOCUMENTATION.md",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\PROJECT_DOCUMENTATION.md",
               "RelativeDocumentMoniker": "docs\\PROJECT_DOCUMENTATION.md",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\docs\\PROJECT_DOCUMENTATION.md",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\PROJECT_DOCUMENTATION.md",
               "RelativeToolTip": "docs\\PROJECT_DOCUMENTATION.md",
               "ViewState": "AgIAAIoAAAAAAAAAAAAAAA8DAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-03-02T17:19:13.537Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T17:19:13.537Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAkwEoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:31:48.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 61,
               "Title": "InspectionsController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAEBdwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:53:09.305Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 62,
               "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAMBkwDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:53:19.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "RatingsController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\RatingsController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\RatingsController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:52:49.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 60,
               "Title": "WishlistController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\WishlistController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\WishlistController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAMBUwCMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:52:56.667Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "MessagesController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\MessagesController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\MessagesController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAIBJwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:52:42.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "OrdersController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\OrdersController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\OrdersController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:52:34.844Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 59,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAIBJwDEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAABBwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:52:23.73Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 58,
               "Title": "BaseApiController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAABBwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:51:57.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AppUserConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\AppUserConfiguration.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAiwBMAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:01.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 22,
               "Title": "JwtService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAIBJwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:42:09.328Z",
               "EditorCaption": ""
@@ -763,542 +648,270 @@
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T14:41:16.949Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "SecondBike.Api",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
+              "Title": "SecondBike.Api.csproj",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\SecondBike.Api.csproj",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
               "RelativeToolTip": "src\\SecondBike.Api\\SecondBike.Api.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAIBJwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-02T14:32:38.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 24,
               "Title": "BikesController.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BikesController.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
               "RelativeToolTip": "src\\SecondBike.Api\\Controllers\\BikesController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAADwv0YAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAEBdwDoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T14:06:43.669Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowDAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:29:16.466Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:36:30.454Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 27,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowBgAAAAAAAAAAAAAAA==",
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAEBVwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T13:36:30.977Z"
+              "WhenOpened": "2026-03-02T13:29:16.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 26,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Common\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Common\\BaseEntity.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Common\\BaseEntity.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Common\\BaseEntity.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAcwA0AAAAbAAAAAAAAAA==",
+              "Title": "Repository.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T12:02:03.229Z"
+              "WhenOpened": "2026-03-02T13:36:30.454Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 25,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAIBJwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T13:36:30.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "BikeSearchService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAAACcAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAJIAAAAAAAAAAEBVwGAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:33:47.603Z"
+              "WhenOpened": "2026-03-02T11:33:47.603Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "InspectionReport.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\InspectionReport.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAA5wCgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:49.881Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 29,
               "Title": "SecondBike.Domain.csproj",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\SecondBike.Domain.csproj",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
               "RelativeToolTip": "src\\SecondBike.Domain\\SecondBike.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAIBJwAsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-02T12:29:41.656Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Rating.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Rating.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\Rating.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Entities\\Rating.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Entities\\Rating.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 30,
+              "Title": "IWishlistService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAEBgwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:23:34.312Z"
+              "WhenOpened": "2026-03-02T11:26:59.9Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IRatingService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAGBiwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:26:54.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAEBkwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:26:40.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IMessageService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAIBYwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:26:47.048Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 34,
-              "Title": "IWishlistService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAeAAAAAAAAAA==",
+              "Title": "IInspectionService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAIBYwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:59.9Z"
+              "WhenOpened": "2026-03-02T11:27:11.836Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 35,
-              "Title": "IRatingService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Title": "IBikeSearchService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAGBiwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:54.007Z"
+              "WhenOpened": "2026-03-02T11:26:33.358Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 36,
-              "Title": "IOrderService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Title": "IBikePostService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAEBowBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:40.835Z"
+              "WhenOpened": "2026-03-02T11:26:27.11Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 37,
-              "Title": "IMessageService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Title": "IAdminService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:47.048Z"
+              "WhenOpened": "2026-03-02T11:27:19.685Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 38,
-              "Title": "IInspectionService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:27:11.836Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "IBikeSearchService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:33.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "IBikePostService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:27.11Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "IAdminService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:27:19.685Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "InspectionStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\InspectionStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:29.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "DisputeStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\DisputeStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:45.273Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "BikeCondition.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\BikeCondition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:03.671Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "BikeCategory.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\BikeCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:21:57.138Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
               "Title": "RatingService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAgwHQAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAIBZwFwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:34:55.317Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 88,
-              "Title": "WishlistService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:35:09.796Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 89,
-              "Title": "InspectionService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:35:30.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 90,
-              "Title": "AdminService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAABBwMgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:36:12.707Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "MessageService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAAAAIwAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:34:37.516Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 87,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:34:18.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
-              "Title": "RatingConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\RatingConfiguration.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:38.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "BikePostService.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAAAM0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:32:18.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 84,
-              "Title": "InspectionReportConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\InspectionReportConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:30:53.498Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 85,
-              "Title": "WishlistConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WishlistConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:31:25.861Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 86,
-              "Title": "WalletConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\WalletConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:31:36.966Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "UserRole.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserRole.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\UserRole.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserRole.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\UserRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:20:28.482Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "OrderConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\OrderConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:24.779Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
-              "Title": "BikePostConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikePostConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:10.347Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 83,
-              "Title": "MessageConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\MessageConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:46.673Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "UserStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\UserStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\UserStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\UserStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:21:52.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
-              "Title": "BikeSize.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeSize.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\BikeSize.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\BikeSize.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\BikeSize.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:00.393Z"
+              "WhenOpened": "2026-03-02T11:34:55.317Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 57,
-              "Title": "PostStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PostStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PostStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PostStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\PostStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "InspectionService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAEBVwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:07.63Z"
+              "WhenOpened": "2026-03-02T11:35:30.445Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "OrderStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\OrderStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 39,
+              "Title": "MessageService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAEBVwMAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:11.391Z"
+              "WhenOpened": "2026-03-02T11:34:37.516Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
-              "Title": "PaymentConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\PaymentConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 56,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAEBVwKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:31.735Z"
+              "WhenOpened": "2026-03-02T11:34:18.392Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
-              "Title": "BikeImageConfiguration.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Data\\Configurations\\BikeImageConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 40,
+              "Title": "BikePostService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAEBVwPYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:29:16.07Z"
+              "WhenOpened": "2026-03-02T11:32:18.708Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 55,
               "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DependencyInjection.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DependencyInjection.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DependencyInjection.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DependencyInjection.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1306,155 +919,141 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 54,
               "Title": "CreateRatingValidator.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBZwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:28:47.973Z"
+              "WhenOpened": "2026-03-02T11:28:47.973Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 53,
               "Title": "RegisterValidator.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAABRwB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:28:40.466Z"
+              "WhenOpened": "2026-03-02T11:28:40.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 52,
               "Title": "CreateBikePostValidator.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAIBZwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:27:29.444Z"
+              "WhenOpened": "2026-03-02T11:27:29.444Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
-              "Title": "AdminDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:19.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 51,
               "Title": "InspectionDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAEBkwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:26:09.1Z"
+              "WhenOpened": "2026-03-02T11:26:09.1Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 50,
               "Title": "RatingDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAEBkwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:25:57.391Z"
+              "WhenOpened": "2026-03-02T11:25:57.391Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 49,
               "Title": "ChatDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:25:50.416Z"
+              "WhenOpened": "2026-03-02T11:25:50.416Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 48,
               "Title": "OrderDtos.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAGBiwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:25:32.888Z"
+              "WhenOpened": "2026-03-02T11:25:32.888Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 47,
               "Title": "BikeFilterDto.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAEBkwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:25:13.834Z"
+              "WhenOpened": "2026-03-02T11:25:13.834Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
-              "Title": "BikePostDto.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:24:57.841Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 46,
               "Title": "UpdateBikePostDto.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAIBgwCIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:24:35.439Z"
+              "WhenOpened": "2026-03-02T11:24:35.439Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 45,
               "Title": "CreateBikePostDto.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwCAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:24:27.865Z"
+              "WhenOpened": "2026-03-02T11:24:27.865Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 44,
               "Title": "PagedResult.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\PagedResult.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Common\\PagedResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1462,11 +1061,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 43,
               "Title": "Result.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\Result.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\Result.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\Result.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Common\\Result.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\Result.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Common\\Result.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1474,95 +1073,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "WalletTransactionType.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\WalletTransactionType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:41.176Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
-              "Title": "MessageType.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\MessageType.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\MessageType.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\MessageType.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\MessageType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:37.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "OverallCondition.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\OverallCondition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:33.787Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 62,
-              "Title": "PaymentGateway.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\PaymentGateway.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:26.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "PaymentStatus.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\PaymentStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:22.182Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 60,
-              "Title": "PaymentMethod.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\PaymentMethod.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:18.508Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 59,
-              "Title": "PaymentType.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentType.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Enums\\PaymentType.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\Enums\\PaymentType.cs",
-              "RelativeToolTip": "src\\SecondBike.Domain\\Enums\\PaymentType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:22:15.003Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 41,
               "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1570,15 +1085,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 42,
               "Title": "IRepository.cs",
-              "DocumentMoniker": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IRepository.cs",
-              "ToolTip": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAEBdwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T10:34:04.635Z"
+              "WhenOpened": "2026-03-02T10:34:04.635Z",
+              "EditorCaption": ""
             }
           ]
         }

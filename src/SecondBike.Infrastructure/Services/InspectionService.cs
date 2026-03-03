@@ -3,138 +3,141 @@ using SecondBike.Application.DTOs.Inspections;
 using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
-using SecondBike.Domain.Enums;
 
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Quality & Auth — Vehicle inspection reports.
+/// Vehicle inspection reports using InspectionRequest/InspectionReport entities.
 /// </summary>
 public class InspectionService : IInspectionService
 {
+    private readonly IRepository<InspectionRequest> _requestRepo;
     private readonly IRepository<InspectionReport> _reportRepo;
-    private readonly IRepository<BikePost> _postRepo;
-    private readonly IRepository<AppUser> _userRepo;
+    private readonly IRepository<BicycleListing> _listingRepo;
+    private readonly IRepository<User> _userRepo;
     private readonly IUnitOfWork _uow;
 
     public InspectionService(
+        IRepository<InspectionRequest> requestRepo,
         IRepository<InspectionReport> reportRepo,
-        IRepository<BikePost> postRepo,
-        IRepository<AppUser> userRepo,
+        IRepository<BicycleListing> listingRepo,
+        IRepository<User> userRepo,
         IUnitOfWork uow)
     {
+        _requestRepo = requestRepo;
         _reportRepo = reportRepo;
-        _postRepo = postRepo;
+        _listingRepo = listingRepo;
         _userRepo = userRepo;
         _uow = uow;
     }
 
-    public async Task<Result<InspectionReportDto>> CreateAsync(Guid inspectorId, CreateInspectionDto dto, CancellationToken ct = default)
+    public async Task<Result<InspectionReportDto>> CreateAsync(int inspectorId, CreateInspectionDto dto, CancellationToken ct = default)
     {
-        var inspector = await _userRepo.GetByIdAsync(inspectorId, ct);
-        if (inspector is null || inspector.Role != UserRole.Inspector)
-            return Result<InspectionReportDto>.Failure("Only inspectors can create reports");
+        var listing = await _listingRepo.GetByIdAsync(dto.ListingId, ct);
+        if (listing is null) return Result<InspectionReportDto>.Failure("Listing not found");
 
-        var post = await _postRepo.GetByIdAsync(dto.BikePostId, ct);
-        if (post is null) return Result<InspectionReportDto>.Failure("Bike post not found");
+        // Create request
+        var request = new InspectionRequest
+        {
+            ListingId = dto.ListingId,
+            InspectorId = inspectorId,
+            RequestStatus = 2, // In Progress
+            RequestDate = DateTime.UtcNow
+        };
+        await _requestRepo.AddAsync(request, ct);
+        await _uow.SaveChangesAsync(ct);
 
-        var existing = await _reportRepo.AnyAsync(r => r.BikePostId == dto.BikePostId, ct);
-        if (existing) return Result<InspectionReportDto>.Failure("This bike already has an inspection report");
-
+        // Create report
         var report = new InspectionReport
         {
-            BikePostId = dto.BikePostId,
-            InspectorId = inspectorId,
-            ReportNumber = $"INS-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString()[..6].ToUpper()}",
-            Status = InspectionStatus.InProgress,
-            OverallCondition = dto.OverallCondition,
-            EstimatedValue = dto.EstimatedValue,
-            IsRecommended = dto.IsRecommended,
-            Summary = dto.Summary,
-            FrameScore = dto.FrameScore,
-            BrakesScore = dto.BrakesScore,
-            GearsScore = dto.GearsScore,
-            WheelsScore = dto.WheelsScore,
-            TiresScore = dto.TiresScore,
-            ChainScore = dto.ChainScore,
-            HasFrameDamage = dto.HasFrameDamage,
-            FrameNotes = dto.FrameNotes,
-            HasRust = dto.HasRust,
-            HasCracks = dto.HasCracks,
-            AllComponentsOriginal = dto.AllComponentsOriginal,
-            ReplacedComponents = dto.ReplacedComponents
+            RequestId = request.RequestId,
+            FrameCheck = dto.FrameCheck,
+            BrakeCheck = dto.BrakeCheck,
+            TransmissionCheck = dto.TransmissionCheck,
+            InspectorNote = dto.InspectorNote,
+            FinalVerdict = dto.FinalVerdict,
+            ReportUrl = dto.ReportUrl,
+            CompletedAt = DateTime.UtcNow
         };
-
         await _reportRepo.AddAsync(report, ct);
         await _uow.SaveChangesAsync(ct);
 
-        return Result<InspectionReportDto>.Success(MapToDto(report, inspector, post));
+        var inspector = await _userRepo.GetByIdAsync(inspectorId, ct);
+        return Result<InspectionReportDto>.Success(MapToDto(report, request, inspector, listing));
     }
 
-    public async Task<Result<InspectionReportDto>> GetByBikePostAsync(Guid bikePostId, CancellationToken ct = default)
+    public async Task<Result<InspectionReportDto>> GetByListingAsync(int listingId, CancellationToken ct = default)
     {
-        var reports = await _reportRepo.FindAsync(r => r.BikePostId == bikePostId, ct);
+        var requests = await _requestRepo.FindAsync(r => r.ListingId == listingId, ct);
+        var request = requests.FirstOrDefault();
+        if (request is null) return Result<InspectionReportDto>.Failure("No inspection found");
+
+        var reports = await _reportRepo.FindAsync(r => r.RequestId == request.RequestId, ct);
         var report = reports.FirstOrDefault();
         if (report is null) return Result<InspectionReportDto>.Failure("No inspection report found");
 
-        var inspector = await _userRepo.GetByIdAsync(report.InspectorId, ct);
-        var post = await _postRepo.GetByIdAsync(bikePostId, ct);
+        var inspector = request.InspectorId.HasValue
+            ? await _userRepo.GetByIdAsync(request.InspectorId.Value, ct)
+            : null;
+        var listing = await _listingRepo.GetByIdAsync(listingId, ct);
 
-        return Result<InspectionReportDto>.Success(MapToDto(report, inspector!, post!));
+        return Result<InspectionReportDto>.Success(MapToDto(report, request, inspector, listing));
     }
 
-    public async Task<Result<List<InspectionReportDto>>> GetByInspectorAsync(Guid inspectorId, CancellationToken ct = default)
+    public async Task<Result<List<InspectionReportDto>>> GetByInspectorAsync(int inspectorId, CancellationToken ct = default)
     {
-        var reports = await _reportRepo.FindAsync(r => r.InspectorId == inspectorId, ct);
-        var inspector = await _userRepo.GetByIdAsync(inspectorId, ct);
-
+        var requests = await _requestRepo.FindAsync(r => r.InspectorId == inspectorId, ct);
         var dtos = new List<InspectionReportDto>();
-        foreach (var r in reports)
+
+        foreach (var request in requests)
         {
-            var post = await _postRepo.GetByIdAsync(r.BikePostId, ct);
-            dtos.Add(MapToDto(r, inspector!, post!));
+            var reports = await _reportRepo.FindAsync(r => r.RequestId == request.RequestId, ct);
+            var report = reports.FirstOrDefault();
+            if (report is null) continue;
+
+            var listing = await _listingRepo.GetByIdAsync(request.ListingId, ct);
+            var inspector = await _userRepo.GetByIdAsync(inspectorId, ct);
+            dtos.Add(MapToDto(report, request, inspector, listing));
         }
 
         return Result<List<InspectionReportDto>>.Success(dtos);
     }
 
-    public async Task<Result> CompleteAsync(Guid inspectorId, Guid reportId, CancellationToken ct = default)
+    public async Task<Result> CompleteAsync(int inspectorId, int reportId, CancellationToken ct = default)
     {
         var report = await _reportRepo.GetByIdAsync(reportId, ct);
         if (report is null) return Result.Failure("Report not found");
-        if (report.InspectorId != inspectorId) return Result.Failure("Access denied");
 
-        report.Status = InspectionStatus.Completed;
-        report.InspectedAt = DateTime.UtcNow;
+        var request = await _requestRepo.GetByIdAsync(report.RequestId, ct);
+        if (request is null) return Result.Failure("Request not found");
+        if (request.InspectorId != inspectorId) return Result.Failure("Access denied");
+
+        request.RequestStatus = 3; // Completed
+        report.CompletedAt = DateTime.UtcNow;
+
+        _requestRepo.Update(request);
         _reportRepo.Update(report);
         await _uow.SaveChangesAsync(ct);
 
         return Result.Success();
     }
 
-    private static InspectionReportDto MapToDto(InspectionReport r, AppUser inspector, BikePost post)
+    private static InspectionReportDto MapToDto(InspectionReport report, InspectionRequest request, User? inspector, BicycleListing? listing)
     {
         return new InspectionReportDto
         {
-            Id = r.Id,
-            ReportNumber = r.ReportNumber,
-            Status = r.Status,
-            OverallCondition = r.OverallCondition,
-            EstimatedValue = r.EstimatedValue,
-            IsRecommended = r.IsRecommended,
-            Summary = r.Summary,
-            FrameScore = r.FrameScore,
-            BrakesScore = r.BrakesScore,
-            GearsScore = r.GearsScore,
-            WheelsScore = r.WheelsScore,
-            TiresScore = r.TiresScore,
-            ChainScore = r.ChainScore,
-            HasFrameDamage = r.HasFrameDamage,
-            HasRust = r.HasRust,
-            HasCracks = r.HasCracks,
-            InspectorName = inspector.FullName,
-            InspectedAt = r.InspectedAt,
-            BikeTitle = post.Title
+            ReportId = report.ReportId,
+            RequestId = report.RequestId,
+            RequestStatus = request.RequestStatus,
+            FrameCheck = report.FrameCheck,
+            BrakeCheck = report.BrakeCheck,
+            TransmissionCheck = report.TransmissionCheck,
+            InspectorNote = report.InspectorNote,
+            FinalVerdict = report.FinalVerdict,
+            ReportUrl = report.ReportUrl,
+            CompletedAt = report.CompletedAt,
+            InspectorName = inspector?.Username ?? "Unknown",
+            BikeTitle = listing?.Title ?? "Unknown"
         };
     }
 }

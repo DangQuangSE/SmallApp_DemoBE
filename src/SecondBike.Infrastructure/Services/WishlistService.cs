@@ -12,101 +12,115 @@ namespace SecondBike.Infrastructure.Services;
 public class WishlistService : IWishlistService
 {
     private readonly IRepository<Wishlist> _wishlistRepo;
-    private readonly IRepository<BikePost> _postRepo;
-    private readonly IRepository<AppUser> _userRepo;
+    private readonly IRepository<BicycleListing> _listingRepo;
+    private readonly IRepository<Bicycle> _bikeRepo;
+    private readonly IRepository<Brand> _brandRepo;
+    private readonly IRepository<BikeType> _typeRepo;
+    private readonly IRepository<User> _userRepo;
+    private readonly IRepository<ListingMedium> _mediaRepo;
     private readonly IUnitOfWork _uow;
 
     public WishlistService(
         IRepository<Wishlist> wishlistRepo,
-        IRepository<BikePost> postRepo,
-        IRepository<AppUser> userRepo,
+        IRepository<BicycleListing> listingRepo,
+        IRepository<Bicycle> bikeRepo,
+        IRepository<Brand> brandRepo,
+        IRepository<BikeType> typeRepo,
+        IRepository<User> userRepo,
+        IRepository<ListingMedium> mediaRepo,
         IUnitOfWork uow)
     {
         _wishlistRepo = wishlistRepo;
-        _postRepo = postRepo;
+        _listingRepo = listingRepo;
+        _bikeRepo = bikeRepo;
+        _brandRepo = brandRepo;
+        _typeRepo = typeRepo;
         _userRepo = userRepo;
+        _mediaRepo = mediaRepo;
         _uow = uow;
     }
 
-    public async Task<Result> AddAsync(Guid userId, Guid bikePostId, CancellationToken ct = default)
+    public async Task<Result> AddAsync(int userId, int listingId, CancellationToken ct = default)
     {
-        var exists = await _wishlistRepo.AnyAsync(w => w.UserId == userId && w.BikePostId == bikePostId, ct);
+        var exists = await _wishlistRepo.AnyAsync(w => w.UserId == userId && w.ListingId == listingId, ct);
         if (exists) return Result.Failure("Already in wishlist");
 
-        await _wishlistRepo.AddAsync(new Wishlist { UserId = userId, BikePostId = bikePostId }, ct);
-
-        var post = await _postRepo.GetByIdAsync(bikePostId, ct);
-        if (post is not null)
+        await _wishlistRepo.AddAsync(new Wishlist
         {
-            post.WishlistCount++;
-            _postRepo.Update(post);
-        }
+            UserId = userId,
+            ListingId = listingId,
+            AddedDate = DateTime.UtcNow
+        }, ct);
 
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result> RemoveAsync(Guid userId, Guid bikePostId, CancellationToken ct = default)
+    public async Task<Result> RemoveAsync(int userId, int listingId, CancellationToken ct = default)
     {
-        var items = await _wishlistRepo.FindAsync(w => w.UserId == userId && w.BikePostId == bikePostId, ct);
+        var items = await _wishlistRepo.FindAsync(w => w.UserId == userId && w.ListingId == listingId, ct);
         var item = items.FirstOrDefault();
         if (item is null) return Result.Failure("Not in wishlist");
 
         _wishlistRepo.Delete(item);
-
-        var post = await _postRepo.GetByIdAsync(bikePostId, ct);
-        if (post is not null && post.WishlistCount > 0)
-        {
-            post.WishlistCount--;
-            _postRepo.Update(post);
-        }
-
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result<List<BikePostDto>>> GetByUserAsync(Guid userId, CancellationToken ct = default)
+    public async Task<Result<List<BikePostDto>>> GetByUserAsync(int userId, CancellationToken ct = default)
     {
         var wishlists = await _wishlistRepo.FindAsync(w => w.UserId == userId, ct);
         var dtos = new List<BikePostDto>();
 
         foreach (var w in wishlists)
         {
-            var post = await _postRepo.GetByIdAsync(w.BikePostId, ct);
-            if (post is null) continue;
+            var listing = await _listingRepo.GetByIdAsync(w.ListingId, ct);
+            if (listing is null) continue;
 
-            var seller = await _userRepo.GetByIdAsync(post.SellerId, ct);
+            var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
+            var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
+            var media = await _mediaRepo.FindAsync(m => m.ListingId == listing.ListingId, ct);
+
+            Brand? brand = null;
+            BikeType? bikeType = null;
+            if (bike?.BrandId.HasValue == true)
+                brand = await _brandRepo.GetByIdAsync(bike.BrandId.Value, ct);
+            if (bike?.TypeId.HasValue == true)
+                bikeType = await _typeRepo.GetByIdAsync(bike.TypeId.Value, ct);
+
             dtos.Add(new BikePostDto
             {
-                Id = post.Id,
-                Title = post.Title,
-                Price = post.Price,
-                Brand = post.Brand,
-                Model = post.Model,
-                Category = post.Category,
-                Condition = post.Condition,
-                City = post.City,
-                District = post.District,
-                Status = post.Status,
-                SellerId = seller?.Id ?? Guid.Empty,
-                SellerName = seller?.FullName ?? "Unknown",
-                SellerRating = seller?.SellerRating ?? 0,
-                Images = post.Images.Select(i => new BikeImageDto
+                ListingId = listing.ListingId,
+                Title = listing.Title,
+                Description = listing.Description,
+                Price = listing.Price,
+                ListingStatus = listing.ListingStatus,
+                Address = listing.Address,
+                PostedDate = listing.PostedDate,
+                BikeId = listing.BikeId,
+                ModelName = bike?.ModelName,
+                Color = bike?.Color,
+                Condition = bike?.Condition,
+                BrandName = brand?.BrandName,
+                TypeName = bikeType?.TypeName,
+                SellerId = listing.SellerId,
+                SellerName = seller?.Username ?? "Unknown",
+                Images = media.Select(m => new BikeImageDto
                 {
-                    Id = i.Id,
-                    ImageUrl = i.ImageUrl,
-                    IsPrimary = i.IsPrimary,
-                    DisplayOrder = i.DisplayOrder
-                }).OrderBy(i => i.DisplayOrder).ToList()
+                    MediaId = m.MediaId,
+                    MediaUrl = m.MediaUrl,
+                    MediaType = m.MediaType,
+                    IsThumbnail = m.IsThumbnail
+                }).ToList()
             });
         }
 
         return Result<List<BikePostDto>>.Success(dtos);
     }
 
-    public async Task<Result<bool>> IsInWishlistAsync(Guid userId, Guid bikePostId, CancellationToken ct = default)
+    public async Task<Result<bool>> IsInWishlistAsync(int userId, int listingId, CancellationToken ct = default)
     {
-        var exists = await _wishlistRepo.AnyAsync(w => w.UserId == userId && w.BikePostId == bikePostId, ct);
+        var exists = await _wishlistRepo.AnyAsync(w => w.UserId == userId && w.ListingId == listingId, ct);
         return Result<bool>.Success(exists);
     }
 }

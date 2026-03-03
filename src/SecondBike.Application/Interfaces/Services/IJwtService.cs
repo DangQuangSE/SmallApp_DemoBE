@@ -7,5 +7,5 @@ namespace SecondBike.Application.Interfaces.Services;
 /// </summary>
 public interface IJwtService
 {
-    string GenerateToken(AppUser user);
+    string GenerateToken(User user, string roleName);
 }

@@ -6,7 +6,7 @@ using SecondBike.Application.Interfaces.Services;
 namespace SecondBike.Api.Controllers;
 
 /// <summary>
-/// Seller rating endpoints.
+/// Seller rating/feedback endpoints.
 /// </summary>
 [Authorize]
 public class RatingsController : BaseApiController
@@ -23,16 +23,7 @@ public class RatingsController : BaseApiController
         => ToResponse(await _ratingService.CreateAsync(GetCurrentUserId(), dto, ct));
 
     [AllowAnonymous]
-    [HttpGet("seller/{sellerId:guid}")]
-    public async Task<IActionResult> GetBySeller(Guid sellerId, CancellationToken ct)
+    [HttpGet("seller/{sellerId:int}")]
+    public async Task<IActionResult> GetBySeller(int sellerId, CancellationToken ct)
         => ToResponse(await _ratingService.GetBySellerAsync(sellerId, ct));
-
-    [HttpPost("{ratingId:guid}/respond")]
-    public async Task<IActionResult> Respond(Guid ratingId, [FromBody] RespondRequest request, CancellationToken ct)
-        => ToResponse(await _ratingService.RespondAsync(GetCurrentUserId(), ratingId, request.Response, ct));
-}
-
-public class RespondRequest
-{
-    public string Response { get; set; } = string.Empty;
 }

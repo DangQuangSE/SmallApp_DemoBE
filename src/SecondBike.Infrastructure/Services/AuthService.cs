@@ -1,5 +1,3 @@
-using Google.Apis.Auth;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SecondBike.Application.Common;
@@ -7,263 +5,315 @@ using SecondBike.Application.DTOs.Users;
 using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
-using SecondBike.Domain.Enums;
 
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Quality &amp; Auth — Registration, login (JWT-based), Google login, and profile management.
+/// Authentication — Registration with email confirmation, login, and profile management.
 /// </summary>
 public class AuthService : IAuthService
 {
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly IRepository<AppUser> _appUserRepo;
-    private readonly IRepository<Wallet> _walletRepo;
+    private readonly IRepository<User> _userRepo;
+    private readonly IRepository<UserProfile> _profileRepo;
+    private readonly IRepository<UserRole> _roleRepo;
+    private readonly IRepository<RefreshToken> _tokenRepo;
     private readonly IUnitOfWork _uow;
     private readonly IJwtService _jwtService;
+    private readonly IEmailService _emailService;
     private readonly IConfiguration _configuration;
     private readonly ILogger<AuthService> _logger;
 
     public AuthService(
-        UserManager<IdentityUser> userManager,
-        IRepository<AppUser> appUserRepo,
-        IRepository<Wallet> walletRepo,
+        IRepository<User> userRepo,
+        IRepository<UserProfile> profileRepo,
+        IRepository<UserRole> roleRepo,
+        IRepository<RefreshToken> tokenRepo,
         IUnitOfWork uow,
         IJwtService jwtService,
+        IEmailService emailService,
         IConfiguration configuration,
         ILogger<AuthService> logger)
     {
-        _userManager = userManager;
-        _appUserRepo = appUserRepo;
-        _walletRepo = walletRepo;
+        _userRepo = userRepo;
+        _profileRepo = profileRepo;
+        _roleRepo = roleRepo;
+        _tokenRepo = tokenRepo;
         _uow = uow;
         _jwtService = jwtService;
+        _emailService = emailService;
         _configuration = configuration;
         _logger = logger;
     }
 
     public async Task<Result<AuthResultDto>> RegisterAsync(RegisterDto dto, CancellationToken ct = default)
     {
-        var identityUser = new IdentityUser
-        {
-            UserName = dto.Email,
-            Email = dto.Email
-        };
+        var existingByEmail = await _userRepo.FindAsync(u => u.Email == dto.Email, ct);
+        if (existingByEmail.Count > 0)
+            return Result<AuthResultDto>.Failure("Email already registered");
 
-        var result = await _userManager.CreateAsync(identityUser, dto.Password);
-        if (!result.Succeeded)
-        {
-            var errors = result.Errors.Select(e => e.Description).ToList();
-            return Result<AuthResultDto>.Failure(errors);
-        }
+        var existingByUsername = await _userRepo.FindAsync(u => u.Username == dto.Username, ct);
+        if (existingByUsername.Count > 0)
+            return Result<AuthResultDto>.Failure("Username already taken");
 
-        // Add role
-        await _userManager.AddToRoleAsync(identityUser, dto.Role.ToString());
+        var role = await _roleRepo.GetByIdAsync(dto.RoleId, ct);
+        if (role is null)
+            return Result<AuthResultDto>.Failure("Invalid role");
 
-        // Create AppUser
-        var appUser = new AppUser
+        // Create user with IsVerified = false
+        var user = new User
         {
+            Username = dto.Username,
             Email = dto.Email,
-            FullName = dto.FullName,
-            PhoneNumber = dto.PhoneNumber,
-            Role = dto.Role,
-            IdentityUserId = identityUser.Id
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+            RoleId = dto.RoleId,
+            IsVerified = false,
+            Status = 1,
+            CreatedAt = DateTime.UtcNow
         };
 
-        await _appUserRepo.AddAsync(appUser, ct);
-
-        // Create wallet
-        await _walletRepo.AddAsync(new Wallet
-        {
-            UserId = appUser.Id,
-            Balance = 0
-        }, ct);
-
+        await _userRepo.AddAsync(user, ct);
         await _uow.SaveChangesAsync(ct);
 
-        _logger.LogInformation("User registered: {Email}, Role: {Role}", dto.Email, dto.Role);
+        // Create user profile
+        var profile = new UserProfile
+        {
+            UserId = user.UserId,
+            FullName = dto.FullName,
+            PhoneNumber = dto.PhoneNumber
+        };
+        await _profileRepo.AddAsync(profile, ct);
+        await _uow.SaveChangesAsync(ct);
+
+        // Generate email confirmation token & send email
+        await SendConfirmationEmailAsync(user, ct);
+
+        _logger.LogInformation("User registered: {Email}, Role: {Role}, awaiting email confirmation", dto.Email, role.RoleName);
 
         return Result<AuthResultDto>.Success(new AuthResultDto
         {
             Succeeded = true,
-            Token = _jwtService.GenerateToken(appUser),
-            User = MapToDto(appUser)
+            Token = null, // No JWT until email is confirmed
+            User = MapToDto(user, profile, role.RoleName),
+            RequiresEmailConfirmation = true
         });
     }
 
     public async Task<Result<AuthResultDto>> LoginAsync(LoginDto dto, CancellationToken ct = default)
     {
-        // 1. Find Identity user by email
-        var identityUser = await _userManager.FindByEmailAsync(dto.Email);
-        if (identityUser is null)
+        var users = await _userRepo.FindAsync(u => u.Email == dto.Email, ct);
+        var user = users.FirstOrDefault();
+        if (user is null)
             return Result<AuthResultDto>.Failure("Invalid email or password");
 
-        // 2. Check lockout
-        if (await _userManager.IsLockedOutAsync(identityUser))
-            return Result<AuthResultDto>.Failure("Account is locked. Please try again later.");
-
-        // 3. Verify password directly (no cookie, pure JWT flow)
-        var passwordValid = await _userManager.CheckPasswordAsync(identityUser, dto.Password);
-        if (!passwordValid)
-        {
-            // Record failed attempt for lockout
-            await _userManager.AccessFailedAsync(identityUser);
+        if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             return Result<AuthResultDto>.Failure("Invalid email or password");
-        }
 
-        // 4. Reset failed count on success
-        await _userManager.ResetAccessFailedCountAsync(identityUser);
-
-        // 5. Find AppUser profile
-        var appUsers = await _appUserRepo.FindAsync(u => u.IdentityUserId == identityUser.Id, ct);
-        var appUser = appUsers.FirstOrDefault();
-        if (appUser is null)
-            return Result<AuthResultDto>.Failure("User profile not found");
-
-        // 6. Check if user is banned/suspended
-        if (appUser.Status == Domain.Enums.UserStatus.Banned)
+        if (user.Status == 0)
             return Result<AuthResultDto>.Failure("Your account has been banned");
 
-        if (appUser.Status == Domain.Enums.UserStatus.Suspended)
-            return Result<AuthResultDto>.Failure("Your account has been suspended");
+        // Block login if email not confirmed
+        if (user.IsVerified != true)
+        {
+            return Result<AuthResultDto>.Success(new AuthResultDto
+            {
+                Succeeded = false,
+                Token = null,
+                ErrorMessage = "Please verify your email before logging in",
+                RequiresEmailConfirmation = true,
+                User = new UserProfileDto { UserId = user.UserId, Email = user.Email, Username = user.Username }
+            });
+        }
+
+        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
+        var profiles = await _profileRepo.FindAsync(p => p.UserId == user.UserId, ct);
+        var profile = profiles.FirstOrDefault();
 
         _logger.LogInformation("User logged in: {Email}", dto.Email);
 
         return Result<AuthResultDto>.Success(new AuthResultDto
         {
             Succeeded = true,
-            Token = _jwtService.GenerateToken(appUser),
-            User = MapToDto(appUser)
+            Token = _jwtService.GenerateToken(user, role?.RoleName ?? "Buyer"),
+            User = MapToDto(user, profile, role?.RoleName ?? "Buyer")
         });
     }
 
     public async Task<Result<AuthResultDto>> GoogleLoginAsync(GoogleLoginDto dto, CancellationToken ct = default)
     {
-        // 1. Validate the Google ID token
-        GoogleJsonWebSignature.Payload payload;
-        try
-        {
-            var settings = new GoogleJsonWebSignature.ValidationSettings
-            {
-                Audience = [_configuration["Google:ClientId"]!]
-            };
-            payload = await GoogleJsonWebSignature.ValidateAsync(dto.IdToken, settings);
-        }
-        catch (InvalidJwtException)
-        {
-            return Result<AuthResultDto>.Failure("Invalid Google token");
-        }
-
-        var email = payload.Email;
-        var fullName = payload.Name ?? email;
-        var avatarUrl = payload.Picture;
-
-        // 2. Find or create Identity user
-        var identityUser = await _userManager.FindByEmailAsync(email);
-        if (identityUser is null)
-        {
-            identityUser = new IdentityUser
-            {
-                UserName = email,
-                Email = email,
-                EmailConfirmed = true
-            };
-
-            var createResult = await _userManager.CreateAsync(identityUser);
-            if (!createResult.Succeeded)
-            {
-                var errors = createResult.Errors.Select(e => e.Description).ToList();
-                return Result<AuthResultDto>.Failure(errors);
-            }
-
-            await _userManager.AddToRoleAsync(identityUser, UserRole.Buyer.ToString());
-            await _userManager.AddLoginAsync(identityUser,
-                new UserLoginInfo("Google", payload.Subject, "Google"));
-        }
-
-        // 3. Find or create AppUser profile
-        var appUsers = await _appUserRepo.FindAsync(u => u.IdentityUserId == identityUser.Id, ct);
-        var appUser = appUsers.FirstOrDefault();
-
-        if (appUser is null)
-        {
-            appUser = new AppUser
-            {
-                Email = email,
-                FullName = fullName,
-                AvatarUrl = avatarUrl,
-                Role = UserRole.Buyer,
-                IdentityUserId = identityUser.Id
-            };
-
-            await _appUserRepo.AddAsync(appUser, ct);
-            await _walletRepo.AddAsync(new Wallet { UserId = appUser.Id, Balance = 0 }, ct);
-            await _uow.SaveChangesAsync(ct);
-        }
-
-        // 4. Check account status
-        if (appUser.Status == UserStatus.Banned)
-            return Result<AuthResultDto>.Failure("Your account has been banned");
-
-        if (appUser.Status == UserStatus.Suspended)
-            return Result<AuthResultDto>.Failure("Your account has been suspended");
-
-        _logger.LogInformation("Google login: {Email}", email);
-
-        return Result<AuthResultDto>.Success(new AuthResultDto
-        {
-            Succeeded = true,
-            Token = _jwtService.GenerateToken(appUser),
-            User = MapToDto(appUser)
-        });
+        return Result<AuthResultDto>.Failure("Google login is not configured for this deployment");
     }
 
-    public async Task<Result<UserProfileDto>> GetProfileAsync(Guid userId, CancellationToken ct = default)
+    public async Task<Result<UserProfileDto>> GetProfileAsync(int userId, CancellationToken ct = default)
     {
-        var user = await _appUserRepo.GetByIdAsync(userId, ct);
+        var user = await _userRepo.GetByIdAsync(userId, ct);
         if (user is null) return Result<UserProfileDto>.Failure("User not found");
-        return Result<UserProfileDto>.Success(MapToDto(user));
+
+        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
+        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
+        var profile = profiles.FirstOrDefault();
+
+        return Result<UserProfileDto>.Success(MapToDto(user, profile, role?.RoleName ?? "Buyer"));
     }
 
-    public async Task<Result<UserProfileDto>> UpdateProfileAsync(Guid userId, UpdateProfileDto dto, CancellationToken ct = default)
+    public async Task<Result<UserProfileDto>> UpdateProfileAsync(int userId, UpdateProfileDto dto, CancellationToken ct = default)
     {
-        var user = await _appUserRepo.GetByIdAsync(userId, ct);
+        var user = await _userRepo.GetByIdAsync(userId, ct);
         if (user is null) return Result<UserProfileDto>.Failure("User not found");
 
-        user.FullName = dto.FullName;
-        user.PhoneNumber = dto.PhoneNumber;
-        user.AvatarUrl = dto.AvatarUrl;
-        user.ShopName = dto.ShopName;
-        user.ShopDescription = dto.ShopDescription;
+        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
+        var profile = profiles.FirstOrDefault();
 
-        _appUserRepo.Update(user);
+        if (profile is null)
+        {
+            profile = new UserProfile
+            {
+                UserId = userId,
+                FullName = dto.FullName,
+                PhoneNumber = dto.PhoneNumber,
+                AvatarUrl = dto.AvatarUrl,
+                Address = dto.Address
+            };
+            await _profileRepo.AddAsync(profile, ct);
+        }
+        else
+        {
+            if (dto.FullName is not null) profile.FullName = dto.FullName;
+            if (dto.PhoneNumber is not null) profile.PhoneNumber = dto.PhoneNumber;
+            if (dto.AvatarUrl is not null) profile.AvatarUrl = dto.AvatarUrl;
+            if (dto.Address is not null) profile.Address = dto.Address;
+            _profileRepo.Update(profile);
+        }
+
         await _uow.SaveChangesAsync(ct);
 
-        return Result<UserProfileDto>.Success(MapToDto(user));
+        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
+        return Result<UserProfileDto>.Success(MapToDto(user, profile, role?.RoleName ?? "Buyer"));
     }
 
-    public async Task LogoutAsync()
+    public async Task<Result> ConfirmEmailAsync(string email, string token, CancellationToken ct = default)
     {
-        // JWT is stateless — logout is handled client-side by removing the token.
-        // This method exists to satisfy the interface contract.
-        await Task.CompletedTask;
+        var users = await _userRepo.FindAsync(u => u.Email == email, ct);
+        var user = users.FirstOrDefault();
+        if (user is null)
+            return Result.Failure("User not found");
+
+        if (user.IsVerified == true)
+            return Result.Failure("Email is already confirmed");
+
+        // Find a valid, non-expired, non-revoked token for this user
+        var tokens = await _tokenRepo.FindAsync(t =>
+            t.UserId == user.UserId &&
+            t.Token == token &&
+            t.RevokedAt == null, ct);
+        var confirmToken = tokens.FirstOrDefault();
+
+        if (confirmToken is null)
+            return Result.Failure("Invalid confirmation token");
+
+        if (confirmToken.ExpiresAt < DateTime.UtcNow)
+            return Result.Failure("Confirmation token has expired. Please request a new one");
+
+        // Mark user as verified
+        user.IsVerified = true;
+        _userRepo.Update(user);
+
+        // Revoke the token so it can't be reused
+        confirmToken.RevokedAt = DateTime.UtcNow;
+        _tokenRepo.Update(confirmToken);
+
+        await _uow.SaveChangesAsync(ct);
+
+        _logger.LogInformation("Email confirmed for user: {Email}", email);
+        return Result.Success();
     }
 
-    private static UserProfileDto MapToDto(AppUser u)
+    public async Task<Result> ResendConfirmationEmailAsync(string email, CancellationToken ct = default)
+    {
+        var users = await _userRepo.FindAsync(u => u.Email == email, ct);
+        var user = users.FirstOrDefault();
+        if (user is null)
+            return Result.Failure("User not found");
+
+        if (user.IsVerified == true)
+            return Result.Failure("Email is already confirmed");
+
+        // Revoke all existing confirmation tokens for this user
+        var existingTokens = await _tokenRepo.FindAsync(t =>
+            t.UserId == user.UserId && t.RevokedAt == null, ct);
+        foreach (var t in existingTokens)
+        {
+            t.RevokedAt = DateTime.UtcNow;
+            _tokenRepo.Update(t);
+        }
+
+        await SendConfirmationEmailAsync(user, ct);
+
+        _logger.LogInformation("Confirmation email resent to: {Email}", email);
+        return Result.Success();
+    }
+
+    public Task LogoutAsync()
+    {
+        return Task.CompletedTask;
+    }
+
+    // ──────────── Private helpers ────────────
+
+    private async Task SendConfirmationEmailAsync(User user, CancellationToken ct)
+    {
+        // Generate a secure random token
+        var tokenValue = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
+
+        var refreshToken = new RefreshToken
+        {
+            UserId = user.UserId,
+            Token = tokenValue,
+            ExpiresAt = DateTime.UtcNow.AddHours(24),
+            CreatedAt = DateTime.UtcNow
+        };
+        await _tokenRepo.AddAsync(refreshToken, ct);
+        await _uow.SaveChangesAsync(ct);
+
+        // Build confirmation URL
+        var baseUrl = _configuration["App:BaseUrl"] ?? "http://localhost:5173";
+        var confirmUrl = $"{baseUrl}/confirm-email?email={Uri.EscapeDataString(user.Email)}&token={tokenValue}";
+
+        var htmlBody = $@"
+            <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
+                <h2 style='color: #2563eb;'>Xác nhận email — SecondBike</h2>
+                <p>Xin chào <strong>{user.Username}</strong>,</p>
+                <p>Cảm ơn bạn đã đăng ký tài khoản SecondBike. Vui lòng nhấn nút bên dưới để xác nhận email:</p>
+                <div style='text-align: center; margin: 30px 0;'>
+                    <a href='{confirmUrl}'
+                       style='background-color: #2563eb; color: white; padding: 12px 30px;
+                              text-decoration: none; border-radius: 6px; font-size: 16px;'>
+                        Xác nhận Email
+                    </a>
+                </div>
+                <p style='color: #666; font-size: 14px;'>Link này sẽ hết hạn sau <strong>24 giờ</strong>.</p>
+                <p style='color: #666; font-size: 14px;'>Nếu bạn không đăng ký tài khoản, vui lòng bỏ qua email này.</p>
+                <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;'>
+                <p style='color: #999; font-size: 12px;'>© SecondBike — Nền tảng mua bán xe đạp cũ</p>
+            </div>";
+
+        await _emailService.SendEmailAsync(user.Email, "Xác nhận email — SecondBike", htmlBody);
+    }
+
+    private static UserProfileDto MapToDto(User user, UserProfile? profile, string roleName)
     {
         return new UserProfileDto
         {
-            Id = u.Id,
-            Email = u.Email,
-            FullName = u.FullName,
-            PhoneNumber = u.PhoneNumber,
-            AvatarUrl = u.AvatarUrl,
-            Role = u.Role,
-            ShopName = u.ShopName,
-            ShopDescription = u.ShopDescription,
-            IsVerifiedSeller = u.IsVerifiedSeller,
-            SellerRating = u.SellerRating,
-            TotalRatingsCount = u.TotalRatingsCount
+            UserId = user.UserId,
+            Username = user.Username,
+            Email = user.Email,
+            FullName = profile?.FullName,
+            PhoneNumber = profile?.PhoneNumber,
+            AvatarUrl = profile?.AvatarUrl,
+            Address = profile?.Address,
+            RoleName = roleName,
+            Status = user.Status,
+            IsVerified = user.IsVerified,
+            CreatedAt = user.CreatedAt
         };
     }
 }

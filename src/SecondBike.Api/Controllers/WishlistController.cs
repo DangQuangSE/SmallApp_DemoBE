@@ -21,15 +21,15 @@ public class WishlistController : BaseApiController
     public async Task<IActionResult> GetMyWishlist(CancellationToken ct)
         => ToResponse(await _wishlistService.GetByUserAsync(GetCurrentUserId(), ct));
 
-    [HttpPost("{bikePostId:guid}")]
-    public async Task<IActionResult> Add(Guid bikePostId, CancellationToken ct)
-        => ToResponse(await _wishlistService.AddAsync(GetCurrentUserId(), bikePostId, ct));
+    [HttpPost("{listingId:int}")]
+    public async Task<IActionResult> Add(int listingId, CancellationToken ct)
+        => ToResponse(await _wishlistService.AddAsync(GetCurrentUserId(), listingId, ct));
 
-    [HttpDelete("{bikePostId:guid}")]
-    public async Task<IActionResult> Remove(Guid bikePostId, CancellationToken ct)
-        => ToResponse(await _wishlistService.RemoveAsync(GetCurrentUserId(), bikePostId, ct));
+    [HttpDelete("{listingId:int}")]
+    public async Task<IActionResult> Remove(int listingId, CancellationToken ct)
+        => ToResponse(await _wishlistService.RemoveAsync(GetCurrentUserId(), listingId, ct));
 
-    [HttpGet("{bikePostId:guid}/check")]
-    public async Task<IActionResult> Check(Guid bikePostId, CancellationToken ct)
-        => ToResponse(await _wishlistService.IsInWishlistAsync(GetCurrentUserId(), bikePostId, ct));
+    [HttpGet("{listingId:int}/check")]
+    public async Task<IActionResult> Check(int listingId, CancellationToken ct)
+        => ToResponse(await _wishlistService.IsInWishlistAsync(GetCurrentUserId(), listingId, ct));
 }

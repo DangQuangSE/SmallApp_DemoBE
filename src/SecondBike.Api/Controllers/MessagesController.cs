@@ -26,12 +26,12 @@ public class MessagesController : BaseApiController
     public async Task<IActionResult> GetConversations(CancellationToken ct)
         => ToResponse(await _messageService.GetConversationsAsync(GetCurrentUserId(), ct));
 
-    [HttpGet("conversations/{otherUserId:guid}")]
-    public async Task<IActionResult> GetConversation(Guid otherUserId, CancellationToken ct)
+    [HttpGet("conversations/{otherUserId:int}")]
+    public async Task<IActionResult> GetConversation(int otherUserId, CancellationToken ct)
         => ToResponse(await _messageService.GetConversationAsync(GetCurrentUserId(), otherUserId, ct));
 
-    [HttpPatch("conversations/{otherUserId:guid}/read")]
-    public async Task<IActionResult> MarkAsRead(Guid otherUserId, CancellationToken ct)
+    [HttpPatch("conversations/{otherUserId:int}/read")]
+    public async Task<IActionResult> MarkAsRead(int otherUserId, CancellationToken ct)
         => ToResponse(await _messageService.MarkAsReadAsync(GetCurrentUserId(), otherUserId, ct));
 
     [HttpGet("unread-count")]

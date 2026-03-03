@@ -3,219 +3,167 @@ using SecondBike.Application.DTOs.Orders;
 using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
-using SecondBike.Domain.Enums;
 
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Transaction Hub — Order placement, deposit, and payment processing.
+/// Transaction Hub — Order placement and payment processing.
 /// </summary>
 public class OrderService : IOrderService
 {
     private readonly IRepository<Order> _orderRepo;
-    private readonly IRepository<BikePost> _postRepo;
+    private readonly IRepository<BicycleListing> _listingRepo;
     private readonly IRepository<Payment> _paymentRepo;
-    private readonly IRepository<AppUser> _userRepo;
+    private readonly IRepository<User> _userRepo;
+    private readonly IRepository<ListingMedium> _mediaRepo;
     private readonly IUnitOfWork _uow;
 
     public OrderService(
         IRepository<Order> orderRepo,
-        IRepository<BikePost> postRepo,
+        IRepository<BicycleListing> listingRepo,
         IRepository<Payment> paymentRepo,
-        IRepository<AppUser> userRepo,
+        IRepository<User> userRepo,
+        IRepository<ListingMedium> mediaRepo,
         IUnitOfWork uow)
     {
         _orderRepo = orderRepo;
-        _postRepo = postRepo;
+        _listingRepo = listingRepo;
         _paymentRepo = paymentRepo;
         _userRepo = userRepo;
+        _mediaRepo = mediaRepo;
         _uow = uow;
     }
 
-    public async Task<Result<OrderDto>> PlaceOrderAsync(Guid buyerId, CreateOrderDto dto, CancellationToken ct = default)
+    public async Task<Result<OrderDto>> PlaceOrderAsync(int buyerId, CreateOrderDto dto, CancellationToken ct = default)
     {
-        var post = await _postRepo.GetByIdAsync(dto.BikePostId, ct);
-        if (post is null) return Result<OrderDto>.Failure("Bike post not found");
-        if (post.Status != PostStatus.Active) return Result<OrderDto>.Failure("This bike is not available for purchase");
-        if (post.SellerId == buyerId) return Result<OrderDto>.Failure("You cannot buy your own bike");
-
-        var depositPct = Math.Clamp(dto.DepositPercentage, 10, 30);
-        var depositAmount = Math.Round(post.Price * depositPct / 100, 2);
+        var listing = await _listingRepo.GetByIdAsync(dto.ListingId, ct);
+        if (listing is null) return Result<OrderDto>.Failure("Listing not found");
+        if (listing.ListingStatus != 1) return Result<OrderDto>.Failure("This listing is not available");
+        if (listing.SellerId == buyerId) return Result<OrderDto>.Failure("You cannot buy your own listing");
 
         var order = new Order
         {
-            OrderNumber = $"SB-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString()[..6].ToUpper()}",
             BuyerId = buyerId,
-            SellerId = post.SellerId,
-            BikePostId = post.Id,
-            BikePrice = post.Price,
-            DepositPercentage = depositPct,
-            DepositAmount = depositAmount,
-            RemainingAmount = post.Price - depositAmount,
-            TotalAmount = post.Price,
-            ShippingAddress = dto.ShippingAddress,
-            Status = OrderStatus.Pending
+            ListingId = listing.ListingId,
+            TotalAmount = listing.Price,
+            OrderStatus = 1, // Pending
+            OrderDate = DateTime.UtcNow
         };
 
         await _orderRepo.AddAsync(order, ct);
+
+        // Mark listing as sold
+        listing.ListingStatus = 3; // Sold
+        _listingRepo.Update(listing);
+
         await _uow.SaveChangesAsync(ct);
-
-        var buyer = await _userRepo.GetByIdAsync(buyerId, ct);
-        var seller = await _userRepo.GetByIdAsync(post.SellerId, ct);
-
-        return Result<OrderDto>.Success(MapToDto(order, post, buyer!, seller!));
+        return Result<OrderDto>.Success(await BuildOrderDtoAsync(order, ct));
     }
 
-    public async Task<Result<OrderDto>> GetByIdAsync(Guid orderId, CancellationToken ct = default)
+    public async Task<Result<OrderDto>> GetByIdAsync(int orderId, CancellationToken ct = default)
     {
         var order = await _orderRepo.GetByIdAsync(orderId, ct);
         if (order is null) return Result<OrderDto>.Failure("Order not found");
-
-        var post = await _postRepo.GetByIdAsync(order.BikePostId, ct);
-        var buyer = await _userRepo.GetByIdAsync(order.BuyerId, ct);
-        var seller = await _userRepo.GetByIdAsync(order.SellerId, ct);
-
-        return Result<OrderDto>.Success(MapToDto(order, post!, buyer!, seller!));
+        return Result<OrderDto>.Success(await BuildOrderDtoAsync(order, ct));
     }
 
-    public async Task<Result<List<OrderDto>>> GetByBuyerAsync(Guid buyerId, CancellationToken ct = default)
+    public async Task<Result<List<OrderDto>>> GetByBuyerAsync(int buyerId, CancellationToken ct = default)
     {
         var orders = await _orderRepo.FindAsync(o => o.BuyerId == buyerId, ct);
-        return await MapOrderListAsync(orders, ct);
+        var dtos = new List<OrderDto>();
+        foreach (var order in orders.OrderByDescending(o => o.OrderDate))
+        {
+            dtos.Add(await BuildOrderDtoAsync(order, ct));
+        }
+        return Result<List<OrderDto>>.Success(dtos);
     }
 
-    public async Task<Result<List<OrderDto>>> GetBySellerAsync(Guid sellerId, CancellationToken ct = default)
-    {
-        var orders = await _orderRepo.FindAsync(o => o.SellerId == sellerId, ct);
-        return await MapOrderListAsync(orders, ct);
-    }
-
-    public async Task<Result> CancelOrderAsync(Guid userId, Guid orderId, string reason, CancellationToken ct = default)
+    public async Task<Result> CancelOrderAsync(int userId, int orderId, CancellationToken ct = default)
     {
         var order = await _orderRepo.GetByIdAsync(orderId, ct);
         if (order is null) return Result.Failure("Order not found");
-        if (order.BuyerId != userId && order.SellerId != userId)
-            return Result.Failure("Access denied");
-        if (order.Status is OrderStatus.Completed or OrderStatus.Cancelled or OrderStatus.Refunded)
+        if (order.BuyerId != userId) return Result.Failure("Access denied");
+        if (order.OrderStatus is 4 or 5) // Completed or Cancelled
             return Result.Failure("Cannot cancel this order");
 
-        order.Status = OrderStatus.Cancelled;
-        order.CancelledAt = DateTime.UtcNow;
-        order.CancellationReason = reason;
-
+        order.OrderStatus = 5; // Cancelled
         _orderRepo.Update(order);
+
+        // Restore listing
+        var listing = await _listingRepo.GetByIdAsync(order.ListingId, ct);
+        if (listing is not null)
+        {
+            listing.ListingStatus = 1; // Active
+            _listingRepo.Update(listing);
+        }
+
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result> ConfirmDeliveryAsync(Guid buyerId, Guid orderId, CancellationToken ct = default)
+    public async Task<Result> ConfirmDeliveryAsync(int buyerId, int orderId, CancellationToken ct = default)
     {
         var order = await _orderRepo.GetByIdAsync(orderId, ct);
         if (order is null) return Result.Failure("Order not found");
         if (order.BuyerId != buyerId) return Result.Failure("Access denied");
 
-        order.Status = OrderStatus.Completed;
-        order.DeliveredAt = DateTime.UtcNow;
-        order.CompletedAt = DateTime.UtcNow;
-
-        // Mark post as sold
-        var post = await _postRepo.GetByIdAsync(order.BikePostId, ct);
-        if (post is not null)
-        {
-            post.Status = PostStatus.Sold;
-            _postRepo.Update(post);
-        }
-
+        order.OrderStatus = 4; // Completed
         _orderRepo.Update(order);
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result> ProcessPaymentAsync(Guid buyerId, ProcessPaymentDto dto, CancellationToken ct = default)
+    public async Task<Result> ProcessPaymentAsync(int buyerId, ProcessPaymentDto dto, CancellationToken ct = default)
     {
         var order = await _orderRepo.GetByIdAsync(dto.OrderId, ct);
         if (order is null) return Result.Failure("Order not found");
         if (order.BuyerId != buyerId) return Result.Failure("Access denied");
 
-        var amount = dto.Type == PaymentType.Deposit ? order.DepositAmount : order.RemainingAmount;
-
         var payment = new Payment
         {
-            OrderId = order.Id,
-            TransactionId = $"PAY-{Guid.NewGuid().ToString()[..8].ToUpper()}",
-            Amount = amount,
-            Type = dto.Type,
-            Method = dto.Method,
-            Gateway = dto.Gateway,
-            Status = PaymentStatus.Completed,
-            ProcessedAt = DateTime.UtcNow
+            OrderId = order.OrderId,
+            Amount = dto.Amount,
+            PaymentMethod = dto.PaymentMethod,
+            TransactionRef = $"PAY-{Guid.NewGuid().ToString()[..8].ToUpper()}",
+            PaymentDate = DateTime.UtcNow
         };
 
         await _paymentRepo.AddAsync(payment, ct);
 
-        if (dto.Type == PaymentType.Deposit)
-        {
-            order.Status = OrderStatus.DepositPaid;
-            order.DepositPaidAt = DateTime.UtcNow;
-        }
-        else
-        {
-            order.Status = OrderStatus.FullyPaid;
-            order.FullPaymentAt = DateTime.UtcNow;
-        }
-
+        order.OrderStatus = 2; // Paid
         _orderRepo.Update(order);
+
         await _uow.SaveChangesAsync(ct);
         return Result.Success();
     }
 
-    public async Task<Result> OpenDisputeAsync(Guid buyerId, Guid orderId, string reason, CancellationToken ct = default)
+    private async Task<OrderDto> BuildOrderDtoAsync(Order order, CancellationToken ct)
     {
-        var order = await _orderRepo.GetByIdAsync(orderId, ct);
-        if (order is null) return Result.Failure("Order not found");
-        if (order.BuyerId != buyerId) return Result.Failure("Access denied");
+        var listing = await _listingRepo.GetByIdAsync(order.ListingId, ct);
+        var buyer = await _userRepo.GetByIdAsync(order.BuyerId, ct);
 
-        order.HasDispute = true;
-        order.DisputeReason = reason;
-        order.Status = OrderStatus.Disputed;
+        string sellerName = "Unknown";
+        string? bikeImageUrl = null;
 
-        _orderRepo.Update(order);
-        await _uow.SaveChangesAsync(ct);
-        return Result.Success();
-    }
-
-    private async Task<Result<List<OrderDto>>> MapOrderListAsync(IReadOnlyList<Order> orders, CancellationToken ct)
-    {
-        var dtos = new List<OrderDto>();
-        foreach (var order in orders)
+        if (listing is not null)
         {
-            var post = await _postRepo.GetByIdAsync(order.BikePostId, ct);
-            var buyer = await _userRepo.GetByIdAsync(order.BuyerId, ct);
-            var seller = await _userRepo.GetByIdAsync(order.SellerId, ct);
-            dtos.Add(MapToDto(order, post!, buyer!, seller!));
-        }
-        return Result<List<OrderDto>>.Success(dtos);
-    }
+            var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
+            sellerName = seller?.Username ?? "Unknown";
 
-    private static OrderDto MapToDto(Order order, BikePost post, AppUser buyer, AppUser seller)
-    {
+            var media = await _mediaRepo.FindAsync(m => m.ListingId == listing.ListingId && m.IsThumbnail == true, ct);
+            bikeImageUrl = media.FirstOrDefault()?.MediaUrl;
+        }
+
         return new OrderDto
         {
-            Id = order.Id,
-            OrderNumber = order.OrderNumber,
-            Status = order.Status,
-            BikePrice = order.BikePrice,
-            DepositAmount = order.DepositAmount,
-            RemainingAmount = order.RemainingAmount,
+            OrderId = order.OrderId,
+            OrderStatus = order.OrderStatus,
             TotalAmount = order.TotalAmount,
-            ShippingAddress = order.ShippingAddress,
-            TrackingNumber = order.TrackingNumber,
-            CreatedAt = order.CreatedAt,
-            BikeTitle = post.Title,
-            BikeImageUrl = post.Images.FirstOrDefault(i => i.IsPrimary)?.ImageUrl
-                        ?? post.Images.FirstOrDefault()?.ImageUrl,
-            BuyerName = buyer.FullName,
-            SellerName = seller.FullName
+            OrderDate = order.OrderDate,
+            BikeTitle = listing?.Title ?? "Unknown",
+            BikeImageUrl = bikeImageUrl,
+            BuyerName = buyer?.Username ?? "Unknown",
+            SellerName = sellerName
         };
     }
 }
