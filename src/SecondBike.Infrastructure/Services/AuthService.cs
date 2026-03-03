@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using SecondBike.Application.Common;
 using SecondBike.Application.DTOs.Users;
@@ -9,7 +8,7 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Authentication — Registration with email confirmation, login, and profile management.
+/// Authentication — Registration with OTP email verification, login, and profile management.
 /// </summary>
 public class AuthService : IAuthService
 {
@@ -20,7 +19,7 @@ public class AuthService : IAuthService
     private readonly IUnitOfWork _uow;
     private readonly IJwtService _jwtService;
     private readonly IEmailService _emailService;
-    private readonly IConfiguration _configuration;
+    private readonly IEmailTemplateService _emailTemplateService;
     private readonly ILogger<AuthService> _logger;
 
     public AuthService(
@@ -31,7 +30,7 @@ public class AuthService : IAuthService
         IUnitOfWork uow,
         IJwtService jwtService,
         IEmailService emailService,
-        IConfiguration configuration,
+        IEmailTemplateService emailTemplateService,
         ILogger<AuthService> logger)
     {
         _userRepo = userRepo;
@@ -41,7 +40,7 @@ public class AuthService : IAuthService
         _uow = uow;
         _jwtService = jwtService;
         _emailService = emailService;
-        _configuration = configuration;
+        _emailTemplateService = emailTemplateService;
         _logger = logger;
     }
 
@@ -59,7 +58,6 @@ public class AuthService : IAuthService
         if (role is null)
             return Result<AuthResultDto>.Failure("Invalid role");
 
-        // Create user with IsVerified = false
         var user = new User
         {
             Username = dto.Username,
@@ -74,7 +72,6 @@ public class AuthService : IAuthService
         await _userRepo.AddAsync(user, ct);
         await _uow.SaveChangesAsync(ct);
 
-        // Create user profile
         var profile = new UserProfile
         {
             UserId = user.UserId,
@@ -84,15 +81,14 @@ public class AuthService : IAuthService
         await _profileRepo.AddAsync(profile, ct);
         await _uow.SaveChangesAsync(ct);
 
-        // Generate email confirmation token & send email
-        await SendConfirmationEmailAsync(user, ct);
+        await SendOtpEmailAsync(user, ct);
 
-        _logger.LogInformation("User registered: {Email}, Role: {Role}, awaiting email confirmation", dto.Email, role.RoleName);
+        _logger.LogInformation("User registered: {Email}, Role: {Role}, awaiting OTP verification", dto.Email, role.RoleName);
 
         return Result<AuthResultDto>.Success(new AuthResultDto
         {
             Succeeded = true,
-            Token = null, // No JWT until email is confirmed
+            Token = null,
             User = MapToDto(user, profile, role.RoleName),
             RequiresEmailConfirmation = true
         });
@@ -111,7 +107,6 @@ public class AuthService : IAuthService
         if (user.Status == 0)
             return Result<AuthResultDto>.Failure("Your account has been banned");
 
-        // Block login if email not confirmed
         if (user.IsVerified != true)
         {
             return Result<AuthResultDto>.Success(new AuthResultDto
@@ -190,7 +185,7 @@ public class AuthService : IAuthService
         return Result<UserProfileDto>.Success(MapToDto(user, profile, role?.RoleName ?? "Buyer"));
     }
 
-    public async Task<Result> ConfirmEmailAsync(string email, string token, CancellationToken ct = default)
+    public async Task<Result> ConfirmEmailAsync(string email, string otp, CancellationToken ct = default)
     {
         var users = await _userRepo.FindAsync(u => u.Email == email, ct);
         var user = users.FirstOrDefault();
@@ -200,30 +195,27 @@ public class AuthService : IAuthService
         if (user.IsVerified == true)
             return Result.Failure("Email is already confirmed");
 
-        // Find a valid, non-expired, non-revoked token for this user
         var tokens = await _tokenRepo.FindAsync(t =>
             t.UserId == user.UserId &&
-            t.Token == token &&
+            t.Token == otp &&
             t.RevokedAt == null, ct);
-        var confirmToken = tokens.FirstOrDefault();
+        var otpToken = tokens.FirstOrDefault();
 
-        if (confirmToken is null)
-            return Result.Failure("Invalid confirmation token");
+        if (otpToken is null)
+            return Result.Failure("Invalid verification code");
 
-        if (confirmToken.ExpiresAt < DateTime.UtcNow)
-            return Result.Failure("Confirmation token has expired. Please request a new one");
+        if (otpToken.ExpiresAt < DateTime.UtcNow)
+            return Result.Failure("Verification code has expired. Please request a new one");
 
-        // Mark user as verified
         user.IsVerified = true;
         _userRepo.Update(user);
 
-        // Revoke the token so it can't be reused
-        confirmToken.RevokedAt = DateTime.UtcNow;
-        _tokenRepo.Update(confirmToken);
+        otpToken.RevokedAt = DateTime.UtcNow;
+        _tokenRepo.Update(otpToken);
 
         await _uow.SaveChangesAsync(ct);
 
-        _logger.LogInformation("Email confirmed for user: {Email}", email);
+        _logger.LogInformation("Email confirmed via OTP for user: {Email}", email);
         return Result.Success();
     }
 
@@ -237,7 +229,6 @@ public class AuthService : IAuthService
         if (user.IsVerified == true)
             return Result.Failure("Email is already confirmed");
 
-        // Revoke all existing confirmation tokens for this user
         var existingTokens = await _tokenRepo.FindAsync(t =>
             t.UserId == user.UserId && t.RevokedAt == null, ct);
         foreach (var t in existingTokens)
@@ -246,9 +237,9 @@ public class AuthService : IAuthService
             _tokenRepo.Update(t);
         }
 
-        await SendConfirmationEmailAsync(user, ct);
+        await SendOtpEmailAsync(user, ct);
 
-        _logger.LogInformation("Confirmation email resent to: {Email}", email);
+        _logger.LogInformation("OTP resent to: {Email}", email);
         return Result.Success();
     }
 
@@ -259,44 +250,22 @@ public class AuthService : IAuthService
 
     // ──────────── Private helpers ────────────
 
-    private async Task SendConfirmationEmailAsync(User user, CancellationToken ct)
+    private async Task SendOtpEmailAsync(User user, CancellationToken ct)
     {
-        // Generate a secure random token
-        var tokenValue = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
+        var otpCode = Random.Shared.Next(100000, 999999).ToString();
 
         var refreshToken = new RefreshToken
         {
             UserId = user.UserId,
-            Token = tokenValue,
-            ExpiresAt = DateTime.UtcNow.AddHours(24),
+            Token = otpCode,
+            ExpiresAt = DateTime.UtcNow.AddMinutes(10),
             CreatedAt = DateTime.UtcNow
         };
         await _tokenRepo.AddAsync(refreshToken, ct);
         await _uow.SaveChangesAsync(ct);
 
-        // Build confirmation URL
-        var baseUrl = _configuration["App:BaseUrl"] ?? "http://localhost:5173";
-        var confirmUrl = $"{baseUrl}/confirm-email?email={Uri.EscapeDataString(user.Email)}&token={tokenValue}";
-
-        var htmlBody = $@"
-            <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;'>
-                <h2 style='color: #2563eb;'>Xác nhận email — SecondBike</h2>
-                <p>Xin chào <strong>{user.Username}</strong>,</p>
-                <p>Cảm ơn bạn đã đăng ký tài khoản SecondBike. Vui lòng nhấn nút bên dưới để xác nhận email:</p>
-                <div style='text-align: center; margin: 30px 0;'>
-                    <a href='{confirmUrl}'
-                       style='background-color: #2563eb; color: white; padding: 12px 30px;
-                              text-decoration: none; border-radius: 6px; font-size: 16px;'>
-                        Xác nhận Email
-                    </a>
-                </div>
-                <p style='color: #666; font-size: 14px;'>Link này sẽ hết hạn sau <strong>24 giờ</strong>.</p>
-                <p style='color: #666; font-size: 14px;'>Nếu bạn không đăng ký tài khoản, vui lòng bỏ qua email này.</p>
-                <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;'>
-                <p style='color: #999; font-size: 12px;'>© SecondBike — Nền tảng mua bán xe đạp cũ</p>
-            </div>";
-
-        await _emailService.SendEmailAsync(user.Email, "Xác nhận email — SecondBike", htmlBody);
+        var (subject, body) = _emailTemplateService.BuildOtpEmail(user.Username, otpCode);
+        await _emailService.SendEmailAsync(user.Email, subject, body);
     }
 
     private static UserProfileDto MapToDto(User user, UserProfile? profile, string roleName)

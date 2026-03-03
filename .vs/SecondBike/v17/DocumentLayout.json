@@ -3,6 +3,26 @@
   "WorkspaceRootPath": "D:\\FPTSupport\\SmallApp_DemoBE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iemailtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iemailtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\emailtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\emailtemplateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPTSupport\\SmallApp_DemoBE\\docs\\FE_AUTH_EMAIL_GUIDE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docs\\FE_AUTH_EMAIL_GUIDE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,10 +54,6 @@
       "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{229CFB0E-E979-4141-A76E-80E55AF835C8}|src\\SecondBike.Application\\SecondBike.Application.csproj|solutionrelative:src\\secondbike.application\\interfaces\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.domain\\entities\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CEAE2ECD-9BD7-483B-AB40-E5BA81B475D8}|src\\SecondBike.Domain\\SecondBike.Domain.csproj|solutionrelative:src\\secondbike.domain\\entities\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -60,10 +76,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{EB63084D-EF10-4BD1-BE26-97F653DDDA0E}|src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj|solutionrelative:src\\secondbike.infrastructure\\secondbike.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|d:\\fptsupport\\smallapp_demobe\\src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{72764C43-6C6A-4982-AF33-579609F0CEFC}|src\\SecondBike.Api\\SecondBike.Api.csproj|solutionrelative:src\\secondbike.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\FPTSupport\\SmallApp_DemoBE\\docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
@@ -269,17 +281,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
+              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-02T14:53:50.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailTemplateService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\EmailTemplateService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\EmailTemplateService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\EmailTemplateService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\EmailTemplateService.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T03:30:32.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "IEmailTemplateService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IEmailTemplateService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IEmailTemplateService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IEmailTemplateService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IEmailTemplateService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T03:30:19.091Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAYwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:27:04.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FE_AUTH_EMAIL_GUIDE.md",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\FE_AUTH_EMAIL_GUIDE.md",
+              "RelativeDocumentMoniker": "docs\\FE_AUTH_EMAIL_GUIDE.md",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\FE_AUTH_EMAIL_GUIDE.md",
+              "RelativeToolTip": "docs\\FE_AUTH_EMAIL_GUIDE.md",
+              "ViewState": "AgIAANUAAAAAAAAAAAAAAGUCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-03-03T03:28:09.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAYBAAAAAAAAAAAUwCABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T11:35:47.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\EmailService.cs",
               "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\EmailService.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\EmailService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T03:25:24.047Z",
               "EditorCaption": ""
@@ -294,20 +384,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "UserDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
               "RelativeToolTip": "src\\SecondBike.Application\\DTOs\\Users\\UserDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:25:43.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "AdminDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Admin\\AdminDtos.cs",
@@ -320,20 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "RelativeToolTip": "src\\SecondBike.Infrastructure\\Services\\AuthService.cs",
-              "ViewState": "AgIAAD8BAAAAAAAAAAAAAD8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:35:47.816Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "SecondBikeDbContext.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\SecondBikeDbContext.cs",
@@ -346,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "BikePostDto.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikePostDto.cs",
@@ -359,7 +436,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "SecondBikeDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Dell\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1160433716\\SecondBikeDbContext.cs",
               "ToolTip": "C:\\Users\\Dell\\AppData\\Local\\Temp\\CopilotBaseline\\Deleted\\1160433716\\SecondBikeDbContext.cs",
@@ -370,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "ShoppingCart.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\ShoppingCart.cs",
@@ -383,20 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "RelativeToolTip": "src\\SecondBike.Application\\Interfaces\\Services\\IAuthService.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T11:27:04.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "IJwtService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IJwtService.cs",
@@ -409,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\Entities\\User.cs",
@@ -422,7 +486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "SecondBike.Domain.csproj.Backup.tmp",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\SecondBike.Domain.csproj.Backup.tmp",
@@ -435,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "AdminService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\AdminService.cs",
@@ -448,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "WishlistService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\WishlistService.cs",
@@ -461,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 67,
               "Title": "SecondBikeDb_CreateAndSeed.sql",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\database\\SecondBikeDb_CreateAndSeed.sql",
               "RelativeDocumentMoniker": "database\\SecondBikeDb_CreateAndSeed.sql",
@@ -472,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "SecondBike.Infrastructure.csproj",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\SecondBike.Infrastructure.csproj",
@@ -485,19 +549,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\SecondBike.Api\\appsettings.json",
-              "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\appsettings.json",
-              "RelativeToolTip": "src\\SecondBike.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-02T14:53:50.063Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "GOOGLE_LOGIN_GUIDE_FOR_FE.md",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
               "RelativeDocumentMoniker": "docs\\GOOGLE_LOGIN_GUIDE_FOR_FE.md",
@@ -509,20 +561,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "ToolTip": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\DependencyInjection.cs",
               "RelativeToolTip": "src\\SecondBike.Infrastructure\\DependencyInjection.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAABRwC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAABRwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T11:36:31.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Program.cs",
@@ -535,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "PROJECT_DOCUMENTATION.md",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\docs\\PROJECT_DOCUMENTATION.md",
               "RelativeDocumentMoniker": "docs\\PROJECT_DOCUMENTATION.md",
@@ -547,7 +599,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 65,
               "Title": "InspectionsController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\InspectionsController.cs",
@@ -560,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 66,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AdminController.cs",
@@ -573,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "RatingsController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\RatingsController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\RatingsController.cs",
@@ -586,7 +638,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 64,
               "Title": "WishlistController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\WishlistController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\WishlistController.cs",
@@ -599,7 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "MessagesController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\MessagesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\MessagesController.cs",
@@ -612,7 +664,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "OrdersController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\OrdersController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\OrdersController.cs",
@@ -625,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 63,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\AuthController.cs",
@@ -638,7 +690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 62,
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BaseApiController.cs",
@@ -651,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "JwtService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\JwtService.cs",
@@ -664,7 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "SecondBike.Api.csproj",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\SecondBike.Api.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\SecondBike.Api.csproj",
@@ -677,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "BikesController.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Api\\Controllers\\BikesController.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Api\\Controllers\\BikesController.cs",
@@ -690,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Hubs\\ChatHub.cs",
@@ -703,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Repository.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\Repository.cs",
@@ -716,7 +768,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Repositories\\UnitOfWork.cs",
@@ -729,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "BikeSearchService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikeSearchService.cs",
@@ -742,7 +794,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "SecondBike.Domain.csproj",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
               "RelativeDocumentMoniker": "src\\SecondBike.Domain\\SecondBike.Domain.csproj",
@@ -755,7 +807,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "IWishlistService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IWishlistService.cs",
@@ -768,7 +820,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "IRatingService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IRatingService.cs",
@@ -781,7 +833,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "IOrderService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IOrderService.cs",
@@ -794,7 +846,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "IMessageService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IMessageService.cs",
@@ -807,7 +859,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "IInspectionService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IInspectionService.cs",
@@ -820,7 +872,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "IBikeSearchService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikeSearchService.cs",
@@ -833,7 +885,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "IBikePostService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IBikePostService.cs",
@@ -846,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\Services\\IAdminService.cs",
@@ -859,7 +911,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "RatingService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\RatingService.cs",
@@ -872,7 +924,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 61,
               "Title": "InspectionService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\InspectionService.cs",
@@ -885,7 +937,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "MessageService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\MessageService.cs",
@@ -898,7 +950,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 60,
               "Title": "OrderService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\OrderService.cs",
@@ -911,7 +963,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "BikePostService.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Infrastructure\\Services\\BikePostService.cs",
@@ -924,7 +976,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 59,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DependencyInjection.cs",
@@ -936,7 +988,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 58,
               "Title": "CreateRatingValidator.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateRatingValidator.cs",
@@ -949,7 +1001,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 57,
               "Title": "RegisterValidator.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\RegisterValidator.cs",
@@ -962,7 +1014,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 56,
               "Title": "CreateBikePostValidator.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Validators\\CreateBikePostValidator.cs",
@@ -975,7 +1027,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 55,
               "Title": "InspectionDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Inspections\\InspectionDtos.cs",
@@ -988,7 +1040,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "RatingDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Ratings\\RatingDtos.cs",
@@ -1001,7 +1053,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "ChatDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Chat\\ChatDtos.cs",
@@ -1014,7 +1066,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "OrderDtos.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Orders\\OrderDtos.cs",
@@ -1027,7 +1079,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "BikeFilterDto.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\BikeFilterDto.cs",
@@ -1040,7 +1092,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "UpdateBikePostDto.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\UpdateBikePostDto.cs",
@@ -1053,7 +1105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "CreateBikePostDto.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\DTOs\\Bikes\\CreateBikePostDto.cs",
@@ -1066,7 +1118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 48,
               "Title": "PagedResult.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\PagedResult.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\PagedResult.cs",
@@ -1078,7 +1130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "Result.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Common\\Result.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Common\\Result.cs",
@@ -1090,7 +1142,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IUnitOfWork.cs",
@@ -1102,7 +1154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "IRepository.cs",
               "DocumentMoniker": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "src\\SecondBike.Application\\Interfaces\\IRepository.cs",

@@ -39,12 +39,12 @@ public class AuthController : BaseApiController
         => ToResponse(await _authService.GoogleLoginAsync(dto, ct));
 
     /// <summary>
-    /// Confirm email address using the token sent via email.
+    /// Verify email using the 6-digit OTP code sent to the user's email.
     /// </summary>
-    [HttpGet("confirm-email")]
-    public async Task<IActionResult> ConfirmEmail([FromQuery] string email, [FromQuery] string token, CancellationToken ct)
+    [HttpPost("confirm-email")]
+    public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailDto dto, CancellationToken ct)
     {
-        var result = await _authService.ConfirmEmailAsync(email, token, ct);
+        var result = await _authService.ConfirmEmailAsync(dto.Email, dto.Otp, ct);
         if (result.IsSuccess)
             return Ok(new { message = "Email confirmed successfully!" });
         return BadRequest(new { error = result.ErrorMessage });
