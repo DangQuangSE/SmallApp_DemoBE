@@ -69,6 +69,7 @@ public class RatingService : IRatingService
         return Result<RatingDto>.Success(new RatingDto
         {
             FeedbackId = feedback.FeedbackId,
+            OrderId = feedback.OrderId,
             Rating = feedback.Rating,
             Comment = feedback.Comment,
             FromUserName = fromUser?.Username ?? "Unknown",
@@ -87,6 +88,7 @@ public class RatingService : IRatingService
             dtos.Add(new RatingDto
             {
                 FeedbackId = f.FeedbackId,
+                OrderId = f.OrderId,
                 Rating = f.Rating,
                 Comment = f.Comment,
                 FromUserName = fromUser?.Username ?? "Unknown",
@@ -95,5 +97,38 @@ public class RatingService : IRatingService
         }
 
         return Result<List<RatingDto>>.Success(dtos);
+    }
+
+    public async Task<Result<SellerStatsDto>> GetSellerStatsAsync(int sellerId, CancellationToken ct = default)
+    {
+        var seller = await _userRepo.GetByIdAsync(sellerId, ct);
+        if (seller is null) return Result<SellerStatsDto>.Failure("Seller not found");
+
+        var feedbacks = await _feedbackRepo.FindAsync(f => f.TargetUserId == sellerId, ct);
+        var rated = feedbacks.Where(f => f.Rating.HasValue).ToList();
+
+        var distribution = new Dictionary<int, int>
+        {
+            { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }
+        };
+        foreach (var f in rated)
+        {
+            distribution[f.Rating!.Value]++;
+        }
+
+        return Result<SellerStatsDto>.Success(new SellerStatsDto
+        {
+            SellerId = sellerId,
+            SellerName = seller.Username,
+            AverageRating = rated.Count > 0 ? Math.Round(rated.Average(f => f.Rating!.Value), 1) : 0,
+            TotalReviews = feedbacks.Count,
+            RatingDistribution = distribution
+        });
+    }
+
+    public async Task<Result<bool>> HasRatedOrderAsync(int userId, int orderId, CancellationToken ct = default)
+    {
+        var exists = await _feedbackRepo.AnyAsync(f => f.OrderId == orderId && f.UserId == userId, ct);
+        return Result<bool>.Success(exists);
     }
 }

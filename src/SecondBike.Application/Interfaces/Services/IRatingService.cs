@@ -10,4 +10,6 @@ public interface IRatingService
 {
     Task<Result<RatingDto>> CreateAsync(int fromUserId, CreateRatingDto dto, CancellationToken ct = default);
     Task<Result<List<RatingDto>>> GetBySellerAsync(int sellerId, CancellationToken ct = default);
+    Task<Result<SellerStatsDto>> GetSellerStatsAsync(int sellerId, CancellationToken ct = default);
+    Task<Result<bool>> HasRatedOrderAsync(int userId, int orderId, CancellationToken ct = default);
 }

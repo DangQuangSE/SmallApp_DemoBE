@@ -26,4 +26,13 @@ public class RatingsController : BaseApiController
     [HttpGet("seller/{sellerId:int}")]
     public async Task<IActionResult> GetBySeller(int sellerId, CancellationToken ct)
         => ToResponse(await _ratingService.GetBySellerAsync(sellerId, ct));
+
+    [AllowAnonymous]
+    [HttpGet("seller/{sellerId:int}/stats")]
+    public async Task<IActionResult> GetSellerStats(int sellerId, CancellationToken ct)
+        => ToResponse(await _ratingService.GetSellerStatsAsync(sellerId, ct));
+
+    [HttpGet("order/{orderId:int}/check")]
+    public async Task<IActionResult> HasRatedOrder(int orderId, CancellationToken ct)
+        => ToResponse(await _ratingService.HasRatedOrderAsync(GetCurrentUserId(), orderId, ct));
 }
