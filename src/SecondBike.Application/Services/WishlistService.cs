@@ -4,10 +4,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Buyer Experience — Wishlist management.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class WishlistService : IWishlistService
 {
@@ -94,6 +95,7 @@ public class WishlistService : IWishlistService
                 Title = listing.Title,
                 Description = listing.Description,
                 Price = listing.Price,
+                Quantity = listing.Quantity,
                 ListingStatus = listing.ListingStatus,
                 Address = listing.Address,
                 PostedDate = listing.PostedDate,

@@ -11,39 +11,28 @@ namespace SecondBike.Infrastructure;
 
 /// <summary>
 /// Extension methods for registering Infrastructure layer services.
+/// Only external/infra concerns: EF Core, repositories, and third-party integrations.
+/// Business services are registered in Application.DependencyInjection.
 /// </summary>
 public static class DependencyInjection
 {
-    /// <summary>
-    /// Adds Infrastructure layer services including EF Core, Identity, repositories, and application services.
-    /// </summary>
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Register Entity Framework Core with SQL Server
+        // EF Core
         services.AddDbContext<SecondBikeDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-        // Register Generic Repository and Unit of Work
+        // Repositories
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IBikeListingRepository, BikeListingRepository>();
 
-        // Register Application Services
+        // External / Infrastructure services only
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IEmailService, EmailService>();
-        services.AddScoped<IEmailTemplateService, EmailTemplateService>();
         services.AddScoped<IImageStorageService, CloudinaryService>();
-        services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<IProfileService, ProfileService>();
-        services.AddScoped<IBikePostService, BikePostService>();
-        services.AddScoped<IBikeSearchService, BikeSearchService>();
-        services.AddScoped<IOrderService, OrderService>();
-        services.AddScoped<IMessageService, MessageService>();
-        services.AddScoped<IRatingService, RatingService>();
-        services.AddScoped<IWishlistService, WishlistService>();
-        services.AddScoped<IInspectionService, InspectionService>();
-        services.AddScoped<IAdminService, AdminService>();
         services.AddSingleton<IVnPayService, VnPayService>();
 
         return services;

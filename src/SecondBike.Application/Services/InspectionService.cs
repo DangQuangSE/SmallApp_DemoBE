@@ -4,10 +4,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Vehicle inspection reports using InspectionRequest/InspectionReport entities.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class InspectionService : IInspectionService
 {
@@ -36,18 +37,16 @@ public class InspectionService : IInspectionService
         var listing = await _listingRepo.GetByIdAsync(dto.ListingId, ct);
         if (listing is null) return Result<InspectionReportDto>.Failure("Listing not found");
 
-        // Create request
         var request = new InspectionRequest
         {
             ListingId = dto.ListingId,
             InspectorId = inspectorId,
-            RequestStatus = 2, // In Progress
+            RequestStatus = 2,
             RequestDate = DateTime.UtcNow
         };
         await _requestRepo.AddAsync(request, ct);
         await _uow.SaveChangesAsync(ct);
 
-        // Create report
         var report = new InspectionReport
         {
             RequestId = request.RequestId,
@@ -112,7 +111,7 @@ public class InspectionService : IInspectionService
         if (request is null) return Result.Failure("Request not found");
         if (request.InspectorId != inspectorId) return Result.Failure("Access denied");
 
-        request.RequestStatus = 3; // Completed
+        request.RequestStatus = 3;
         report.CompletedAt = DateTime.UtcNow;
 
         _requestRepo.Update(request);

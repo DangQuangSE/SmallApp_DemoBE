@@ -21,6 +21,9 @@ public class UpdateBikePostValidator : AbstractValidator<UpdateBikePostDto>
         RuleFor(x => x.Price)
             .GreaterThan(0).WithMessage("Price must be greater than 0");
 
+        RuleFor(x => x.Quantity)
+            .GreaterThanOrEqualTo(1).WithMessage("Quantity must be at least 1");
+
         RuleFor(x => x.NewImages)
             .Must(images => images.Count <= MaxTotalImages)
             .WithMessage($"Maximum {MaxTotalImages} new images allowed at once");

@@ -9,8 +9,6 @@ public partial class Order
 
     public int BuyerId { get; set; }
 
-    public int ListingId { get; set; }
-
     public decimal? TotalAmount { get; set; }
 
     public byte? OrderStatus { get; set; }
@@ -23,7 +21,7 @@ public partial class Order
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual BicycleListing Listing { get; set; } = null!;
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 

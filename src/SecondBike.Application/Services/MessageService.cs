@@ -4,10 +4,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Interaction — Messaging between users via ChatSession/ChatMessage.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class MessageService : IMessageService
 {
@@ -36,7 +37,6 @@ public class MessageService : IMessageService
         var receiver = await _userRepo.GetByIdAsync(dto.ReceiverId, ct);
         if (receiver is null) return Result<MessageDto>.Failure("Receiver not found");
 
-        // Find or create chat session
         var sessions = await _sessionRepo.FindAsync(s =>
             (s.BuyerId == senderId && s.SellerId == dto.ReceiverId) ||
             (s.BuyerId == dto.ReceiverId && s.SellerId == senderId), ct);
@@ -81,7 +81,6 @@ public class MessageService : IMessageService
 
     public async Task<Result<List<MessageDto>>> GetConversationAsync(int userId, int otherUserId, CancellationToken ct = default)
     {
-        // Find sessions between these two users
         var sessions = await _sessionRepo.FindAsync(s =>
             (s.BuyerId == userId && s.SellerId == otherUserId) ||
             (s.BuyerId == otherUserId && s.SellerId == userId), ct);
@@ -104,10 +103,8 @@ public class MessageService : IMessageService
             if (user is not null) userMap[uid] = user;
         }
 
-        // Determine the other user id from session perspective
         var dtos = allMessages.OrderBy(m => m.SentAt).Select(m =>
         {
-            var otherUid = m.SenderId == userId ? otherUserId : userId;
             return new MessageDto
             {
                 MessageId = m.MessageId,

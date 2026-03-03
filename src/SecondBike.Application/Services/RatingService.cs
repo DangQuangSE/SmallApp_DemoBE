@@ -4,15 +4,17 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
-/// Interaction — Seller rating/feedback service using the Feedback entity.
+/// Interaction — Seller rating/feedback service.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class RatingService : IRatingService
 {
     private readonly IRepository<Feedback> _feedbackRepo;
     private readonly IRepository<Order> _orderRepo;
+    private readonly IRepository<OrderDetail> _orderDetailRepo;
     private readonly IRepository<User> _userRepo;
     private readonly IRepository<BicycleListing> _listingRepo;
     private readonly IUnitOfWork _uow;
@@ -20,12 +22,14 @@ public class RatingService : IRatingService
     public RatingService(
         IRepository<Feedback> feedbackRepo,
         IRepository<Order> orderRepo,
+        IRepository<OrderDetail> orderDetailRepo,
         IRepository<User> userRepo,
         IRepository<BicycleListing> listingRepo,
         IUnitOfWork uow)
     {
         _feedbackRepo = feedbackRepo;
         _orderRepo = orderRepo;
+        _orderDetailRepo = orderDetailRepo;
         _userRepo = userRepo;
         _listingRepo = listingRepo;
         _uow = uow;
@@ -36,13 +40,16 @@ public class RatingService : IRatingService
         var order = await _orderRepo.GetByIdAsync(dto.OrderId, ct);
         if (order is null) return Result<RatingDto>.Failure("Order not found");
         if (order.BuyerId != fromUserId) return Result<RatingDto>.Failure("Only the buyer can rate");
-        if (order.OrderStatus != 4) return Result<RatingDto>.Failure("Order must be completed first"); // 4 = Completed
+        if (order.OrderStatus != 4) return Result<RatingDto>.Failure("Order must be completed first");
 
         var existing = await _feedbackRepo.AnyAsync(f => f.OrderId == dto.OrderId && f.UserId == fromUserId, ct);
         if (existing) return Result<RatingDto>.Failure("This order has already been rated");
 
-        // Find seller via listing
-        var listing = await _listingRepo.GetByIdAsync(order.ListingId, ct);
+        var details = await _orderDetailRepo.FindAsync(d => d.OrderId == order.OrderId, ct);
+        var firstDetail = details.FirstOrDefault();
+        if (firstDetail is null) return Result<RatingDto>.Failure("Order has no items");
+
+        var listing = await _listingRepo.GetByIdAsync(firstDetail.ListingId, ct);
         if (listing is null) return Result<RatingDto>.Failure("Listing not found");
 
         var feedback = new Feedback

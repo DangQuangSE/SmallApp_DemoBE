@@ -14,6 +14,7 @@ public class UpdateBikePostDto
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
     public decimal Price { get; set; }
+    public int Quantity { get; set; } = 1;
     public string? Address { get; set; }
 
     // Bicycle info

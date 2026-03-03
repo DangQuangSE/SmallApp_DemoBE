@@ -58,7 +58,7 @@ public class BikeMappingProfile : Profile
             .ForMember(d => d.ListingMedia, o => o.Ignore())
             .ForMember(d => d.ChatSessions, o => o.Ignore())
             .ForMember(d => d.InspectionRequests, o => o.Ignore())
-            .ForMember(d => d.Orders, o => o.Ignore())
+            .ForMember(d => d.OrderDetails, o => o.Ignore())
             .ForMember(d => d.RequestAbuses, o => o.Ignore())
             .ForMember(d => d.ShoppingCarts, o => o.Ignore())
             .ForMember(d => d.Wishlists, o => o.Ignore());
@@ -75,7 +75,7 @@ public class BikeMappingProfile : Profile
             .ForMember(d => d.ListingMedia, o => o.Ignore())
             .ForMember(d => d.ChatSessions, o => o.Ignore())
             .ForMember(d => d.InspectionRequests, o => o.Ignore())
-            .ForMember(d => d.Orders, o => o.Ignore())
+            .ForMember(d => d.OrderDetails, o => o.Ignore())
             .ForMember(d => d.RequestAbuses, o => o.Ignore())
             .ForMember(d => d.ShoppingCarts, o => o.Ignore())
             .ForMember(d => d.Wishlists, o => o.Ignore());

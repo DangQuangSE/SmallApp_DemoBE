@@ -5,10 +5,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// User profile management — view, update, avatar upload, change password.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class ProfileService : IProfileService
 {
@@ -97,13 +98,11 @@ public class ProfileService : IProfileService
             await _uow.SaveChangesAsync(ct);
         }
 
-        // Delete old avatar from cloud storage if exists
         if (!string.IsNullOrEmpty(profile.AvatarUrl))
         {
             await _imageStorage.DeleteAsync(profile.AvatarUrl);
         }
 
-        // Upload new avatar
         var avatarUrl = await _imageStorage.UploadAsync(imageStream, fileName, "avatars");
         profile.AvatarUrl = avatarUrl;
         _profileRepo.Update(profile);

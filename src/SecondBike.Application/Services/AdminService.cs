@@ -5,10 +5,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Admin Dashboard — Listing moderation, user management, and dispute resolution.
+/// Business logic belongs in Application layer.
 /// </summary>
 public class AdminService : IAdminService
 {
@@ -16,6 +17,7 @@ public class AdminService : IAdminService
     private readonly IRepository<User> _userRepo;
     private readonly IRepository<UserRole> _roleRepo;
     private readonly IRepository<Order> _orderRepo;
+    private readonly IRepository<OrderDetail> _orderDetailRepo;
     private readonly IRepository<ListingMedium> _mediaRepo;
     private readonly IUnitOfWork _uow;
 
@@ -24,6 +26,7 @@ public class AdminService : IAdminService
         IRepository<User> userRepo,
         IRepository<UserRole> roleRepo,
         IRepository<Order> orderRepo,
+        IRepository<OrderDetail> orderDetailRepo,
         IRepository<ListingMedium> mediaRepo,
         IUnitOfWork uow)
     {
@@ -31,6 +34,7 @@ public class AdminService : IAdminService
         _userRepo = userRepo;
         _roleRepo = roleRepo;
         _orderRepo = orderRepo;
+        _orderDetailRepo = orderDetailRepo;
         _mediaRepo = mediaRepo;
         _uow = uow;
     }
@@ -39,10 +43,10 @@ public class AdminService : IAdminService
     {
         var totalUsers = await _userRepo.CountAsync(cancellationToken: ct);
         var activeListings = await _listingRepo.CountAsync(l => l.ListingStatus == 1, ct);
-        var pendingMods = await _listingRepo.CountAsync(l => l.ListingStatus == 2, ct); // 2 = Pending moderation
+        var pendingMods = await _listingRepo.CountAsync(l => l.ListingStatus == 2, ct);
         var totalOrders = await _orderRepo.CountAsync(cancellationToken: ct);
 
-        var completedOrders = await _orderRepo.FindAsync(o => o.OrderStatus == 4, ct); // 4 = Completed
+        var completedOrders = await _orderRepo.FindAsync(o => o.OrderStatus == 4, ct);
         var totalRevenue = completedOrders.Sum(o => o.TotalAmount ?? 0);
 
         return Result<DashboardStatsDto>.Success(new DashboardStatsDto
@@ -57,7 +61,7 @@ public class AdminService : IAdminService
 
     public async Task<Result<List<PendingPostDto>>> GetPendingPostsAsync(CancellationToken ct = default)
     {
-        var listings = await _listingRepo.FindAsync(l => l.ListingStatus == 2, ct); // 2 = Pending
+        var listings = await _listingRepo.FindAsync(l => l.ListingStatus == 2, ct);
         var dtos = new List<PendingPostDto>();
 
         foreach (var listing in listings.OrderBy(l => l.PostedDate))
@@ -84,7 +88,7 @@ public class AdminService : IAdminService
         var listing = await _listingRepo.GetByIdAsync(dto.ListingId, ct);
         if (listing is null) return Result.Failure("Listing not found");
 
-        listing.ListingStatus = dto.Approve ? (byte)1 : (byte)4; // 1=Active, 4=Rejected
+        listing.ListingStatus = dto.Approve ? (byte)1 : (byte)4;
         _listingRepo.Update(listing);
         await _uow.SaveChangesAsync(ct);
 
@@ -137,20 +141,23 @@ public class AdminService : IAdminService
         var order = await _orderRepo.GetByIdAsync(dto.OrderId, ct);
         if (order is null) return Result.Failure("Order not found");
 
-        // Mark order as resolved
-        order.OrderStatus = dto.RefundBuyer ? (byte)6 : (byte)4; // 6=Refunded, 4=Completed
+        order.OrderStatus = dto.RefundBuyer ? (byte)6 : (byte)4;
         _orderRepo.Update(order);
 
         if (dto.BanSeller)
         {
-            var listing = await _listingRepo.GetByIdAsync(order.ListingId, ct);
-            if (listing is not null)
+            var details = await _orderDetailRepo.FindAsync(d => d.OrderId == order.OrderId, ct);
+            foreach (var detail in details)
             {
-                var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
-                if (seller is not null)
+                var listing = await _listingRepo.GetByIdAsync(detail.ListingId, ct);
+                if (listing is not null)
                 {
-                    seller.Status = 0; // Banned
-                    _userRepo.Update(seller);
+                    var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
+                    if (seller is not null)
+                    {
+                        seller.Status = 0;
+                        _userRepo.Update(seller);
+                    }
                 }
             }
         }

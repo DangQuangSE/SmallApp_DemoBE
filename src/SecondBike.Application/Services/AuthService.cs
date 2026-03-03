@@ -5,11 +5,11 @@ using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
-/// Authentication only — registration, login, OTP verification.
-/// Profile management is handled by ProfileService (SRP).
+/// Authentication � registration, login, OTP verification.
+/// Business/orchestration logic belongs in Application layer.
 /// </summary>
 public class AuthService : IAuthService
 {
@@ -201,8 +201,6 @@ public class AuthService : IAuthService
     {
         return Task.CompletedTask;
     }
-
-    // ──────────── Private helpers ────────────
 
     private async Task SendOtpEmailAsync(User user, CancellationToken ct)
     {

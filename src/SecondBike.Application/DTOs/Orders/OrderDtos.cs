@@ -2,7 +2,13 @@ namespace SecondBike.Application.DTOs.Orders;
 
 public class CreateOrderDto
 {
+    public List<OrderItemDto> Items { get; set; } = new();
+}
+
+public class OrderItemDto
+{
     public int ListingId { get; set; }
+    public int Quantity { get; set; } = 1;
 }
 
 public class OrderDto
@@ -15,12 +21,22 @@ public class OrderDto
     public byte? DepositStatus { get; set; }
     public DateTime? OrderDate { get; set; }
 
+    public string BuyerName { get; set; } = string.Empty;
+
+    public List<OrderDetailDto> Items { get; set; } = new();
+    public List<PaymentDto> Payments { get; set; } = new();
+}
+
+public class OrderDetailDto
+{
+    public int OrderDetailId { get; set; }
+    public int ListingId { get; set; }
     public string BikeTitle { get; set; } = string.Empty;
     public string? BikeImageUrl { get; set; }
-    public string BuyerName { get; set; } = string.Empty;
     public string SellerName { get; set; } = string.Empty;
-
-    public List<PaymentDto> Payments { get; set; } = new();
+    public int Quantity { get; set; }
+    public decimal UnitPrice { get; set; }
+    public decimal Subtotal => UnitPrice * Quantity;
 }
 
 public class PaymentDto

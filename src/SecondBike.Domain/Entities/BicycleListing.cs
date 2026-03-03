@@ -17,6 +17,8 @@ public partial class BicycleListing
 
     public decimal Price { get; set; }
 
+    public int Quantity { get; set; }
+
     public byte? ListingStatus { get; set; }
 
     public string? Address { get; set; }
@@ -31,7 +33,7 @@ public partial class BicycleListing
 
     public virtual ICollection<ListingMedium> ListingMedia { get; set; } = new List<ListingMedium>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
     public virtual ICollection<RequestAbuse> RequestAbuses { get; set; } = new List<RequestAbuse>();
 

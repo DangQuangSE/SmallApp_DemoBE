@@ -1,37 +1,41 @@
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SecondBike.Application.Common;
 using SecondBike.Application.DTOs.Bikes;
 using SecondBike.Application.Interfaces;
-using SecondBike.Application.Interfaces.Services;
 using SecondBike.Domain.Entities;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Infrastructure.Repositories;
 
 /// <summary>
-/// Buyer Experience — Search and filter bicycle listings.
+/// EF Core implementation of IBikeListingRepository.
+/// Encapsulates complex Include/ThenInclude queries that require DbContext knowledge.
 /// </summary>
-public class BikeSearchService : IBikeSearchService
+public class BikeListingRepository : IBikeListingRepository
 {
     private readonly SecondBikeDbContext _context;
-    private readonly IMapper _mapper;
 
-    public BikeSearchService(SecondBikeDbContext context, IMapper mapper)
+    public BikeListingRepository(SecondBikeDbContext context)
     {
         _context = context;
-        _mapper = mapper;
     }
 
-    public async Task<Result<PagedResult<BikePostDto>>> SearchAsync(BikeFilterDto filter, CancellationToken ct = default)
+    public async Task<BicycleListing?> GetWithDetailsAsync(int listingId, CancellationToken ct = default)
     {
-        var query = _context.BicycleListings
-            .Include(l => l.Bike).ThenInclude(b => b.Brand)
-            .Include(l => l.Bike).ThenInclude(b => b.Type)
-            .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
-            .Include(l => l.Seller)
-            .Include(l => l.ListingMedia)
-            .Include(l => l.InspectionRequests)
-            .Where(l => l.ListingStatus == 1) // Active
+        return await FullQuery()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(l => l.ListingId == listingId, ct);
+    }
+
+    public async Task<List<BicycleListing>> GetBySellerWithDetailsAsync(int sellerId, CancellationToken ct = default)
+    {
+        return await FullQuery()
+            .Where(l => l.SellerId == sellerId)
+            .ToListAsync(ct);
+    }
+
+    public async Task<(List<BicycleListing> Items, int TotalCount)> SearchAsync(BikeFilterDto filter, CancellationToken ct = default)
+    {
+        var query = FullQuery()
+            .Where(l => l.ListingStatus == 1) // Active only
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
@@ -75,42 +79,22 @@ public class BikeSearchService : IBikeSearchService
             .Take(filter.PageSize)
             .ToListAsync(ct);
 
-        var dtos = _mapper.Map<List<BikePostDto>>(items);
-
-        return Result<PagedResult<BikePostDto>>.Success(new PagedResult<BikePostDto>
-        {
-            Items = dtos,
-            TotalCount = totalCount,
-            Page = filter.Page,
-            PageSize = filter.PageSize
-        });
+        return (items, totalCount);
     }
 
-    public async Task<Result<BikePostDto>> GetDetailAsync(int listingId, CancellationToken ct = default)
+    public async Task<bool> HasOrderDetailsAsync(int listingId, CancellationToken ct = default)
     {
-        var listing = await _context.BicycleListings
+        return await _context.OrderDetails.AnyAsync(od => od.ListingId == listingId, ct);
+    }
+
+    private IQueryable<BicycleListing> FullQuery()
+    {
+        return _context.BicycleListings
             .Include(l => l.Bike).ThenInclude(b => b.Brand)
             .Include(l => l.Bike).ThenInclude(b => b.Type)
             .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
             .Include(l => l.Seller)
             .Include(l => l.ListingMedia)
-            .Include(l => l.InspectionRequests)
-            .FirstOrDefaultAsync(l => l.ListingId == listingId, ct);
-
-        if (listing is null)
-            return Result<BikePostDto>.Failure("Listing not found");
-
-        return Result<BikePostDto>.Success(_mapper.Map<BikePostDto>(listing));
-    }
-
-    public async Task<Result<List<string>>> GetBrandsAsync(CancellationToken ct = default)
-    {
-        var brands = await _context.Brands
-            .Select(b => b.BrandName)
-            .Distinct()
-            .OrderBy(b => b)
-            .ToListAsync(ct);
-
-        return Result<List<string>>.Success(brands);
+            .Include(l => l.InspectionRequests);
     }
 }

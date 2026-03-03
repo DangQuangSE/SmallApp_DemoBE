@@ -14,6 +14,6 @@ public partial class ListingMedium
     public string? MediaType { get; set; }
 
     public bool? IsThumbnail { get; set; }
-
+        
     public virtual BicycleListing Listing { get; set; } = null!;
 }

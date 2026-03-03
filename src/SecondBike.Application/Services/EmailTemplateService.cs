@@ -1,10 +1,10 @@
 using SecondBike.Application.Interfaces.Services;
 
-namespace SecondBike.Infrastructure.Services;
+namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Builds HTML email content for transactional emails.
-/// Single place to maintain all email templates.
+/// Pure logic — no external dependencies — belongs in Application layer.
 /// </summary>
 public class EmailTemplateService : IEmailTemplateService
 {

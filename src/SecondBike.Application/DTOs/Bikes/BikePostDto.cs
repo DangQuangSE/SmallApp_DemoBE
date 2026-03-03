@@ -10,6 +10,7 @@ public class BikePostDto
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
     public decimal Price { get; set; }
+    public int Quantity { get; set; }
     public byte? ListingStatus { get; set; }
     public string? Address { get; set; }
     public DateTime? PostedDate { get; set; }

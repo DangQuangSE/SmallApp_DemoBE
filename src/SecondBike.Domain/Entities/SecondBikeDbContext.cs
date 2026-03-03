@@ -46,6 +46,8 @@ public partial class SecondBikeDbContext : DbContext
 
     public virtual DbSet<Order> Orders { get; set; }
 
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
     public virtual DbSet<Payment> Payments { get; set; }
 
     public virtual DbSet<Payout> Payouts { get; set; }
@@ -167,6 +169,7 @@ public partial class SecondBikeDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+            entity.Property(e => e.Quantity).HasDefaultValue(1);
             entity.Property(e => e.SellerId).HasColumnName("SellerID");
             entity.Property(e => e.Title).HasMaxLength(200);
 
@@ -386,7 +389,6 @@ public partial class SecondBikeDbContext : DbContext
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.BuyerId).HasColumnName("BuyerID");
-            entity.Property(e => e.ListingId).HasColumnName("ListingID");
             entity.Property(e => e.OrderDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -397,11 +399,29 @@ public partial class SecondBikeDbContext : DbContext
                 .HasForeignKey(d => d.BuyerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order__BuyerID__5BE2A6F2");
+        });
 
-            entity.HasOne(d => d.Listing).WithMany(p => p.Orders)
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDetail");
+
+            entity.ToTable("OrderDetail");
+
+            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.ListingId).HasColumnName("ListingID");
+            entity.Property(e => e.Quantity).HasDefaultValue(1);
+            entity.Property(e => e.UnitPrice).HasColumnType("decimal(18, 2)");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__OrderDetail__OrderID");
+
+            entity.HasOne(d => d.Listing).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.ListingId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Order__ListingID__5CD6CB2B");
+                .HasConstraintName("FK__OrderDetail__ListingID");
         });
 
         modelBuilder.Entity<Payment>(entity =>
