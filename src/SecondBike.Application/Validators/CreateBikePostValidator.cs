@@ -5,44 +5,46 @@ namespace SecondBike.Application.Validators;
 
 public class CreateBikePostValidator : AbstractValidator<CreateBikePostDto>
 {
+    private const int MaxTotalImages = 10;
+    private const long MaxFileSize = 5 * 1024 * 1024; // 5 MB
+    private static readonly string[] AllowedExtensions = [".jpg", ".jpeg", ".png", ".webp"];
+
     public CreateBikePostValidator()
     {
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("Title is required")
             .MaximumLength(200).WithMessage("Title must be at most 200 characters");
 
-        RuleFor(x => x.Description)
-            .NotEmpty().WithMessage("Description is required")
-            .MaximumLength(5000).WithMessage("Description must be at most 5000 characters");
-
         RuleFor(x => x.Price)
             .GreaterThan(0).WithMessage("Price must be greater than 0");
 
-        RuleFor(x => x.Brand)
-            .NotEmpty().WithMessage("Brand is required");
+        RuleFor(x => x.Quantity)
+            .GreaterThanOrEqualTo(1).WithMessage("Quantity must be at least 1");
 
-        RuleFor(x => x.Model)
-            .NotEmpty().WithMessage("Model is required");
+        RuleFor(x => x)
+            .Must(x => x.Images.Count + x.ImageUrls.Count > 0)
+            .WithMessage("At least one image is required")
+            .Must(x => x.Images.Count + x.ImageUrls.Count <= MaxTotalImages)
+            .WithMessage($"Maximum {MaxTotalImages} images allowed");
 
-        RuleFor(x => x.Year)
-            .InclusiveBetween(1990, DateTime.UtcNow.Year + 1)
-            .WithMessage("Year must be valid");
+        RuleForEach(x => x.Images).ChildRules(image =>
+        {
+            image.RuleFor(f => f.Length)
+                .LessThanOrEqualTo(MaxFileSize)
+                .WithMessage("Each image must be at most 5 MB");
 
-        RuleFor(x => x.Category).IsInEnum();
-        RuleFor(x => x.Size).IsInEnum();
-        RuleFor(x => x.Condition).IsInEnum();
+            image.RuleFor(f => f.FileName)
+                .Must(fileName => AllowedExtensions.Any(ext =>
+                    fileName.EndsWith(ext, StringComparison.OrdinalIgnoreCase)))
+                .WithMessage("Only .jpg, .jpeg, .png, .webp images are allowed");
+        });
 
-        RuleFor(x => x.FrameMaterial).NotEmpty();
-        RuleFor(x => x.Color).NotEmpty();
+        RuleFor(x => x.Condition)
+            .MaximumLength(50).WithMessage("Condition must be at most 50 characters")
+            .When(x => x.Condition is not null);
 
-        RuleFor(x => x.WeightKg)
-            .GreaterThan(0).WithMessage("Weight must be greater than 0");
-
-        RuleFor(x => x.City).NotEmpty();
-        RuleFor(x => x.District).NotEmpty();
-
-        RuleFor(x => x.ImageUrls)
-            .Must(x => x.Count > 0).WithMessage("At least one image is required")
-            .Must(x => x.Count <= 10).WithMessage("Maximum 10 images allowed");
+        RuleFor(x => x.Address)
+            .MaximumLength(255).WithMessage("Address must be at most 255 characters")
+            .When(x => x.Address is not null);
     }
 }

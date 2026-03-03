@@ -1,66 +1,39 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SecondBike.Application.Interfaces;
 using SecondBike.Application.Interfaces.Services;
-using SecondBike.Infrastructure.Data;
+using SecondBike.Domain.Entities;
 using SecondBike.Infrastructure.Repositories;
 using SecondBike.Infrastructure.Services;
 
 namespace SecondBike.Infrastructure;
 
 /// <summary>
-/// Extension methods for registering Infrastructure layer services
-/// in the dependency injection container.
+/// Extension methods for registering Infrastructure layer services.
+/// Only external/infra concerns: EF Core, repositories, and third-party integrations.
+/// Business services are registered in Application.DependencyInjection.
 /// </summary>
 public static class DependencyInjection
 {
-    /// <summary>
-    /// Adds Infrastructure layer services including EF Core, Identity, repositories, and application services.
-    /// </summary>
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Register Entity Framework Core with SQL Server
-        services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(
-                configuration.GetConnectionString("DefaultConnection"),
-                sqlOptions => sqlOptions.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+        // EF Core
+        services.AddDbContext<SecondBikeDbContext>(options =>
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-        // Register ASP.NET Core Identity
-        services.AddIdentity<IdentityUser, IdentityRole>(options =>
-            {
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = true;
-                options.Password.RequireUppercase = true;
-                options.Password.RequireNonAlphanumeric = true;
-                options.Password.RequiredLength = 8;
-
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-                options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.AllowedForNewUsers = true;
-
-                options.User.RequireUniqueEmail = true;
-            })
-            .AddEntityFrameworkStores<AppDbContext>()
-            .AddDefaultTokenProviders();
-
-        // Register Generic Repository and Unit of Work
+        // Repositories
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IBikeListingRepository, BikeListingRepository>();
 
-        // Register Application Services
-        services.AddScoped<IBikePostService, BikePostService>();
-        services.AddScoped<IBikeSearchService, BikeSearchService>();
-        services.AddScoped<IOrderService, OrderService>();
-        services.AddScoped<IMessageService, MessageService>();
-        services.AddScoped<IRatingService, RatingService>();
-        services.AddScoped<IWishlistService, WishlistService>();
-        services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<IInspectionService, InspectionService>();
-        services.AddScoped<IAdminService, AdminService>();
+        // External / Infrastructure services only
+        services.AddScoped<IJwtService, JwtService>();
+        services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IImageStorageService, CloudinaryService>();
+        services.AddSingleton<IVnPayService, VnPayService>();
 
         return services;
     }

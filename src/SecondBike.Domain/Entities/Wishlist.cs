@@ -1,16 +1,19 @@
-using SecondBike.Domain.Common;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SecondBike.Domain.Entities;
 
-/// <summary>
-/// User's saved / favorite bike posts (wishlist).
-/// </summary>
-public class Wishlist : BaseEntity
+public partial class Wishlist
 {
-    public Guid UserId { get; set; }
-    public Guid BikePostId { get; set; }
-    public string? Notes { get; set; }
+    public int WishlistId { get; set; }
 
-    public virtual AppUser User { get; set; } = null!;
-    public virtual BikePost BikePost { get; set; } = null!;
+    public int UserId { get; set; }
+
+    public int ListingId { get; set; }
+
+    public DateTime? AddedDate { get; set; }
+
+    public virtual BicycleListing Listing { get; set; } = null!;
+
+    public virtual User User { get; set; } = null!;
 }

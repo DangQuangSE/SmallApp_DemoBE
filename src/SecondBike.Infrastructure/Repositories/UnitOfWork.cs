@@ -1,18 +1,16 @@
 using SecondBike.Application.Interfaces;
-using SecondBike.Infrastructure.Data;
+using SecondBike.Domain.Entities;
 
 namespace SecondBike.Infrastructure.Repositories;
 
 /// <summary>
-/// Unit of Work implementation that wraps the AppDbContext
-/// to coordinate saving changes across multiple repositories.
+/// Unit of Work implementation that wraps the SecondBikeDbContext.
 /// </summary>
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly AppDbContext _context;
-    private bool _disposed;
+    private readonly SecondBikeDbContext _context;
 
-    public UnitOfWork(AppDbContext context)
+    public UnitOfWork(SecondBikeDbContext context)
     {
         _context = context;
     }
@@ -23,26 +21,9 @@ public class UnitOfWork : IUnitOfWork
         return await _context.SaveChangesAsync(cancellationToken);
     }
 
-    /// <summary>
-    /// Releases the database context resources.
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (!_disposed)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-
-            _disposed = true;
-        }
-    }
-
     /// <inheritdoc />
     public void Dispose()
     {
-        Dispose(true);
         GC.SuppressFinalize(this);
     }
 }

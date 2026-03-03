@@ -1,54 +1,52 @@
-using SecondBike.Domain.Enums;
-
 namespace SecondBike.Application.DTOs.Bikes;
 
 /// <summary>
-/// DTO returned when viewing a bike post.
+/// DTO returned when viewing a bicycle listing.
+/// Maps to BicycleListing + Bicycle + Brand + BikeType + ListingMedia + User.
 /// </summary>
 public class BikePostDto
 {
-    public Guid Id { get; set; }
+    public int ListingId { get; set; }
     public string Title { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
     public decimal Price { get; set; }
-    public PostStatus Status { get; set; }
-    public string Brand { get; set; } = string.Empty;
-    public string Model { get; set; } = string.Empty;
-    public int Year { get; set; }
-    public BikeCategory Category { get; set; }
-    public BikeSize Size { get; set; }
-    public string FrameMaterial { get; set; } = string.Empty;
-    public string Color { get; set; } = string.Empty;
-    public BikeCondition Condition { get; set; }
-    public decimal WeightKg { get; set; }
-    public int? OdometerKm { get; set; }
-    public string City { get; set; } = string.Empty;
-    public string District { get; set; } = string.Empty;
-    public int ViewCount { get; set; }
-    public int WishlistCount { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime? PublishedAt { get; set; }
+    public int Quantity { get; set; }
+    public byte? ListingStatus { get; set; }
+    public string? Address { get; set; }
+    public DateTime? PostedDate { get; set; }
+
+    // Bicycle info
+    public int BikeId { get; set; }
+    public string? ModelName { get; set; }
+    public string? SerialNumber { get; set; }
+    public string? Color { get; set; }
+    public string? Condition { get; set; }
+    public string? BrandName { get; set; }
+    public string? TypeName { get; set; }
+
+    // Bicycle detail
+    public string? FrameSize { get; set; }
+    public string? FrameMaterial { get; set; }
+    public string? WheelSize { get; set; }
+    public string? BrakeType { get; set; }
+    public decimal? Weight { get; set; }
+    public string? Transmission { get; set; }
 
     // Seller info
-    public Guid SellerId { get; set; }
+    public int SellerId { get; set; }
     public string SellerName { get; set; } = string.Empty;
-    public string? SellerAvatar { get; set; }
-    public decimal SellerRating { get; set; }
-    public bool IsVerifiedSeller { get; set; }
 
     // Images
     public List<BikeImageDto> Images { get; set; } = new();
 
     // Inspection
     public bool HasInspection { get; set; }
-    public string? InspectionSummary { get; set; }
 }
 
 public class BikeImageDto
 {
-    public Guid Id { get; set; }
-    public string ImageUrl { get; set; } = string.Empty;
-    public string? ThumbnailUrl { get; set; }
-    public int DisplayOrder { get; set; }
-    public bool IsPrimary { get; set; }
+    public int MediaId { get; set; }
+    public string MediaUrl { get; set; } = string.Empty;
+    public string? MediaType { get; set; }
+    public bool? IsThumbnail { get; set; }
 }

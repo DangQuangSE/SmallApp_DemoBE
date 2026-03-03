@@ -1,29 +1,27 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using SecondBike.Application.Interfaces;
-using SecondBike.Domain.Common;
-using SecondBike.Infrastructure.Data;
+using SecondBike.Domain.Entities;
 
 namespace SecondBike.Infrastructure.Repositories;
 
 /// <summary>
 /// Generic repository implementation using Entity Framework Core.
-/// Provides standard CRUD operations for all domain entities.
 /// </summary>
-/// <typeparam name="T">The entity type, must inherit from <see cref="BaseEntity"/>.</typeparam>
-public class Repository<T> : IRepository<T> where T : BaseEntity
+/// <typeparam name="T">The entity type.</typeparam>
+public class Repository<T> : IRepository<T> where T : class
 {
-    protected readonly AppDbContext Context;
+    protected readonly SecondBikeDbContext Context;
     protected readonly DbSet<T> DbSet;
 
-    public Repository(AppDbContext context)
+    public Repository(SecondBikeDbContext context)
     {
         Context = context;
         DbSet = context.Set<T>();
     }
 
     /// <inheritdoc />
-    public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         return await DbSet.FindAsync(new object[] { id }, cancellationToken);
     }
@@ -40,6 +38,21 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         CancellationToken cancellationToken = default)
     {
         return await DbSet.Where(predicate).ToListAsync(cancellationToken);
+    }
+
+    /// <inheritdoc />
+    public async Task<IReadOnlyList<T>> FindWithIncludesAsync(
+        Expression<Func<T, bool>> predicate,
+        CancellationToken cancellationToken = default,
+        params Expression<Func<T, object>>[] includes)
+    {
+        IQueryable<T> query = DbSet;
+        if (includes != null)
+        {
+            query = includes.Aggregate(query, (current, include) => current.Include(include));
+        }
+
+        return await query.Where(predicate).ToListAsync(cancellationToken);
     }
 
     /// <inheritdoc />

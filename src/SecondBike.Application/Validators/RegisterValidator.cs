@@ -7,6 +7,10 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
 {
     public RegisterValidator()
     {
+        RuleFor(x => x.Username)
+            .NotEmpty().WithMessage("Username is required")
+            .MaximumLength(50);
+
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage("Email is required")
             .EmailAddress().WithMessage("Invalid email format");
@@ -19,10 +23,7 @@ public class RegisterValidator : AbstractValidator<RegisterDto>
             .Matches("[0-9]").WithMessage("Password must contain a digit")
             .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain a special character");
 
-        RuleFor(x => x.FullName)
-            .NotEmpty().WithMessage("Full name is required")
-            .MaximumLength(100);
-
-        RuleFor(x => x.Role).IsInEnum();
+        RuleFor(x => x.RoleId)
+            .GreaterThan(0).WithMessage("Valid role is required");
     }
 }

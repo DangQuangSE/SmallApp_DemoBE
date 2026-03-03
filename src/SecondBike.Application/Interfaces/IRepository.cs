@@ -1,5 +1,4 @@
 using System.Linq.Expressions;
-using SecondBike.Domain.Common;
 
 namespace SecondBike.Application.Interfaces;
 
@@ -7,8 +6,8 @@ namespace SecondBike.Application.Interfaces;
 /// Generic repository interface providing standard CRUD operations for domain entities.
 /// All I/O operations are asynchronous following project coding standards.
 /// </summary>
-/// <typeparam name="T">The entity type, must inherit from <see cref="BaseEntity"/>.</typeparam>
-public interface IRepository<T> where T : BaseEntity
+/// <typeparam name="T">The entity type.</typeparam>
+public interface IRepository<T> where T : class
 {
     /// <summary>
     /// Retrieves an entity by its unique identifier.
@@ -16,7 +15,7 @@ public interface IRepository<T> where T : BaseEntity
     /// <param name="id">The unique identifier of the entity.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The entity if found; otherwise, null.</returns>
-    Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Retrieves all entities of this type.
@@ -32,6 +31,18 @@ public interface IRepository<T> where T : BaseEntity
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A read-only list of matching entities.</returns>
     Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Finds entities matching the specified predicate with optional included navigation properties.
+    /// </summary>
+    /// <param name="predicate">The filter expression.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <param name="includes">Navigation properties to include.</param>
+    /// <returns>A read-only list of matching entities.</returns>
+    Task<IReadOnlyList<T>> FindWithIncludesAsync(
+        Expression<Func<T, bool>> predicate,
+        CancellationToken cancellationToken = default,
+        params Expression<Func<T, object>>[] includes);
 
     /// <summary>
     /// Adds a new entity to the repository.

@@ -1,0 +1,833 @@
+# ?? Backend API Changes — H??ng d?n cho Frontend React
+
+> **Ngày c?p nh?t:** Tháng 6/2025
+>
+> Backend ?ã ???c refactor toàn b? ?? mapping ?úng v?i database `SecondBikeDb`. T?t c? ID ??u chuy?n t? `Guid (string)` sang `int`, các enum ?ã b? lo?i b? và thay b?ng `byte` status ho?c `string`. FE c?n c?p nh?t l?i toàn b? type/interface và API call.
+
+---
+
+## ?? Thay ??i chung quan tr?ng
+
+| Tr??c (c?) | Sau (m?i) | Ghi chú |
+|---|---|---|
+| T?t c? ID dùng `Guid` (string UUID) | T?t c? ID dùng `int` | URL params: `:guid` ? `:int` |
+| Status dùng enum string (`"Active"`, `"Banned"`) | Status dùng `byte` number (`1`, `0`) | Xem b?ng status bên d??i |
+| Entity `AppUser` | Entity `User` + `UserProfile` (tách 2 b?ng) | |
+| Entity `BikePost` | Entity `BicycleListing` + `Bicycle` + `BicycleDetail` | |
+| Entity `BikeImage` | Entity `ListingMedia` | |
+| Entity `Message` | Entity `ChatSession` + `ChatMessage` | |
+| Entity `Rating` | Entity `Feedback` | |
+| Entity `Wishlist` (có `BikePostId`) | Entity `Wishlist` (có `ListingId`) | |
+| Entity `Order` (có `SellerId`, `BikePostId`) | Entity `Order` (ch? có `BuyerId`, `ListingId`) | Seller l?y qua Listing |
+
+---
+
+## ?? B?ng mã Status
+
+### ListingStatus (BicycleListing)
+| Giá tr? | Ý ngh?a |
+|---|---|
+| `0` | Hidden (?n) |
+| `1` | Active (?ang bán) |
+| `2` | Pending Moderation (ch? duy?t) |
+| `3` | Sold (?ã bán) |
+| `4` | Rejected (b? t? ch?i) |
+
+### OrderStatus (Order)
+| Giá tr? | Ý ngh?a |
+|---|---|
+| `1` | Pending (ch? x? lý) |
+| `2` | Paid (?ã thanh toán) |
+| `3` | Shipping (?ang giao) |
+| `4` | Completed (hoàn thành) |
+| `5` | Cancelled (?ã h?y) |
+| `6` | Refunded (hoàn ti?n) |
+
+### User Status
+| Giá tr? | Ý ngh?a |
+|---|---|
+| `1` | Active |
+| `0` | Banned |
+
+### InspectionRequest RequestStatus
+| Giá tr? | Ý ngh?a |
+|---|---|
+| `1` | Pending |
+| `2` | In Progress |
+| `3` | Completed |
+
+---
+
+## ?? 1. Authentication (`/api/auth`)
+
+### `POST /api/auth/register`
+
+**Request body (M?I):**
+```json
+{
+  "username": "string",        // ? M?I — b?t bu?c, unique
+  "email": "string",
+  "password": "string",
+  "fullName": "string | null",
+  "phoneNumber": "string | null",
+  "roleId": 2                  // ? ??I — int thay vì enum string. Default: 2 (Buyer)
+}
+```
+
+**C? (?ã xóa):** `role: "Buyer"` (enum string) ? **M?i:** `roleId: 2` (int)
+
+### `POST /api/auth/login`
+
+**Request body (KHÔNG ??I):**
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+### Response `AuthResultDto` (cho register & login)
+```json
+{
+  "succeeded": true,
+  "token": "jwt-string",
+  "user": { /* UserProfileDto — xem bên d??i */ },
+  "errorMessage": "string | null",
+  "requiresEmailConfirmation": false
+}
+```
+
+### `UserProfileDto` response (M?I hoàn toàn)
+```json
+{
+  "userId": 1,                   // ? ??I — int thay vì Guid
+  "username": "john_doe",        // ? M?I
+  "email": "john@example.com",
+  "fullName": "John Doe",        // nullable
+  "phoneNumber": "0901234567",   // nullable
+  "avatarUrl": "https://...",    // nullable
+  "address": "123 Street",      // ? M?I (t? UserProfile)
+  "roleName": "Buyer",          // ? ??I — string thay vì enum
+  "status": 1,                  // ? ??I — byte thay vì enum
+  "isVerified": false,           // nullable bool
+  "createdAt": "2025-01-01T..."  // nullable datetime
+}
+```
+
+**Các field ?ã XÓA:** `shopName`, `shopDescription`, `isVerifiedSeller`, `sellerRating`, `totalRatingsCount`
+
+### `PUT /api/auth/profile` — Update Profile
+
+**Request body (M?I):**
+```json
+{
+  "fullName": "string | null",
+  "phoneNumber": "string | null",
+  "avatarUrl": "string | null",
+  "address": "string | null"       // ? M?I
+}
+```
+
+**Các field ?ã XÓA:** `shopName`, `shopDescription`
+
+### Các endpoint khác
+| Method | URL | Ghi chú |
+|---|---|---|
+| `POST` | `/api/auth/google` | Body: `{ "idToken": "string" }` — ch?a implement |
+| `GET` | `/api/auth/confirm-email?email=...&token=...` | Placeholder |
+| `POST` | `/api/auth/resend-confirmation` | Body: `{ "email": "string" }` — Placeholder |
+| `GET` | `/api/auth/profile` | ?? Requires Auth |
+| `POST` | `/api/auth/logout` | ?? Requires Auth |
+
+---
+
+## ?? 2. Bikes / Listings (`/api/bikes`)
+
+### `GET /api/bikes` — Search (Public)
+
+**Query params (M?I):**
+```
+?searchTerm=string
+&brandId=int             // ? ??I — int thay vì string brand name
+&typeId=int              // ? ??I — int thay vì enum BikeCategory
+&condition=string        // ? ??I — string thay vì enum ("New", "Used",...)
+&minPrice=decimal
+&maxPrice=decimal
+&address=string          // ? ??I — thay vì city
+&sortBy=string           // "newest" | "oldest" | "price_asc" | "price_desc"
+&page=int                // default 1
+&pageSize=int            // default 12
+```
+
+**Các param ?ã XÓA:** `category`, `size`, `brand` (string), `city`, `minYear`, `maxYear`
+
+### `GET /api/bikes/{id:int}` — Get Detail (Public)
+
+? URL param ??i t? `Guid` sang `int`
+
+### `GET /api/bikes/brands` — Get Brands (Public)
+
+Response: `string[]` (danh sách tên brand)
+
+### `BikePostDto` response (M?I hoàn toàn)
+```json
+{
+  "listingId": 1,              // ? ??I tên + type
+  "title": "Xe ??p Giant",
+  "description": "...",
+  "price": 5000000,
+  "listingStatus": 1,          // ? ??I — byte thay vì enum string
+  "address": "HCM",            // ? ??I tên (tr??c: city + district)
+  "postedDate": "2025-01-01T...",  // ? ??I tên (tr??c: createdAt)
+
+  "bikeId": 10,                // ? M?I
+  "modelName": "Escape 3",     // ? ??I tên (tr??c: model)
+  "serialNumber": "ABC123",    // ? M?I
+  "color": "Red",
+  "condition": "Used",         // ? ??I — string thay vì enum
+  "brandName": "Giant",        // ? ??I tên (tr??c: brand)
+  "typeName": "Mountain",      // ? M?I (thay category)
+
+  "frameSize": "M",            // ? ??I — string thay vì enum BikeSize
+  "frameMaterial": "Aluminum",
+  "wheelSize": "29",           // ? M?I
+  "brakeType": "Disc",         // ? M?I
+  "weight": 12.5,              // ? ??I tên (tr??c: weightKg)
+  "transmission": "Shimano",   // ? M?I
+
+  "sellerId": 5,               // ? ??I — int
+  "sellerName": "john_doe",
+
+  "images": [
+    {
+      "mediaId": 1,            // ? ??I tên + type
+      "mediaUrl": "https://...",  // ? ??I tên (tr??c: imageUrl)
+      "mediaType": "image",    // ? M?I
+      "isThumbnail": true      // ? ??I tên (tr??c: isPrimary)
+    }
+  ],
+
+  "hasInspection": false
+}
+```
+
+**Các field ?ã XÓA:** `id` (Guid), `status` (enum), `brand`, `model`, `year`, `category`, `size`, `odometerKm`, `viewCount`, `wishlistCount`, `publishedAt`, `sellerAvatar`, `sellerRating`, `isVerifiedSeller`, `inspectionSummary`, `thumbnailUrl`, `displayOrder`
+
+### `POST /api/bikes` — Create (?? Auth)
+
+**Request body (M?I):**
+```json
+{
+  "title": "string",
+  "description": "string | null",
+  "price": 5000000,
+  "address": "string | null",
+  "brandId": 1,                  // ? ??I — int | null
+  "typeId": 2,                   // ? M?I — int | null
+  "modelName": "string | null",
+  "serialNumber": "string | null",  // ? M?I
+  "color": "string | null",
+  "condition": "string | null",  // ? ??I — string thay vì enum
+  "frameSize": "string | null",  // ? ??I — string thay vì enum
+  "frameMaterial": "string | null",
+  "wheelSize": "string | null",  // ? M?I
+  "brakeType": "string | null",  // ? M?I
+  "weight": 12.5,                // ? ??I tên (tr??c: weightKg)
+  "transmission": "string | null",  // ? M?I
+  "imageUrls": ["url1", "url2"]
+}
+```
+
+**Các field ?ã XÓA:** `brand` (string), `model`, `year`, `category`, `size`, `odometerKm`, `usageHistory`, `hasAccidents`, `accidentDescription`, `city`, `district`
+
+### `PUT /api/bikes` — Update (?? Auth)
+
+Gi?ng `CreateBikePostDto` + thêm field `listingId: int` (? ??I t? `id: Guid`)
+
+### Các endpoint khác
+| Method | URL | Ghi chú |
+|---|---|---|
+| `DELETE` | `/api/bikes/{id:int}` | ?? Auth. ? int thay vì Guid |
+| `PATCH` | `/api/bikes/{id:int}/visibility` | ?? Auth. Toggle active/hidden |
+| `GET` | `/api/bikes/my-posts` | ?? Auth. L?y listings c?a seller |
+
+**Endpoint ?ã XÓA:** `PATCH /api/bikes/{id}/submit` (submit for moderation)
+
+---
+
+## ?? 3. Orders (`/api/orders`) — ?? All Require Auth
+
+### `POST /api/orders` — Place Order
+
+**Request body (M?I):**
+```json
+{
+  "listingId": 1    // ? ??I tên + type (tr??c: bikePostId: Guid)
+}
+```
+
+**Các field ?ã XÓA:** `shippingAddress`, `depositPercentage`
+
+### `OrderDto` response (M?I)
+```json
+{
+  "orderId": 1,               // ? ??I tên + type
+  "orderStatus": 1,           // ? ??I — byte thay vì enum string
+  "totalAmount": 5000000,     // nullable decimal
+  "orderDate": "2025-01-01T...",  // ? ??I tên (tr??c: createdAt)
+  "bikeTitle": "Xe ??p Giant",
+  "bikeImageUrl": "https://...",
+  "buyerName": "john_doe",
+  "sellerName": "jane_doe"
+}
+```
+
+**Các field ?ã XÓA:** `id` (Guid), `orderNumber`, `status` (enum), `bikePrice`, `depositAmount`, `remainingAmount`, `shippingAddress`, `trackingNumber`
+
+### `POST /api/orders/payment`
+```json
+{
+  "orderId": 1,           // ? ??I — int
+  "amount": 5000000,
+  "paymentMethod": "string | null"  // ? ??I — string thay vì enum
+}
+```
+
+**Các field ?ã XÓA:** `type` (enum PaymentType), `gateway` (enum PaymentGateway)
+
+### Các endpoint
+| Method | URL | Param | Ghi chú |
+|---|---|---|---|
+| `GET` | `/api/orders/{id:int}` | int | |
+| `GET` | `/api/orders/my-purchases` | | |
+| `POST` | `/api/orders/{id:int}/cancel` | int | Không c?n body reason |
+| `POST` | `/api/orders/{id:int}/confirm-delivery` | int | |
+
+**Endpoints ?ã XÓA:** `GET /api/orders/my-sales`, `POST /api/orders/{id}/dispute`
+
+---
+
+## ?? 4. Messages (`/api/messages`) — ?? All Require Auth
+
+### `POST /api/messages` — Send Message
+```json
+{
+  "receiverId": 5,            // ? ??I — int thay vì Guid
+  "listingId": 1,             // ? ??I tên + type (tr??c: bikePostId: Guid)
+  "content": "string"
+}
+```
+
+### `MessageDto` response
+```json
+{
+  "messageId": 1,             // ? ??I tên + type
+  "senderId": 3,              // ? ??I — int
+  "senderName": "john_doe",
+  "receiverId": 5,            // ? ??I — int
+  "content": "Hello!",
+  "isRead": false,            // nullable bool
+  "sentAt": "2025-01-01T..."  // ? ??I tên (tr??c: createdAt)
+}
+```
+
+**Các field ?ã XÓA:** `id` (Guid), `senderAvatar`
+
+### `ConversationDto` response
+```json
+{
+  "otherUserId": 5,           // ? ??I — int
+  "otherUserName": "jane_doe",
+  "lastMessage": "Hello!",
+  "lastMessageAt": "2025-01-01T...",  // nullable
+  "unreadCount": 3
+}
+```
+
+**Field ?ã XÓA:** `otherUserAvatar`
+
+### Endpoints
+| Method | URL | Param |
+|---|---|---|
+| `GET` | `/api/messages/conversations` | |
+| `GET` | `/api/messages/conversations/{otherUserId:int}` | int |
+| `PATCH` | `/api/messages/conversations/{otherUserId:int}/read` | int |
+| `GET` | `/api/messages/unread-count` | |
+
+---
+
+## ? 5. Ratings (`/api/ratings`) — ?? Auth (tr? GET)
+
+### `POST /api/ratings` — Create Rating (?? Auth)
+```json
+{
+  "orderId": 1,               // ? ??I — int
+  "rating": 5,                // ? ??I tên (tr??c: stars). nullable int (1-5)
+  "comment": "string | null"
+}
+```
+
+**Các field ?ã XÓA:** `communicationRating`, `accuracyRating`, `packagingRating`, `speedRating`
+
+### `RatingDto` response
+```json
+{
+  "feedbackId": 1,             // ? ??I tên + type (tr??c: id: Guid)
+  "rating": 5,                 // ? ??I tên (tr??c: stars)
+  "comment": "Great seller!",
+  "fromUserName": "john_doe",
+  "createdAt": "2025-01-01T..."
+}
+```
+
+**Các field ?ã XÓA:** `fromUserAvatar`, `communicationRating`, `accuracyRating`, `packagingRating`, `speedRating`, `sellerResponse`
+
+### Endpoints
+| Method | URL | Auth |
+|---|---|---|
+| `GET` | `/api/ratings/seller/{sellerId:int}` | Public |
+
+**Endpoint ?ã XÓA:** `POST /api/ratings/{ratingId}/respond`
+
+---
+
+## ?? 6. Wishlist (`/api/wishlist`) — ?? All Require Auth
+
+| Method | URL | Ghi chú |
+|---|---|---|
+| `GET` | `/api/wishlist` | Returns `BikePostDto[]` |
+| `POST` | `/api/wishlist/{listingId:int}` | ? ??I param name + type |
+| `DELETE` | `/api/wishlist/{listingId:int}` | ? ??I param name + type |
+| `GET` | `/api/wishlist/{listingId:int}/check` | Returns `boolean` |
+
+---
+
+## ?? 7. Inspections (`/api/inspections`) — ?? Auth (tr? GET listing)
+
+### `POST /api/inspections` — Create (?? Auth)
+```json
+{
+  "listingId": 1,                    // ? ??I tên + type (tr??c: bikePostId: Guid)
+  "frameCheck": "string | null",     // ? M?I
+  "brakeCheck": "string | null",     // ? M?I
+  "transmissionCheck": "string | null",  // ? M?I
+  "inspectorNote": "string | null",  // ? M?I
+  "finalVerdict": 1,                 // ? M?I — byte | null
+  "reportUrl": "string | null"       // ? M?I
+}
+```
+
+**T?t c? field c? ?ã XÓA:** `overallCondition` (enum), `estimatedValue`, `isRecommended`, `summary`, `frameScore`, `brakesScore`, `gearsScore`, `wheelsScore`, `tiresScore`, `chainScore`, `hasFrameDamage`, `frameNotes`, `hasRust`, `hasCracks`, `allComponentsOriginal`, `replacedComponents`
+
+### `InspectionReportDto` response
+```json
+{
+  "reportId": 1,               // ? ??I tên + type
+  "requestId": 1,              // ? M?I
+  "requestStatus": 3,          // ? M?I — byte
+  "frameCheck": "OK",
+  "brakeCheck": "Good",
+  "transmissionCheck": "Worn",
+  "inspectorNote": "...",
+  "finalVerdict": 1,           // byte | null
+  "reportUrl": "https://...",
+  "completedAt": "2025-01-01T...",  // ? ??I tên (tr??c: inspectedAt)
+  "inspectorName": "inspector_user",
+  "bikeTitle": "Xe ??p Giant"
+}
+```
+
+### Endpoints
+| Method | URL | Auth |
+|---|---|---|
+| `GET` | `/api/inspections/listing/{listingId:int}` | Public. ? ??I path |
+| `GET` | `/api/inspections/my-reports` | ?? Auth |
+| `PATCH` | `/api/inspections/{reportId:int}/complete` | ?? Auth. ? int |
+
+---
+
+## ??? 8. Admin (`/api/admin`) — ?? Requires Role "Admin"
+
+### `GET /api/admin/dashboard`
+
+Response `DashboardStatsDto`:
+```json
+{
+  "totalUsers": 100,
+  "totalActiveListings": 50,    // ? ??I tên (tr??c: totalActivePosts)
+  "pendingModerations": 5,
+  "totalOrders": 200,
+  "totalRevenue": 500000000
+}
+```
+
+**Field ?ã XÓA:** `openDisputes`
+
+### `GET /api/admin/posts/pending`
+
+Response `PendingPostDto[]`:
+```json
+[
+  {
+    "listingId": 1,             // ? ??I tên + type
+    "title": "Xe ??p",
+    "sellerName": "john_doe",
+    "price": 5000000,
+    "brandName": "Giant",       // ? ??I tên (tr??c: brand). nullable
+    "typeName": "Mountain",     // ? M?I (thay category enum)
+    "postedDate": "2025-01-01T...",  // ? ??I tên (tr??c: createdAt)
+    "primaryImageUrl": "https://..."
+  }
+]
+```
+
+### `POST /api/admin/posts/moderate`
+```json
+{
+  "listingId": 1,              // ? ??I tên + type (tr??c: bikePostId: Guid)
+  "approve": true,
+  "rejectionReason": "string | null",
+  "notes": "string | null"
+}
+```
+
+### `GET /api/admin/users?roleId=1`
+
+? Query param ??i t? `role` (enum string) sang `roleId` (int | null)
+
+Response `AdminUserDto[]`:
+```json
+[
+  {
+    "userId": 1,               // ? ??I tên + type
+    "username": "john_doe",    // ? M?I (thay fullName)
+    "email": "john@example.com",
+    "roleName": "Buyer",       // ? ??I — string thay vì enum
+    "status": 1,               // ? ??I — byte thay vì enum
+    "createdAt": "2025-01-01T...",
+    "totalListings": 10,       // ? ??I tên (tr??c: totalPosts)
+    "totalOrders": 5
+  }
+]
+```
+
+### `PATCH /api/admin/users/{userId:int}/status`
+```json
+{
+  "status": 0    // ? ??I — byte thay vì enum string. 0=Banned, 1=Active
+}
+```
+
+### `POST /api/admin/disputes/resolve`
+```json
+{
+  "orderId": 1,       // ? ??I — int
+  "resolution": "string",
+  "refundBuyer": true,
+  "banSeller": false
+}
+```
+
+**Endpoint ?ã XÓA:** `GET /api/admin/disputes` (danh sách dispute)
+
+---
+
+## ?? 9. SignalR ChatHub (`/chathub`)
+
+**Connection URL:** `ws://localhost:5xxx/chathub?access_token=JWT`
+
+### Methods (Client ? Server)
+
+| Method | Params | Ghi chú |
+|---|---|---|
+| `JoinChat` | `userId: string` | Dùng userId (int) convert sang string |
+| `SendMessage` | `senderId: string, dto: SendMessageDto` | ? senderId là int.toString() |
+| `MarkAsRead` | `userId: string, otherUserId: string` | ? C? 2 là int.toString() |
+
+### Events (Server ? Client)
+
+| Event | Data |
+|---|---|
+| `ReceiveMessage` | `MessageDto` (xem ? trên) |
+| `MessagesRead` | `userId: string` |
+
+---
+
+## ?? 10. T?ng h?p TypeScript interfaces m?i cho FE
+
+```typescript
+// ===== AUTH =====
+interface RegisterDto {
+  username: string;
+  email: string;
+  password: string;
+  fullName?: string;
+  phoneNumber?: string;
+  roleId: number; // 1=Admin, 2=Buyer, 3=Seller, 4=Inspector
+}
+
+interface LoginDto {
+  email: string;
+  password: string;
+}
+
+interface AuthResultDto {
+  succeeded: boolean;
+  token?: string;
+  user?: UserProfileDto;
+  errorMessage?: string;
+  requiresEmailConfirmation: boolean;
+}
+
+interface UserProfileDto {
+  userId: number;
+  username: string;
+  email: string;
+  fullName?: string;
+  phoneNumber?: string;
+  avatarUrl?: string;
+  address?: string;
+  roleName: string;
+  status?: number;  // 0=Banned, 1=Active
+  isVerified?: boolean;
+  createdAt?: string;
+}
+
+interface UpdateProfileDto {
+  fullName?: string;
+  phoneNumber?: string;
+  avatarUrl?: string;
+  address?: string;
+}
+
+// ===== BIKES =====
+interface BikeFilterDto {
+  searchTerm?: string;
+  brandId?: number;
+  typeId?: number;
+  condition?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  address?: string;
+  sortBy?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+interface BikePostDto {
+  listingId: number;
+  title: string;
+  description?: string;
+  price: number;
+  listingStatus?: number;
+  address?: string;
+  postedDate?: string;
+  bikeId: number;
+  modelName?: string;
+  serialNumber?: string;
+  color?: string;
+  condition?: string;
+  brandName?: string;
+  typeName?: string;
+  frameSize?: string;
+  frameMaterial?: string;
+  wheelSize?: string;
+  brakeType?: string;
+  weight?: number;
+  transmission?: string;
+  sellerId: number;
+  sellerName: string;
+  images: BikeImageDto[];
+  hasInspection: boolean;
+}
+
+interface BikeImageDto {
+  mediaId: number;
+  mediaUrl: string;
+  mediaType?: string;
+  isThumbnail?: boolean;
+}
+
+interface CreateBikePostDto {
+  title: string;
+  description?: string;
+  price: number;
+  address?: string;
+  brandId?: number;
+  typeId?: number;
+  modelName?: string;
+  serialNumber?: string;
+  color?: string;
+  condition?: string;
+  frameSize?: string;
+  frameMaterial?: string;
+  wheelSize?: string;
+  brakeType?: string;
+  weight?: number;
+  transmission?: string;
+  imageUrls: string[];
+}
+
+interface UpdateBikePostDto extends CreateBikePostDto {
+  listingId: number;
+}
+
+// ===== ORDERS =====
+interface CreateOrderDto {
+  listingId: number;
+}
+
+interface OrderDto {
+  orderId: number;
+  orderStatus?: number;
+  totalAmount?: number;
+  orderDate?: string;
+  bikeTitle: string;
+  bikeImageUrl?: string;
+  buyerName: string;
+  sellerName: string;
+}
+
+interface ProcessPaymentDto {
+  orderId: number;
+  amount: number;
+  paymentMethod?: string;
+}
+
+// ===== CHAT =====
+interface SendMessageDto {
+  receiverId: number;
+  listingId?: number;
+  content: string;
+}
+
+interface MessageDto {
+  messageId: number;
+  senderId: number;
+  senderName: string;
+  receiverId: number;
+  content: string;
+  isRead?: boolean;
+  sentAt?: string;
+}
+
+interface ConversationDto {
+  otherUserId: number;
+  otherUserName: string;
+  lastMessage: string;
+  lastMessageAt?: string;
+  unreadCount: number;
+}
+
+// ===== RATINGS =====
+interface CreateRatingDto {
+  orderId: number;
+  rating?: number;  // 1-5
+  comment?: string;
+}
+
+interface RatingDto {
+  feedbackId: number;
+  rating?: number;
+  comment?: string;
+  fromUserName: string;
+  createdAt?: string;
+}
+
+// ===== INSPECTIONS =====
+interface CreateInspectionDto {
+  listingId: number;
+  frameCheck?: string;
+  brakeCheck?: string;
+  transmissionCheck?: string;
+  inspectorNote?: string;
+  finalVerdict?: number;
+  reportUrl?: string;
+}
+
+interface InspectionReportDto {
+  reportId: number;
+  requestId: number;
+  requestStatus?: number;
+  frameCheck?: string;
+  brakeCheck?: string;
+  transmissionCheck?: string;
+  inspectorNote?: string;
+  finalVerdict?: number;
+  reportUrl?: string;
+  completedAt?: string;
+  inspectorName: string;
+  bikeTitle: string;
+}
+
+// ===== ADMIN =====
+interface DashboardStatsDto {
+  totalUsers: number;
+  totalActiveListings: number;
+  pendingModerations: number;
+  totalOrders: number;
+  totalRevenue: number;
+}
+
+interface PendingPostDto {
+  listingId: number;
+  title: string;
+  sellerName: string;
+  price: number;
+  brandName?: string;
+  typeName?: string;
+  postedDate?: string;
+  primaryImageUrl?: string;
+}
+
+interface ModeratePostDto {
+  listingId: number;
+  approve: boolean;
+  rejectionReason?: string;
+  notes?: string;
+}
+
+interface AdminUserDto {
+  userId: number;
+  username: string;
+  email: string;
+  roleName: string;
+  status?: number;
+  createdAt?: string;
+  totalListings: number;
+  totalOrders: number;
+}
+
+interface ResolveDisputeDto {
+  orderId: number;
+  resolution: string;
+  refundBuyer: boolean;
+  banSeller: boolean;
+}
+
+// ===== PAGINATION =====
+interface PagedResult<T> {
+  items: T[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+  hasPrevious: boolean;
+  hasNext: boolean;
+}
+```
+
+---
+
+## ? Checklist cho FE
+
+- [ ] ??i t?t c? ID t? `string` (UUID) sang `number`
+- [ ] ??i URL params t? `:guid` sang `:int` (ho?c number)
+- [ ] Xóa t?t c? enum imports (`UserRole`, `PostStatus`, `OrderStatus`, `BikeCategory`, `BikeSize`, `BikeCondition`, `PaymentType`, `PaymentMethod`, `PaymentGateway`, `InspectionStatus`, `OverallCondition`, `UserStatus`, `MessageType`)
+- [ ] Thay enum b?ng `number` (byte) cho status fields
+- [ ] C?p nh?t t?t c? field name theo b?ng trên
+- [ ] Xóa các field không còn t?n t?i
+- [ ] Thêm `username` vào form Register
+- [ ] ??i `role` enum ? `roleId` number trong Register
+- [ ] C?p nh?t SignalR hub ?? parse userId là number
+- [ ] Xóa các API call ??n endpoint ?ã b? remove
