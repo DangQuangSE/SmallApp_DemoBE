@@ -44,6 +44,7 @@ public static class DependencyInjection
         services.AddScoped<IWishlistService, WishlistService>();
         services.AddScoped<IInspectionService, InspectionService>();
         services.AddScoped<IAdminService, AdminService>();
+        services.AddSingleton<IVnPayService, VnPayService>();
 
         return services;
     }
