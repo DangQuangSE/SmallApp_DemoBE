@@ -1,3 +1,7 @@
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SecondBike.Application.Common;
 using SecondBike.Application.DTOs.Bikes;
 using SecondBike.Application.Interfaces;
@@ -7,37 +11,45 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Infrastructure.Services;
 
 /// <summary>
-/// Seller Core — Manages bicycle listing CRUD operations.
+/// Seller Core — Manages bicycle listing CRUD operations with Cloudinary image support.
 /// </summary>
 public class BikePostService : IBikePostService
 {
+    private readonly SecondBikeDbContext _context;
     private readonly IRepository<BicycleListing> _listingRepo;
     private readonly IRepository<Bicycle> _bikeRepo;
     private readonly IRepository<BicycleDetail> _detailRepo;
     private readonly IRepository<ListingMedium> _mediaRepo;
     private readonly IRepository<User> _userRepo;
-    private readonly IRepository<Brand> _brandRepo;
-    private readonly IRepository<BikeType> _typeRepo;
     private readonly IUnitOfWork _uow;
+    private readonly IImageStorageService _imageStorage;
+    private readonly IMapper _mapper;
+    private readonly ILogger<BikePostService> _logger;
+
+    private const string ImageFolder = "listings";
 
     public BikePostService(
+        SecondBikeDbContext context,
         IRepository<BicycleListing> listingRepo,
         IRepository<Bicycle> bikeRepo,
         IRepository<BicycleDetail> detailRepo,
         IRepository<ListingMedium> mediaRepo,
         IRepository<User> userRepo,
-        IRepository<Brand> brandRepo,
-        IRepository<BikeType> typeRepo,
-        IUnitOfWork uow)
+        IUnitOfWork uow,
+        IImageStorageService imageStorage,
+        IMapper mapper,
+        ILogger<BikePostService> logger)
     {
+        _context = context;
         _listingRepo = listingRepo;
         _bikeRepo = bikeRepo;
         _detailRepo = detailRepo;
         _mediaRepo = mediaRepo;
         _userRepo = userRepo;
-        _brandRepo = brandRepo;
-        _typeRepo = typeRepo;
         _uow = uow;
+        _imageStorage = imageStorage;
+        _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<Result<BikePostDto>> CreateAsync(int sellerId, CreateBikePostDto dto, CancellationToken ct = default)
@@ -45,61 +57,39 @@ public class BikePostService : IBikePostService
         var seller = await _userRepo.GetByIdAsync(sellerId, ct);
         if (seller is null) return Result<BikePostDto>.Failure("Seller not found");
 
+        // Upload images to Cloudinary
+        var uploadedUrls = await UploadImagesAsync(dto.Images);
+        var allImageUrls = uploadedUrls.Concat(dto.ImageUrls).ToList();
+        if (allImageUrls.Count == 0)
+            return Result<BikePostDto>.Failure("At least one image is required");
+
         // Create bicycle
-        var bike = new Bicycle
-        {
-            BrandId = dto.BrandId,
-            TypeId = dto.TypeId,
-            ModelName = dto.ModelName,
-            SerialNumber = dto.SerialNumber,
-            Color = dto.Color,
-            Condition = dto.Condition
-        };
+        var bike = _mapper.Map<Bicycle>(dto);
         await _bikeRepo.AddAsync(bike, ct);
         await _uow.SaveChangesAsync(ct);
 
         // Create bicycle detail
-        var detail = new BicycleDetail
-        {
-            BikeId = bike.BikeId,
-            FrameSize = dto.FrameSize,
-            FrameMaterial = dto.FrameMaterial,
-            WheelSize = dto.WheelSize,
-            BrakeType = dto.BrakeType,
-            Weight = dto.Weight,
-            Transmission = dto.Transmission
-        };
+        var detail = _mapper.Map<BicycleDetail>(dto);
+        detail.BikeId = bike.BikeId;
         await _detailRepo.AddAsync(detail, ct);
 
         // Create listing
-        var listing = new BicycleListing
-        {
-            SellerId = sellerId,
-            BikeId = bike.BikeId,
-            Title = dto.Title,
-            Description = dto.Description,
-            Price = dto.Price,
-            Address = dto.Address,
-            ListingStatus = 1, // Active
-            PostedDate = DateTime.UtcNow
-        };
+        var listing = _mapper.Map<BicycleListing>(dto);
+        listing.SellerId = sellerId;
+        listing.BikeId = bike.BikeId;
+        listing.ListingStatus = 1;
+        listing.PostedDate = DateTime.UtcNow;
         await _listingRepo.AddAsync(listing, ct);
         await _uow.SaveChangesAsync(ct);
 
-        // Create media
-        for (int i = 0; i < dto.ImageUrls.Count; i++)
-        {
-            await _mediaRepo.AddAsync(new ListingMedium
-            {
-                ListingId = listing.ListingId,
-                MediaUrl = dto.ImageUrls[i],
-                MediaType = "image",
-                IsThumbnail = i == 0
-            }, ct);
-        }
+        // Create media records
+        await CreateMediaRecordsAsync(listing.ListingId, allImageUrls, ct);
         await _uow.SaveChangesAsync(ct);
 
-        return Result<BikePostDto>.Success(await BuildDtoAsync(listing, ct));
+        _logger.LogInformation("Listing {ListingId} created by seller {SellerId} with {ImageCount} images",
+            listing.ListingId, sellerId, allImageUrls.Count);
+
+        return Result<BikePostDto>.Success(await BuildDtoAsync(listing.ListingId, ct));
     }
 
     public async Task<Result<BikePostDto>> UpdateAsync(int sellerId, UpdateBikePostDto dto, CancellationToken ct = default)
@@ -108,22 +98,15 @@ public class BikePostService : IBikePostService
         if (listing is null) return Result<BikePostDto>.Failure("Listing not found");
         if (listing.SellerId != sellerId) return Result<BikePostDto>.Failure("You can only edit your own listings");
 
-        listing.Title = dto.Title;
-        listing.Description = dto.Description;
-        listing.Price = dto.Price;
-        listing.Address = dto.Address;
+        // Update listing fields
+        _mapper.Map(dto, listing);
         _listingRepo.Update(listing);
 
         // Update bicycle
         var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
         if (bike is not null)
         {
-            bike.BrandId = dto.BrandId;
-            bike.TypeId = dto.TypeId;
-            bike.ModelName = dto.ModelName;
-            bike.SerialNumber = dto.SerialNumber;
-            bike.Color = dto.Color;
-            bike.Condition = dto.Condition;
+            _mapper.Map(dto, bike);
             _bikeRepo.Update(bike);
 
             // Update detail
@@ -131,18 +114,36 @@ public class BikePostService : IBikePostService
             var detail = details.FirstOrDefault();
             if (detail is not null)
             {
-                detail.FrameSize = dto.FrameSize;
-                detail.FrameMaterial = dto.FrameMaterial;
-                detail.WheelSize = dto.WheelSize;
-                detail.BrakeType = dto.BrakeType;
-                detail.Weight = dto.Weight;
-                detail.Transmission = dto.Transmission;
+                _mapper.Map(dto, detail);
                 _detailRepo.Update(detail);
             }
         }
 
+        // Remove specified images
+        if (dto.RemoveMediaIds.Count > 0)
+        {
+            await RemoveMediaAsync(listing.ListingId, dto.RemoveMediaIds, ct);
+        }
+
+        // Upload and add new images
+        var uploadedUrls = await UploadImagesAsync(dto.NewImages);
+        var allNewUrls = uploadedUrls.Concat(dto.ImageUrls).ToList();
+        if (allNewUrls.Count > 0)
+        {
+            await CreateMediaRecordsAsync(listing.ListingId, allNewUrls, ct);
+        }
+
+        // Set thumbnail if specified
+        if (dto.ThumbnailMediaId.HasValue)
+        {
+            await SetThumbnailAsync(listing.ListingId, dto.ThumbnailMediaId.Value, ct);
+        }
+
         await _uow.SaveChangesAsync(ct);
-        return Result<BikePostDto>.Success(await BuildDtoAsync(listing, ct));
+
+        _logger.LogInformation("Listing {ListingId} updated by seller {SellerId}", listing.ListingId, sellerId);
+
+        return Result<BikePostDto>.Success(await BuildDtoAsync(listing.ListingId, ct));
     }
 
     public async Task<Result> DeleteAsync(int sellerId, int listingId, CancellationToken ct = default)
@@ -151,8 +152,36 @@ public class BikePostService : IBikePostService
         if (listing is null) return Result.Failure("Listing not found");
         if (listing.SellerId != sellerId) return Result.Failure("You can only delete your own listings");
 
+        // Delete all images from Cloudinary
+        var media = await _mediaRepo.FindAsync(m => m.ListingId == listingId, ct);
+        foreach (var m in media)
+        {
+            await SafeDeleteImageAsync(m.MediaUrl);
+            _mediaRepo.Delete(m);
+        }
+
+        // Delete bicycle detail
+        var details = await _detailRepo.FindAsync(d => d.BikeId == listing.BikeId, ct);
+        foreach (var detail in details)
+        {
+            _detailRepo.Delete(detail);
+        }
+
         _listingRepo.Delete(listing);
+
+        // Delete bicycle (only if not referenced by other listings)
+        var otherListings = await _listingRepo.AnyAsync(l => l.BikeId == listing.BikeId && l.ListingId != listingId, ct);
+        if (!otherListings)
+        {
+            var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
+            if (bike is not null)
+                _bikeRepo.Delete(bike);
+        }
+
         await _uow.SaveChangesAsync(ct);
+
+        _logger.LogInformation("Listing {ListingId} deleted by seller {SellerId}", listingId, sellerId);
+
         return Result.Success();
     }
 
@@ -162,7 +191,6 @@ public class BikePostService : IBikePostService
         if (listing is null) return Result.Failure("Listing not found");
         if (listing.SellerId != sellerId) return Result.Failure("You can only modify your own listings");
 
-        // Toggle between 1 (Active) and 0 (Hidden)
         listing.ListingStatus = listing.ListingStatus == 1 ? (byte)0 : (byte)1;
         _listingRepo.Update(listing);
         await _uow.SaveChangesAsync(ct);
@@ -173,74 +201,106 @@ public class BikePostService : IBikePostService
     {
         var listing = await _listingRepo.GetByIdAsync(listingId, ct);
         if (listing is null) return Result<BikePostDto>.Failure("Listing not found");
-        return Result<BikePostDto>.Success(await BuildDtoAsync(listing, ct));
+        return Result<BikePostDto>.Success(await BuildDtoAsync(listingId, ct));
     }
 
     public async Task<Result<List<BikePostDto>>> GetBySellerAsync(int sellerId, CancellationToken ct = default)
     {
-        var listings = await _listingRepo.FindAsync(l => l.SellerId == sellerId, ct);
-        var dtos = new List<BikePostDto>();
-        foreach (var listing in listings)
-        {
-            dtos.Add(await BuildDtoAsync(listing, ct));
-        }
-        return Result<List<BikePostDto>>.Success(dtos);
+        var listings = await _context.BicycleListings
+            .Include(l => l.Bike).ThenInclude(b => b.Brand)
+            .Include(l => l.Bike).ThenInclude(b => b.Type)
+            .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
+            .Include(l => l.Seller)
+            .Include(l => l.ListingMedia)
+            .Include(l => l.InspectionRequests)
+            .Where(l => l.SellerId == sellerId)
+            .ToListAsync(ct);
+
+        return Result<List<BikePostDto>>.Success(_mapper.Map<List<BikePostDto>>(listings));
     }
 
-    private async Task<BikePostDto> BuildDtoAsync(BicycleListing listing, CancellationToken ct)
+    #region Private Helpers
+
+    private async Task<List<string>> UploadImagesAsync(List<IFormFile> images)
     {
-        var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
-        var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
-        var media = await _mediaRepo.FindAsync(m => m.ListingId == listing.ListingId, ct);
-
-        Brand? brand = null;
-        BikeType? bikeType = null;
-        BicycleDetail? detail = null;
-        bool hasInspection = false;
-
-        if (bike is not null)
+        var urls = new List<string>();
+        foreach (var image in images)
         {
-            if (bike.BrandId.HasValue)
-                brand = await _brandRepo.GetByIdAsync(bike.BrandId.Value, ct);
-            if (bike.TypeId.HasValue)
-                bikeType = await _typeRepo.GetByIdAsync(bike.TypeId.Value, ct);
-
-            var details = await _detailRepo.FindAsync(d => d.BikeId == bike.BikeId, ct);
-            detail = details.FirstOrDefault();
+            await using var stream = image.OpenReadStream();
+            var url = await _imageStorage.UploadAsync(stream, image.FileName, ImageFolder);
+            urls.Add(url);
         }
-
-        return new BikePostDto
-        {
-            ListingId = listing.ListingId,
-            Title = listing.Title,
-            Description = listing.Description,
-            Price = listing.Price,
-            ListingStatus = listing.ListingStatus,
-            Address = listing.Address,
-            PostedDate = listing.PostedDate,
-            BikeId = listing.BikeId,
-            ModelName = bike?.ModelName,
-            SerialNumber = bike?.SerialNumber,
-            Color = bike?.Color,
-            Condition = bike?.Condition,
-            BrandName = brand?.BrandName,
-            TypeName = bikeType?.TypeName,
-            FrameSize = detail?.FrameSize,
-            FrameMaterial = detail?.FrameMaterial,
-            WheelSize = detail?.WheelSize,
-            BrakeType = detail?.BrakeType,
-            Weight = detail?.Weight,
-            Transmission = detail?.Transmission,
-            SellerId = listing.SellerId,
-            SellerName = seller?.Username ?? "Unknown",
-            HasInspection = hasInspection,
-            Images = media.Select(m => new BikeImageDto
-            {
-                MediaId = m.MediaId,
-                MediaUrl = m.MediaUrl,
-                MediaType = m.MediaType,
-                IsThumbnail = m.IsThumbnail
-            }).ToList()
-        };
+        return urls;
     }
+
+    private async Task CreateMediaRecordsAsync(int listingId, List<string> imageUrls, CancellationToken ct)
+    {
+        var existingMedia = await _mediaRepo.FindAsync(m => m.ListingId == listingId, ct);
+        var hasThumbnail = existingMedia.Any(m => m.IsThumbnail == true);
+
+        for (int i = 0; i < imageUrls.Count; i++)
+        {
+            await _mediaRepo.AddAsync(new ListingMedium
+            {
+                ListingId = listingId,
+                MediaUrl = imageUrls[i],
+                MediaType = "image",
+                IsThumbnail = !hasThumbnail && i == 0
+            }, ct);
+        }
+    }
+
+    private async Task RemoveMediaAsync(int listingId, List<int> mediaIds, CancellationToken ct)
+    {
+        var mediaToRemove = await _mediaRepo.FindAsync(
+            m => m.ListingId == listingId && mediaIds.Contains(m.MediaId), ct);
+
+        foreach (var media in mediaToRemove)
+        {
+            await SafeDeleteImageAsync(media.MediaUrl);
+            _mediaRepo.Delete(media);
+        }
+    }
+
+    private async Task SetThumbnailAsync(int listingId, int mediaId, CancellationToken ct)
+    {
+        var allMedia = await _mediaRepo.FindAsync(m => m.ListingId == listingId, ct);
+        foreach (var media in allMedia)
+        {
+            media.IsThumbnail = media.MediaId == mediaId;
+            _mediaRepo.Update(media);
+        }
+    }
+
+    private async Task SafeDeleteImageAsync(string imageUrl)
+    {
+        try
+        {
+            await _imageStorage.DeleteAsync(imageUrl);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Failed to delete image from cloud storage: {ImageUrl}", imageUrl);
+        }
+    }
+
+    /// <summary>
+    /// Loads a listing with all navigation properties via DbContext and maps to DTO via AutoMapper.
+    /// </summary>
+    private async Task<BikePostDto> BuildDtoAsync(int listingId, CancellationToken ct)
+    {
+        var listing = await _context.BicycleListings
+            .Include(l => l.Bike).ThenInclude(b => b.Brand)
+            .Include(l => l.Bike).ThenInclude(b => b.Type)
+            .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
+            .Include(l => l.Seller)
+            .Include(l => l.ListingMedia)
+            .Include(l => l.InspectionRequests)
+            .AsNoTracking()
+            .FirstAsync(l => l.ListingId == listingId, ct);
+
+        return _mapper.Map<BikePostDto>(listing);
+    }
+
+    #endregion
 }

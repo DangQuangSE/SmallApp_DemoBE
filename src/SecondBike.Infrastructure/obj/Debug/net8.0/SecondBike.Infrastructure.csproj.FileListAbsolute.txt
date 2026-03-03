@@ -38,7 +38,6 @@ D:\GitHub\SecondBike\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.I
 D:\GitHub\SecondBike\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.genruntimeconfig.cache
 D:\GitHub\SecondBike\src\SecondBike.Infrastructure\obj\Debug\net8.0\ref\SecondBike.Infrastructure.dll
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\bin\Debug\net8.0\SecondBike.Infrastructure.deps.json
-D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\bin\Debug\net8.0\SecondBike.Infrastructure.runtimeconfig.json
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\bin\Debug\net8.0\SecondBike.Infrastructure.dll
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\bin\Debug\net8.0\SecondBike.Infrastructure.pdb
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\bin\Debug\net8.0\SecondBike.Application.dll
@@ -55,7 +54,6 @@ D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBi.
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.dll
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\refint\SecondBike.Infrastructure.dll
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.pdb
-D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.genruntimeconfig.cache
 D:\GitHub\SecondBike_BE\src\SecondBike.Infrastructure\obj\Debug\net8.0\ref\SecondBike.Infrastructure.dll
 D:\FPTSupport\SmallApp_DemoBE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.csproj.AssemblyReference.cache
 D:\FPTSupport\SmallApp_DemoBE\src\SecondBike.Infrastructure\obj\Debug\net8.0\SecondBike.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig

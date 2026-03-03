@@ -33,12 +33,14 @@ public class BikesController : BaseApiController
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateBikePostDto dto, CancellationToken ct)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> Create([FromForm] CreateBikePostDto dto, CancellationToken ct)
         => ToResponse(await _bikePostService.CreateAsync(GetCurrentUserId(), dto, ct));
 
     [Authorize]
     [HttpPut]
-    public async Task<IActionResult> Update([FromBody] UpdateBikePostDto dto, CancellationToken ct)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> Update([FromForm] UpdateBikePostDto dto, CancellationToken ct)
         => ToResponse(await _bikePostService.UpdateAsync(GetCurrentUserId(), dto, ct));
 
     [Authorize]

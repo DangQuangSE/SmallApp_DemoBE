@@ -5,6 +5,7 @@ namespace SecondBike.Application.Interfaces.Services;
 
 /// <summary>
 /// Service for managing bicycle listings (Seller Core).
+/// Handles CRUD operations including image upload via Cloudinary.
 /// </summary>
 public interface IBikePostService
 {

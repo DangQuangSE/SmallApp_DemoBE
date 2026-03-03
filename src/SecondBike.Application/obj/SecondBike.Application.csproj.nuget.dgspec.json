@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {}
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {}
   },
   "projects": {
-    "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
         "projectName": "SecondBike.Application",
-        "projectPath": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Application\\obj\\",
+        "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\SecondBike.Application.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
-                "projectPath": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
+              "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
+                "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj"
               }
             }
           }
@@ -54,6 +54,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -71,6 +75,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -79,20 +86,20 @@
         }
       }
     },
-    "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
+    "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+        "projectUniqueName": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
         "projectName": "SecondBike.Domain",
-        "projectPath": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "D:\\FPTSupport\\SmallApp_DemoBE\\src\\SecondBike.Domain\\obj\\",
+        "projectPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\SecondBike.Domain.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\SecondBike_BE\\src\\SecondBike.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

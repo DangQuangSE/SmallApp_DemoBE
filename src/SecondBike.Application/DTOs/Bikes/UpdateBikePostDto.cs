@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Http;
+
 namespace SecondBike.Application.DTOs.Bikes;
 
 /// <summary>
 /// DTO for updating an existing bicycle listing.
+/// Supports adding new images, removing existing ones, and setting thumbnail.
 /// </summary>
 public class UpdateBikePostDto
 {
@@ -29,6 +32,15 @@ public class UpdateBikePostDto
     public decimal? Weight { get; set; }
     public string? Transmission { get; set; }
 
-    // Images
+    // New image file uploads (uploaded to Cloudinary)
+    public List<IFormFile> NewImages { get; set; } = new();
+
+    // Pre-uploaded image URLs (optional, for backward compatibility)
     public List<string> ImageUrls { get; set; } = new();
+
+    // IDs of existing images to remove
+    public List<int> RemoveMediaIds { get; set; } = new();
+
+    // ID of existing image to set as thumbnail
+    public int? ThumbnailMediaId { get; set; }
 }

@@ -1,63 +1,64 @@
-## 1. Visual Studio & .NET Core Build Files
-## ---------------------------------------
+# ==========================================
+# .NET 8 Web API - Clean Architecture
+# ==========================================
+
+# 1. Build results (File biên dịch)
 [Bb]in/
 [Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+*.log
+
+# 2. Visual Studio, VS Code & JetBrains Rider
 .vs/
 .vscode/
+.idea/
 *.user
 *.userosscache
 *.sln.docstates
 *.suo
 *.cache
 *.pdb
-*.dll
-*.exe
+*.sln.iml
 
-## 2. Environment & Secrets (QUAN TRỌNG - BẢO MẬT)
-## ---------------------------------------
-# Bỏ qua file cấu hình môi trường Development (thường chứa connection string local)
+# 3. Environment & Secrets (QUAN TRỌNG NHẤT - BẢO MẬT)
+# KHÔNG BAO GIỜ đẩy chuỗi kết nối (Connection String) của local lên Git
 appsettings.Development.json
 appsettings.Local.json
+appsettings.Staging.json
 .env
+secrets.json
 
-# Chỉ giữ lại appsettings.json (cấu hình gốc)
+# (Tùy chọn) Chỉ giữ lại file appsettings gốc để làm template
 !appsettings.json
 
-## 3. Web/Blazor Specifics
-## ---------------------------------------
-wwwroot/lib/
-# Nếu dùng NPM/NodeJS để quản lý thư viện CSS/JS
-node_modules/
-package-lock.json
-
-## 4. User Generated Content (Project Specific)
-## ---------------------------------------
-# Không upload ảnh xe đạp test lên git để tránh nặng repo
-src/SecondBike.WebUI/wwwroot/uploads/
-src/SecondBike.WebUI/wwwroot/images/products/
-src/SecondBike.WebUI/wwwroot/temp/
-
-## 5. Testing & Coverage
-## ---------------------------------------
+# 4. Testing & Code Coverage (Dành cho Unit Test)
 TestResults/
 *.trx
-coverage.json
-coverage.xml
 *.coverage
+*.coveragexml
+coverage.json
 
-## 6. OS Specific (Mac/Windows)
-## ---------------------------------------
+# 5. OS generated files (File rác của hệ điều hành)
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 Desktop.ini
 
-## 7. Entity Framework (Optional)
-## ---------------------------------------
-# Nếu bạn dùng SQL Server LocalDB file
+# 6. Database files (Nếu dùng LocalDB hoặc SQLite)
 *.mdf
 *.ldf
+*.ndf
+*.sqlite
+*.db
 
-## 8. Rider / JetBrains (Nếu thành viên nhóm dùng Rider)
-## ---------------------------------------
-.idea/
-*.sln.iml
+# 7. File Uploads (Nếu API của bạn có endpoint nhận file upload)
+# Đường dẫn này có thể tùy chỉnh lại theo cấu trúc thư mục thực tế của bạn
+**/wwwroot/uploads/
+**/wwwroot/images/
+**/wwwroot/temp/

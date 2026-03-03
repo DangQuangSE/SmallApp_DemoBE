@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Http;
+
 namespace SecondBike.Application.DTOs.Bikes;
 
 /// <summary>
 /// DTO for creating a new bicycle listing.
+/// Supports both file uploads (Images) and pre-uploaded URLs (ImageUrls).
 /// </summary>
 public class CreateBikePostDto
 {
@@ -27,6 +30,9 @@ public class CreateBikePostDto
     public decimal? Weight { get; set; }
     public string? Transmission { get; set; }
 
-    // Images
+    // Image file uploads (uploaded to Cloudinary)
+    public List<IFormFile> Images { get; set; } = new();
+
+    // Pre-uploaded image URLs (optional, for backward compatibility)
     public List<string> ImageUrls { get; set; } = new();
 }

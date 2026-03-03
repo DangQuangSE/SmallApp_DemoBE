@@ -33,8 +33,9 @@ public class CloudinaryService : IImageStorageService
         {
             File = new FileDescription(fileName, imageStream),
             Folder = $"secondbike/{folder}",
-            Transformation = new Transformation()
-                .Width(500).Height(500).Crop("fill").Gravity("face")
+            Transformation = folder == "avatars"
+                ? new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
+                : new Transformation().Width(1200).Height(900).Crop("limit").Quality("auto")
         };
 
         var result = await _cloudinary.UploadAsync(uploadParams);

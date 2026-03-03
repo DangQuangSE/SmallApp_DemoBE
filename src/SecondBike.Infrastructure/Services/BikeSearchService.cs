@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SecondBike.Application.Common;
 using SecondBike.Application.DTOs.Bikes;
@@ -13,10 +14,12 @@ namespace SecondBike.Infrastructure.Services;
 public class BikeSearchService : IBikeSearchService
 {
     private readonly SecondBikeDbContext _context;
+    private readonly IMapper _mapper;
 
-    public BikeSearchService(SecondBikeDbContext context)
+    public BikeSearchService(SecondBikeDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     public async Task<Result<PagedResult<BikePostDto>>> SearchAsync(BikeFilterDto filter, CancellationToken ct = default)
@@ -27,6 +30,7 @@ public class BikeSearchService : IBikeSearchService
             .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
             .Include(l => l.Seller)
             .Include(l => l.ListingMedia)
+            .Include(l => l.InspectionRequests)
             .Where(l => l.ListingStatus == 1) // Active
             .AsQueryable();
 
@@ -71,7 +75,7 @@ public class BikeSearchService : IBikeSearchService
             .Take(filter.PageSize)
             .ToListAsync(ct);
 
-        var dtos = items.Select(MapToDto).ToList();
+        var dtos = _mapper.Map<List<BikePostDto>>(items);
 
         return Result<PagedResult<BikePostDto>>.Success(new PagedResult<BikePostDto>
         {
@@ -90,12 +94,13 @@ public class BikeSearchService : IBikeSearchService
             .Include(l => l.Bike).ThenInclude(b => b.BicycleDetail)
             .Include(l => l.Seller)
             .Include(l => l.ListingMedia)
+            .Include(l => l.InspectionRequests)
             .FirstOrDefaultAsync(l => l.ListingId == listingId, ct);
 
         if (listing is null)
             return Result<BikePostDto>.Failure("Listing not found");
 
-        return Result<BikePostDto>.Success(MapToDto(listing));
+        return Result<BikePostDto>.Success(_mapper.Map<BikePostDto>(listing));
     }
 
     public async Task<Result<List<string>>> GetBrandsAsync(CancellationToken ct = default)
@@ -107,44 +112,5 @@ public class BikeSearchService : IBikeSearchService
             .ToListAsync(ct);
 
         return Result<List<string>>.Success(brands);
-    }
-
-    private static BikePostDto MapToDto(BicycleListing listing)
-    {
-        var bike = listing.Bike;
-        var detail = bike?.BicycleDetail;
-
-        return new BikePostDto
-        {
-            ListingId = listing.ListingId,
-            Title = listing.Title,
-            Description = listing.Description,
-            Price = listing.Price,
-            ListingStatus = listing.ListingStatus,
-            Address = listing.Address,
-            PostedDate = listing.PostedDate,
-            BikeId = listing.BikeId,
-            ModelName = bike?.ModelName,
-            SerialNumber = bike?.SerialNumber,
-            Color = bike?.Color,
-            Condition = bike?.Condition,
-            BrandName = bike?.Brand?.BrandName,
-            TypeName = bike?.Type?.TypeName,
-            FrameSize = detail?.FrameSize,
-            FrameMaterial = detail?.FrameMaterial,
-            WheelSize = detail?.WheelSize,
-            BrakeType = detail?.BrakeType,
-            Weight = detail?.Weight,
-            Transmission = detail?.Transmission,
-            SellerId = listing.SellerId,
-            SellerName = listing.Seller?.Username ?? "Unknown",
-            Images = listing.ListingMedia.Select(m => new BikeImageDto
-            {
-                MediaId = m.MediaId,
-                MediaUrl = m.MediaUrl,
-                MediaType = m.MediaType,
-                IsThumbnail = m.IsThumbnail
-            }).ToList()
-        };
     }
 }
