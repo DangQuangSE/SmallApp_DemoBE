@@ -1,3 +1,4 @@
+using AutoMapper;
 using SecondBike.Application.Common;
 using SecondBike.Application.DTOs.Bikes;
 using SecondBike.Application.Interfaces;
@@ -8,43 +9,39 @@ namespace SecondBike.Application.Services;
 
 /// <summary>
 /// Buyer Experience — Wishlist management.
-/// Business logic belongs in Application layer.
+/// Uses IBikeListingRepository for efficient eager-loaded queries.
 /// </summary>
 public class WishlistService : IWishlistService
 {
     private readonly IRepository<Wishlist> _wishlistRepo;
-    private readonly IRepository<BicycleListing> _listingRepo;
-    private readonly IRepository<Bicycle> _bikeRepo;
-    private readonly IRepository<Brand> _brandRepo;
-    private readonly IRepository<BikeType> _typeRepo;
-    private readonly IRepository<User> _userRepo;
-    private readonly IRepository<ListingMedium> _mediaRepo;
+    private readonly IBikeListingRepository _bikeListingRepo;
     private readonly IUnitOfWork _uow;
+    private readonly IMapper _mapper;
 
     public WishlistService(
         IRepository<Wishlist> wishlistRepo,
-        IRepository<BicycleListing> listingRepo,
-        IRepository<Bicycle> bikeRepo,
-        IRepository<Brand> brandRepo,
-        IRepository<BikeType> typeRepo,
-        IRepository<User> userRepo,
-        IRepository<ListingMedium> mediaRepo,
-        IUnitOfWork uow)
+        IBikeListingRepository bikeListingRepo,
+        IUnitOfWork uow,
+        IMapper mapper)
     {
         _wishlistRepo = wishlistRepo;
-        _listingRepo = listingRepo;
-        _bikeRepo = bikeRepo;
-        _brandRepo = brandRepo;
-        _typeRepo = typeRepo;
-        _userRepo = userRepo;
-        _mediaRepo = mediaRepo;
+        _bikeListingRepo = bikeListingRepo;
         _uow = uow;
+        _mapper = mapper;
     }
 
     public async Task<Result> AddAsync(int userId, int listingId, CancellationToken ct = default)
     {
+        var listing = await _bikeListingRepo.GetWithDetailsAsync(listingId, ct);
+        if (listing is null)
+            return Result.Failure("Listing not found");
+
+        if (listing.SellerId == userId)
+            return Result.Failure("You cannot add your own listing to wishlist");
+
         var exists = await _wishlistRepo.AnyAsync(w => w.UserId == userId && w.ListingId == listingId, ct);
-        if (exists) return Result.Failure("Already in wishlist");
+        if (exists)
+            return Result.Failure("Already in wishlist");
 
         await _wishlistRepo.AddAsync(new Wishlist
         {
@@ -75,46 +72,10 @@ public class WishlistService : IWishlistService
 
         foreach (var w in wishlists)
         {
-            var listing = await _listingRepo.GetByIdAsync(w.ListingId, ct);
+            var listing = await _bikeListingRepo.GetWithDetailsAsync(w.ListingId, ct);
             if (listing is null) continue;
 
-            var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
-            var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
-            var media = await _mediaRepo.FindAsync(m => m.ListingId == listing.ListingId, ct);
-
-            Brand? brand = null;
-            BikeType? bikeType = null;
-            if (bike?.BrandId.HasValue == true)
-                brand = await _brandRepo.GetByIdAsync(bike.BrandId.Value, ct);
-            if (bike?.TypeId.HasValue == true)
-                bikeType = await _typeRepo.GetByIdAsync(bike.TypeId.Value, ct);
-
-            dtos.Add(new BikePostDto
-            {
-                ListingId = listing.ListingId,
-                Title = listing.Title,
-                Description = listing.Description,
-                Price = listing.Price,
-                Quantity = listing.Quantity,
-                ListingStatus = listing.ListingStatus,
-                Address = listing.Address,
-                PostedDate = listing.PostedDate,
-                BikeId = listing.BikeId,
-                ModelName = bike?.ModelName,
-                Color = bike?.Color,
-                Condition = bike?.Condition,
-                BrandName = brand?.BrandName,
-                TypeName = bikeType?.TypeName,
-                SellerId = listing.SellerId,
-                SellerName = seller?.Username ?? "Unknown",
-                Images = media.Select(m => new BikeImageDto
-                {
-                    MediaId = m.MediaId,
-                    MediaUrl = m.MediaUrl,
-                    MediaType = m.MediaType,
-                    IsThumbnail = m.IsThumbnail
-                }).ToList()
-            });
+            dtos.Add(_mapper.Map<BikePostDto>(listing));
         }
 
         return Result<List<BikePostDto>>.Success(dtos);

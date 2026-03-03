@@ -31,6 +31,10 @@ public class BikesController : BaseApiController
     public async Task<IActionResult> GetBrands(CancellationToken ct)
         => ToResponse(await _bikeSearchService.GetBrandsAsync(ct));
 
+    [HttpGet("types")]
+    public async Task<IActionResult> GetTypes(CancellationToken ct)
+        => ToResponse(await _bikeSearchService.GetTypesAsync(ct));
+
     [Authorize]
     [HttpPost]
     [Consumes("multipart/form-data")]

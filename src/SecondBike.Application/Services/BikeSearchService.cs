@@ -16,15 +16,18 @@ public class BikeSearchService : IBikeSearchService
 {
     private readonly IBikeListingRepository _bikeListingRepo;
     private readonly IRepository<Brand> _brandRepo;
+    private readonly IRepository<BikeType> _typeRepo;
     private readonly IMapper _mapper;
 
     public BikeSearchService(
         IBikeListingRepository bikeListingRepo,
         IRepository<Brand> brandRepo,
+        IRepository<BikeType> typeRepo,
         IMapper mapper)
     {
         _bikeListingRepo = bikeListingRepo;
         _brandRepo = brandRepo;
+        _typeRepo = typeRepo;
         _mapper = mapper;
     }
 
@@ -57,6 +60,17 @@ public class BikeSearchService : IBikeSearchService
         var names = brands.Select(b => b.BrandName)
             .Distinct()
             .OrderBy(b => b)
+            .ToList();
+
+        return Result<List<string>>.Success(names);
+    }
+
+    public async Task<Result<List<string>>> GetTypesAsync(CancellationToken ct = default)
+    {
+        var types = await _typeRepo.GetAllAsync(ct);
+        var names = types.Select(t => t.TypeName)
+            .Distinct()
+            .OrderBy(t => t)
             .ToList();
 
         return Result<List<string>>.Success(names);

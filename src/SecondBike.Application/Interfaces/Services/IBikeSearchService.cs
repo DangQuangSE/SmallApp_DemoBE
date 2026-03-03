@@ -11,4 +11,5 @@ public interface IBikeSearchService
     Task<Result<PagedResult<BikePostDto>>> SearchAsync(BikeFilterDto filter, CancellationToken ct = default);
     Task<Result<BikePostDto>> GetDetailAsync(int listingId, CancellationToken ct = default);
     Task<Result<List<string>>> GetBrandsAsync(CancellationToken ct = default);
+    Task<Result<List<string>>> GetTypesAsync(CancellationToken ct = default);
 }

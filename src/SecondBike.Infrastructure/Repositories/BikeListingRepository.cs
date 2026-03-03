@@ -62,6 +62,12 @@ public class BikeListingRepository : IBikeListingRepository
         if (filter.MaxPrice.HasValue)
             query = query.Where(l => l.Price <= filter.MaxPrice.Value);
 
+        if (!string.IsNullOrWhiteSpace(filter.FrameSize))
+            query = query.Where(l => l.Bike.BicycleDetail != null && l.Bike.BicycleDetail.FrameSize == filter.FrameSize);
+
+        if (!string.IsNullOrWhiteSpace(filter.WheelSize))
+            query = query.Where(l => l.Bike.BicycleDetail != null && l.Bike.BicycleDetail.WheelSize == filter.WheelSize);
+
         if (!string.IsNullOrWhiteSpace(filter.Address))
             query = query.Where(l => l.Address != null && l.Address.ToLower().Contains(filter.Address.ToLower()));
 
