@@ -45,6 +45,7 @@ public class DashboardStatsDto
     public int TotalUsers { get; set; }
     public int TotalActiveListings { get; set; }
     public int PendingModerations { get; set; }
+    public int PendingAbuseReports { get; set; }
     public int TotalOrders { get; set; }
     public decimal TotalRevenue { get; set; }
 }
