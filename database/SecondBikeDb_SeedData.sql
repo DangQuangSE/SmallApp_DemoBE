@@ -3,7 +3,6 @@
 -- Run this script AFTER SecondBikeDb_CreateAndSeed.sql
 -- All data in English
 -- =============================================
-
 USE SecondBikeDb;
 GO
 

@@ -19,6 +19,8 @@ public class AdminService : IAdminService
     private readonly IRepository<Order> _orderRepo;
     private readonly IRepository<OrderDetail> _orderDetailRepo;
     private readonly IRepository<ListingMedium> _mediaRepo;
+    private readonly IRepository<RequestAbuse> _abuseRequestRepo;
+    private readonly IBikeListingRepository _bikeListingRepo;
     private readonly IUnitOfWork _uow;
 
     public AdminService(
@@ -28,6 +30,8 @@ public class AdminService : IAdminService
         IRepository<Order> orderRepo,
         IRepository<OrderDetail> orderDetailRepo,
         IRepository<ListingMedium> mediaRepo,
+        IRepository<RequestAbuse> abuseRequestRepo,
+        IBikeListingRepository bikeListingRepo,
         IUnitOfWork uow)
     {
         _listingRepo = listingRepo;
@@ -36,6 +40,8 @@ public class AdminService : IAdminService
         _orderRepo = orderRepo;
         _orderDetailRepo = orderDetailRepo;
         _mediaRepo = mediaRepo;
+        _abuseRequestRepo = abuseRequestRepo;
+        _bikeListingRepo = bikeListingRepo;
         _uow = uow;
     }
 
@@ -46,6 +52,10 @@ public class AdminService : IAdminService
         var pendingMods = await _listingRepo.CountAsync(l => l.ListingStatus == 2, ct);
         var totalOrders = await _orderRepo.CountAsync(cancellationToken: ct);
 
+        var pendingAbuse = await _abuseRequestRepo.FindWithIncludesAsync(
+            r => r.ReportAbuse == null, ct, r => r.ReportAbuse!);
+        var pendingAbuseCount = pendingAbuse.Count;
+
         var completedOrders = await _orderRepo.FindAsync(o => o.OrderStatus == 4, ct);
         var totalRevenue = completedOrders.Sum(o => o.TotalAmount ?? 0);
 
@@ -54,6 +64,7 @@ public class AdminService : IAdminService
             TotalUsers = totalUsers,
             TotalActiveListings = activeListings,
             PendingModerations = pendingMods,
+            PendingAbuseReports = pendingAbuseCount,
             TotalOrders = totalOrders,
             TotalRevenue = totalRevenue
         });
@@ -66,15 +77,17 @@ public class AdminService : IAdminService
 
         foreach (var listing in listings.OrderBy(l => l.PostedDate))
         {
-            var seller = await _userRepo.GetByIdAsync(listing.SellerId, ct);
+            var detail = await _bikeListingRepo.GetWithDetailsAsync(listing.ListingId, ct);
             var media = await _mediaRepo.FindAsync(m => m.ListingId == listing.ListingId && m.IsThumbnail == true, ct);
 
             dtos.Add(new PendingPostDto
             {
                 ListingId = listing.ListingId,
                 Title = listing.Title,
-                SellerName = seller?.Username ?? "Unknown",
+                SellerName = detail?.Seller?.Username ?? "Unknown",
                 Price = listing.Price,
+                BrandName = detail?.Bike?.Brand?.BrandName,
+                TypeName = detail?.Bike?.Type?.TypeName,
                 PostedDate = listing.PostedDate,
                 PrimaryImageUrl = media.FirstOrDefault()?.MediaUrl
             });
@@ -87,6 +100,7 @@ public class AdminService : IAdminService
     {
         var listing = await _listingRepo.GetByIdAsync(dto.ListingId, ct);
         if (listing is null) return Result.Failure("Listing not found");
+        if (listing.ListingStatus != 2) return Result.Failure("Listing is not pending moderation");
 
         listing.ListingStatus = dto.Approve ? (byte)1 : (byte)4;
         _listingRepo.Update(listing);
