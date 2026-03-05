@@ -36,6 +36,7 @@ public class BikeListingRepository : IBikeListingRepository
     {
         var query = FullQuery()
             .Where(l => l.ListingStatus == 1) // Active only
+            .Where(l => l.InspectionRequests.Any(r => r.RequestStatus == 3 && r.InspectionReport != null && r.InspectionReport.FinalVerdict == 1)) // Must pass inspection
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
