@@ -46,7 +46,9 @@ public class BrandService : IBrandService
 
         // Batch-load bike counts to avoid N+1 queries
         var allBikes = await _bikeRepo.GetAllAsync(ct);
-        var bikeCounts = allBikes.GroupBy(b => b.BrandId)
+        var bikeCounts = allBikes
+            .Where(b => b.BrandId.HasValue)
+            .GroupBy(b => b.BrandId!.Value)
             .ToDictionary(g => g.Key, g => g.Count());
 
         var dtos = brands

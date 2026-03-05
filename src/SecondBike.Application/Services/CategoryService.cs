@@ -46,7 +46,9 @@ public class CategoryService : ICategoryService
 
         // Batch-load bike counts to avoid N+1 queries
         var allBikes = await _bikeRepo.GetAllAsync(ct);
-        var bikeCounts = allBikes.GroupBy(b => b.TypeId)
+        var bikeCounts = allBikes
+            .Where(b => b.TypeId.HasValue)
+            .GroupBy(b => b.TypeId!.Value)
             .ToDictionary(g => g.Key, g => g.Count());
 
         var dtos = types

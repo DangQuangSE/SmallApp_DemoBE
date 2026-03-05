@@ -24,9 +24,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
+        Type = SecuritySchemeType.ApiKey,
         In = ParameterLocation.Header,
         Description = "Enter your JWT token (Example: Bearer eyJhbGciOiJIUzI1...)"
     });
@@ -81,7 +79,9 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = jwtSettings["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(jwtSettings["Key"] ?? "a_very_long_and_secure_secret_key_for_development_purposes")),
-        ClockSkew = TimeSpan.Zero
+        ClockSkew = TimeSpan.Zero,
+        RoleClaimType = System.Security.Claims.ClaimTypes.Role,
+        NameClaimType = System.Security.Claims.ClaimTypes.Name
     };
 
     // Allow SignalR to receive the JWT via query string
@@ -131,3 +131,4 @@ app.MapControllers();
 app.MapHub<ChatHub>("/chathub");
 
 app.Run();
+
