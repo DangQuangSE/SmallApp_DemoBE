@@ -21,6 +21,7 @@ public class AuthService : IAuthService
     private readonly IJwtService _jwtService;
     private readonly IEmailService _emailService;
     private readonly IEmailTemplateService _emailTemplateService;
+    private readonly IGoogleTokenValidator _googleValidator;
     private readonly ILogger<AuthService> _logger;
 
     public AuthService(
@@ -32,6 +33,7 @@ public class AuthService : IAuthService
         IJwtService jwtService,
         IEmailService emailService,
         IEmailTemplateService emailTemplateService,
+        IGoogleTokenValidator googleValidator,
         ILogger<AuthService> logger)
     {
         _userRepo = userRepo;
@@ -42,6 +44,7 @@ public class AuthService : IAuthService
         _jwtService = jwtService;
         _emailService = emailService;
         _emailTemplateService = emailTemplateService;
+        _googleValidator = googleValidator;
         _logger = logger;
     }
 
@@ -136,7 +139,92 @@ public class AuthService : IAuthService
 
     public async Task<Result<AuthResultDto>> GoogleLoginAsync(GoogleLoginDto dto, CancellationToken ct = default)
     {
-        return Result<AuthResultDto>.Failure("Google login is not configured for this deployment");
+        // Step 1: Validate Google ID token
+        var googleUser = await _googleValidator.ValidateAsync(dto.IdToken, ct);
+        if (googleUser is null)
+            return Result<AuthResultDto>.Failure("Invalid or expired Google token");
+
+        // Step 2: Security check - Only allow verified Google emails
+        if (!googleUser.EmailVerified)
+            return Result<AuthResultDto>.Failure("Google email is not verified");
+
+        // Step 3: Find existing user or create new one
+        var existingUsers = await _userRepo.FindAsync(u => u.Email == googleUser.Email, ct);
+        var user = existingUsers.FirstOrDefault();
+
+        if (user is not null)
+        {
+            // Existing user - check if account is active
+            if (user.Status == 0)
+                return Result<AuthResultDto>.Failure("Your account has been banned");
+
+            // Auto-verify user authenticated via Google
+            if (user.IsVerified != true)
+            {
+                user.IsVerified = true;
+                _userRepo.Update(user);
+                await _uow.SaveChangesAsync(ct);
+            }
+        }
+        else
+        {
+            // New user - Auto-register with Google account
+            // Default role: Buyer (RoleId = 2)
+            var buyerRole = await _roleRepo.GetByIdAsync(2, ct);
+            if (buyerRole is null)
+                return Result<AuthResultDto>.Failure("Default buyer role not found. Please contact administrator.");
+
+            user = new User
+            {
+                Username = GenerateUsernameFromEmail(googleUser.Email),
+                Email = googleUser.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(Guid.NewGuid().ToString()), // Random password for OAuth users
+                RoleId = 2, // Buyer
+                IsVerified = true, // Google emails are pre-verified
+                Status = 1, // Active
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await _userRepo.AddAsync(user, ct);
+            await _uow.SaveChangesAsync(ct);
+
+            // Create user profile from Google data
+            var profile = new UserProfile
+            {
+                UserId = user.UserId,
+                FullName = googleUser.Name,
+                AvatarUrl = googleUser.Picture
+            };
+            await _profileRepo.AddAsync(profile, ct);
+            await _uow.SaveChangesAsync(ct);
+
+            _logger.LogInformation("New user auto-registered via Google: {Email}", googleUser.Email);
+        }
+
+        // Step 4: Load user profile and role for DTO mapping
+        var role = await _roleRepo.GetByIdAsync(user.RoleId, ct);
+        var profiles = await _profileRepo.FindAsync(p => p.UserId == user.UserId, ct);
+        var userProfile = profiles.FirstOrDefault();
+
+        _logger.LogInformation("User logged in via Google: {Email}", googleUser.Email);
+
+        return Result<AuthResultDto>.Success(new AuthResultDto
+        {
+            Succeeded = true,
+            Token = _jwtService.GenerateToken(user, role?.RoleName ?? "Buyer"),
+            User = MapToDto(user, userProfile, role?.RoleName ?? "Buyer")
+        });
+    }
+
+    /// <summary>
+    /// Generate unique username from email for Google OAuth users.
+    /// Format: prefix from email + random suffix to avoid collisions.
+    /// </summary>
+    private string GenerateUsernameFromEmail(string email)
+    {
+        var prefix = email.Split('@')[0];
+        var randomSuffix = Random.Shared.Next(1000, 9999);
+        return $"{prefix}_{randomSuffix}";
     }
 
     public async Task<Result> ConfirmEmailAsync(string email, string otp, CancellationToken ct = default)

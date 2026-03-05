@@ -34,6 +34,7 @@ public static class DependencyInjection
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IImageStorageService, CloudinaryService>();
         services.AddSingleton<IVnPayService, VnPayService>();
+        services.AddScoped<IGoogleTokenValidator, GoogleTokenValidatorService>();
 
         return services;
     }

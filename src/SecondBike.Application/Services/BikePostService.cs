@@ -74,7 +74,7 @@ public class BikePostService : IBikePostService
         var listing = _mapper.Map<BicycleListing>(dto);
         listing.SellerId = sellerId;
         listing.BikeId = bike.BikeId;
-        listing.ListingStatus = 1;
+        listing.ListingStatus = 2;
         listing.PostedDate = DateTime.UtcNow;
         await _listingRepo.AddAsync(listing, ct);
         await _uow.SaveChangesAsync(ct);
@@ -275,3 +275,4 @@ public class BikePostService : IBikePostService
 
     #endregion
 }
+
