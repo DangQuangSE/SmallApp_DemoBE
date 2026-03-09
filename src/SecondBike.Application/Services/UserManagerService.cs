@@ -246,19 +246,16 @@ public class UserManagerService : IUserManagerService
         if (user is null)
             return Result.Failure("User not found");
 
-        var hasListings = await _listingRepo.AnyAsync(l => l.SellerId == userId, ct);
-        var hasOrders = await _orderRepo.AnyAsync(o => o.BuyerId == userId, ct);
-        if (hasListings || hasOrders)
-            return Result.Failure("Cannot delete user with existing listings or orders. Consider suspending instead.");
+        if (user.Status == (byte)UserStatus.Deleted)
+            return Result.Failure("User is already deleted");
 
-        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
-        foreach (var profile in profiles)
-            _profileRepo.Delete(profile);
-
-        _userRepo.Delete(user);
+        // Soft delete: mark user as deleted instead of removing from database
+        user.Status = (byte)UserStatus.Deleted;
+        user.IsVerified = false;
+        _userRepo.Update(user);
         await _uow.SaveChangesAsync(ct);
 
-        _logger.LogInformation("User {UserId} ({Username}) deleted by admin", userId, user.Username);
+        _logger.LogInformation("User {UserId} ({Username}) soft-deleted by admin", userId, user.Username);
 
         return Result.Success();
     }
