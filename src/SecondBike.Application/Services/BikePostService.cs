@@ -21,6 +21,9 @@ public class BikePostService : IBikePostService
     private readonly IRepository<Bicycle> _bikeRepo;
     private readonly IRepository<BicycleDetail> _detailRepo;
     private readonly IRepository<ListingMedium> _mediaRepo;
+    private readonly IRepository<Wishlist> _wishlistRepo;
+    private readonly IRepository<ShoppingCart> _cartRepo;
+    private readonly IRepository<OrderDetail> _orderDetailRepo;
     private readonly IRepository<User> _userRepo;
     private readonly IUnitOfWork _uow;
     private readonly IImageStorageService _imageStorage;
@@ -35,6 +38,9 @@ public class BikePostService : IBikePostService
         IRepository<Bicycle> bikeRepo,
         IRepository<BicycleDetail> detailRepo,
         IRepository<ListingMedium> mediaRepo,
+        IRepository<Wishlist> wishlistRepo,
+        IRepository<ShoppingCart> cartRepo,
+        IRepository<OrderDetail> orderDetailRepo,
         IRepository<User> userRepo,
         IUnitOfWork uow,
         IImageStorageService imageStorage,
@@ -46,6 +52,9 @@ public class BikePostService : IBikePostService
         _bikeRepo = bikeRepo;
         _detailRepo = detailRepo;
         _mediaRepo = mediaRepo;
+        _wishlistRepo = wishlistRepo;
+        _cartRepo = cartRepo;
+        _orderDetailRepo = orderDetailRepo;
         _userRepo = userRepo;
         _uow = uow;
         _imageStorage = imageStorage;
@@ -142,8 +151,14 @@ public class BikePostService : IBikePostService
         if (listing is null) return Result.Failure("Listing not found");
         if (listing.SellerId != sellerId) return Result.Failure("You can only delete your own listings");
 
-        var hasOrders = await _bikeListingRepo.HasOrderDetailsAsync(listingId, ct);
-        if (hasOrders) return Result.Failure("Cannot delete a listing that has been ordered. You can hide it instead.");
+        // Cascade delete related records (matching DB trigger TR_BicycleListing_CascadeDelete)
+        var wishlists = await _wishlistRepo.FindAsync(w => w.ListingId == listingId, ct);
+        foreach (var w in wishlists)
+            _wishlistRepo.Delete(w);
+
+        var carts = await _cartRepo.FindAsync(c => c.ListingId == listingId, ct);
+        foreach (var c in carts)
+            _cartRepo.Delete(c);
 
         var media = await _mediaRepo.FindAsync(m => m.ListingId == listingId, ct);
         foreach (var m in media)
@@ -152,25 +167,28 @@ public class BikePostService : IBikePostService
             _mediaRepo.Delete(m);
         }
 
-        var details = await _detailRepo.FindAsync(d => d.BikeId == listing.BikeId, ct);
-        foreach (var detail in details)
-        {
-            _detailRepo.Delete(detail);
-        }
+        var orderDetails = await _orderDetailRepo.FindAsync(od => od.ListingId == listingId, ct);
+        foreach (var od in orderDetails)
+            _orderDetailRepo.Delete(od);
 
+        var bikeId = listing.BikeId;
         _listingRepo.Delete(listing);
 
-        var otherListings = await _listingRepo.AnyAsync(l => l.BikeId == listing.BikeId && l.ListingId != listingId, ct);
+        var details = await _detailRepo.FindAsync(d => d.BikeId == bikeId, ct);
+        foreach (var detail in details)
+            _detailRepo.Delete(detail);
+
+        var otherListings = await _listingRepo.AnyAsync(l => l.BikeId == bikeId && l.ListingId != listingId, ct);
         if (!otherListings)
         {
-            var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
+            var bike = await _bikeRepo.GetByIdAsync(bikeId, ct);
             if (bike is not null)
                 _bikeRepo.Delete(bike);
         }
 
         await _uow.SaveChangesAsync(ct);
 
-        _logger.LogInformation("Listing {ListingId} deleted by seller {SellerId}", listingId, sellerId);
+        _logger.LogInformation("Listing {ListingId} cascade-deleted by seller {SellerId}", listingId, sellerId);
 
         return Result.Success();
     }
