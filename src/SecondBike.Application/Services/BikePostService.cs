@@ -10,7 +10,7 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Application.Services;
 
 /// <summary>
-/// Seller Core — Manages bicycle listing CRUD operations.
+/// Seller Core â€” Manages bicycle listing CRUD operations.
 /// Business logic belongs in Application layer.
 /// Uses IBikeListingRepository for complex EF queries (Include).
 /// </summary>
@@ -149,24 +149,13 @@ public class BikePostService : IBikePostService
             _mediaRepo.Delete(m);
         }
 
-        var orderDetails = await _orderDetailRepo.FindAsync(od => od.ListingId == listingId, ct);
-        foreach (var od in orderDetails)
-            _orderDetailRepo.Delete(od);
-
-        var bikeId = listing.BikeId;
-        _listingRepo.Delete(listing);
-
-        var details = await _detailRepo.FindAsync(d => d.BikeId == bikeId, ct);
-        foreach (var detail in details)
-            _detailRepo.Delete(detail);
-
-        var otherListings = await _listingRepo.AnyAsync(l => l.BikeId == bikeId && l.ListingId != listingId, ct);
-        if (!otherListings)
+        var hasOrders = await _orderDetailRepo.AnyAsync(od => od.ListingId == listingId, ct);
+        if (hasOrders)
         {
-            var bike = await _bikeRepo.GetByIdAsync(bikeId, ct);
-            if (bike is not null)
-                _bikeRepo.Delete(bike);
+            return Result.Failure("Cannot delete this listing because it has associated orders history. Please hide the listing instead.");
         }
+
+        _listingRepo.Delete(listing);
 
         await _uow.SaveChangesAsync(ct);
 
