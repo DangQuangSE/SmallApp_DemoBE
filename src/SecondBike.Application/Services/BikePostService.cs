@@ -10,7 +10,7 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Application.Services;
 
 /// <summary>
-/// Seller Core � Manages bicycle listing CRUD operations.
+/// Seller Core â€” Manages bicycle listing CRUD operations.
 /// Business logic belongs in Application layer.
 /// Uses IBikeListingRepository for complex EF queries (Include).
 /// </summary>
@@ -72,17 +72,14 @@ public class BikePostService : IBikePostService
         if (allImageUrls.Count == 0)
             return Result<BikePostDto>.Failure("At least one image is required");
 
-        var bike = _mapper.Map<Bicycle>(dto);
-        await _bikeRepo.AddAsync(bike, ct);
-        await _uow.SaveChangesAsync(ct);
-
-        var detail = _mapper.Map<BicycleDetail>(dto);
-        detail.BikeId = bike.BikeId;
-        await _detailRepo.AddAsync(detail, ct);
+        // Verify the bike exists in catalog
+        var bike = await _bikeRepo.GetByIdAsync(dto.BikeId, ct);
+        if (bike is null)
+            return Result<BikePostDto>.Failure("Selected Bicycle does not exist in the catalog");
 
         var listing = _mapper.Map<BicycleListing>(dto);
         listing.SellerId = sellerId;
-        listing.BikeId = bike.BikeId;
+        listing.BikeId = dto.BikeId;
         listing.ListingStatus = 2;
         listing.PostedDate = DateTime.UtcNow;
         await _listingRepo.AddAsync(listing, ct);
@@ -105,21 +102,6 @@ public class BikePostService : IBikePostService
 
         _mapper.Map(dto, listing);
         _listingRepo.Update(listing);
-
-        var bike = await _bikeRepo.GetByIdAsync(listing.BikeId, ct);
-        if (bike is not null)
-        {
-            _mapper.Map(dto, bike);
-            _bikeRepo.Update(bike);
-
-            var details = await _detailRepo.FindAsync(d => d.BikeId == bike.BikeId, ct);
-            var detail = details.FirstOrDefault();
-            if (detail is not null)
-            {
-                _mapper.Map(dto, detail);
-                _detailRepo.Update(detail);
-            }
-        }
 
         if (dto.RemoveMediaIds.Count > 0)
         {
@@ -167,24 +149,13 @@ public class BikePostService : IBikePostService
             _mediaRepo.Delete(m);
         }
 
-        var orderDetails = await _orderDetailRepo.FindAsync(od => od.ListingId == listingId, ct);
-        foreach (var od in orderDetails)
-            _orderDetailRepo.Delete(od);
-
-        var bikeId = listing.BikeId;
-        _listingRepo.Delete(listing);
-
-        var details = await _detailRepo.FindAsync(d => d.BikeId == bikeId, ct);
-        foreach (var detail in details)
-            _detailRepo.Delete(detail);
-
-        var otherListings = await _listingRepo.AnyAsync(l => l.BikeId == bikeId && l.ListingId != listingId, ct);
-        if (!otherListings)
+        var hasOrders = await _orderDetailRepo.AnyAsync(od => od.ListingId == listingId, ct);
+        if (hasOrders)
         {
-            var bike = await _bikeRepo.GetByIdAsync(bikeId, ct);
-            if (bike is not null)
-                _bikeRepo.Delete(bike);
+            return Result.Failure("Cannot delete this listing because it has associated orders history. Please hide the listing instead.");
         }
+
+        _listingRepo.Delete(listing);
 
         await _uow.SaveChangesAsync(ct);
 

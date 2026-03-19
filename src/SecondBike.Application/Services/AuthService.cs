@@ -8,7 +8,7 @@ using SecondBike.Domain.Entities;
 namespace SecondBike.Application.Services;
 
 /// <summary>
-/// Authentication — registration, login, OTP verification.
+/// Authentication â€” registration, login, OTP verification.
 /// Business/orchestration logic belongs in Application layer.
 /// </summary>
 public class AuthService : IAuthService
@@ -108,8 +108,11 @@ public class AuthService : IAuthService
         if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             return Result<AuthResultDto>.Failure("Invalid email or password");
 
-        if (user.Status == 0)
+        if (user.Status == 3)
             return Result<AuthResultDto>.Failure("Your account has been banned");
+
+        if (user.Status == 0) // UserStatus.Deleted
+            return Result<AuthResultDto>.Failure("Your account has been deleted");
 
         if (user.IsVerified != true)
         {
@@ -155,8 +158,11 @@ public class AuthService : IAuthService
         if (user is not null)
         {
             // Existing user - check if account is active
-            if (user.Status == 0)
+            if (user.Status == 3)
                 return Result<AuthResultDto>.Failure("Your account has been banned");
+
+            if (user.Status == 0) // UserStatus.Deleted
+                return Result<AuthResultDto>.Failure("Your account has been deleted");
 
             // Auto-verify user authenticated via Google
             if (user.IsVerified != true)

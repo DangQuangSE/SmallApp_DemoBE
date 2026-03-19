@@ -1,35 +1,25 @@
 using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace SecondBike.Application.DTOs.Bikes;
 
 /// <summary>
 /// DTO for creating a new bicycle listing.
 /// Supports both file uploads (Images) and pre-uploaded URLs (ImageUrls).
+/// Requires an existing BikeId selected from the catalog.
 /// </summary>
 public class CreateBikePostDto
 {
+    // Reference to existing Bicycle
+    [Required]
+    public int BikeId { get; set; }
+
     // Listing info
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
     public decimal Price { get; set; }
     public int Quantity { get; set; } = 1;
     public string? Address { get; set; }
-
-    // Bicycle info
-    public int? BrandId { get; set; }
-    public int? TypeId { get; set; }
-    public string? ModelName { get; set; }
-    public string? SerialNumber { get; set; }
-    public string? Color { get; set; }
-    public string? Condition { get; set; }
-
-    // Bicycle detail
-    public string? FrameSize { get; set; }
-    public string? FrameMaterial { get; set; }
-    public string? WheelSize { get; set; }
-    public string? BrakeType { get; set; }
-    public decimal? Weight { get; set; }
-    public string? Transmission { get; set; }
 
     // Image file uploads (uploaded to Cloudinary)
     public List<IFormFile> Images { get; set; } = new();
