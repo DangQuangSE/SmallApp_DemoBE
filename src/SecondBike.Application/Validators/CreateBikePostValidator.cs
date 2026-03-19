@@ -1,5 +1,7 @@
 using FluentValidation;
 using SecondBike.Application.DTOs.Bikes;
+using System;
+using System.Linq;
 
 namespace SecondBike.Application.Validators;
 
@@ -11,6 +13,9 @@ public class CreateBikePostValidator : AbstractValidator<CreateBikePostDto>
 
     public CreateBikePostValidator()
     {
+        RuleFor(x => x.BikeId)
+            .GreaterThan(0).WithMessage("BikeId must be valid");
+
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("Title is required")
             .MaximumLength(200).WithMessage("Title must be at most 200 characters");
@@ -38,10 +43,6 @@ public class CreateBikePostValidator : AbstractValidator<CreateBikePostDto>
                     fileName.EndsWith(ext, StringComparison.OrdinalIgnoreCase)))
                 .WithMessage("Only .jpg, .jpeg, .png, .webp images are allowed");
         });
-
-        RuleFor(x => x.Condition)
-            .MaximumLength(50).WithMessage("Condition must be at most 50 characters")
-            .When(x => x.Condition is not null);
 
         RuleFor(x => x.Address)
             .MaximumLength(255).WithMessage("Address must be at most 255 characters")
