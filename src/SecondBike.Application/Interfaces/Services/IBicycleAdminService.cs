@@ -9,4 +9,5 @@ namespace SecondBike.Application.Interfaces.Services;
 public interface IBicycleAdminService
 {
     Task<Result<int>> CreateBicycleAsync(CreateBicycleDto dto, CancellationToken ct = default);
+    Task<Result<List<BicycleDto>>> GetAllBicyclesAsync(CancellationToken ct = default);
 }

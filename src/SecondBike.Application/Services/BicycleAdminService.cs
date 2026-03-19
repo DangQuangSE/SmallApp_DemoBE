@@ -62,4 +62,32 @@ public class BicycleAdminService : IBicycleAdminService
 
         return Result<int>.Success(bike.BikeId);
     }
+
+    public async Task<Result<List<BicycleDto>>> GetAllBicyclesAsync(CancellationToken ct = default)
+    {
+        var bikes = await _bikeRepo.FindWithIncludesAsync(b => true, ct, 
+            b => b.BicycleDetail, 
+            b => b.Brand, 
+            b => b.Type);
+
+        var dtos = bikes.Select(b => new BicycleDto
+        {
+            BikeId = b.BikeId,
+            BrandId = b.BrandId,
+            BrandName = b.Brand?.BrandName,
+            TypeId = b.TypeId,
+            TypeName = b.Type?.TypeName,
+            ModelName = b.ModelName,
+            SerialNumber = b.SerialNumber,
+            Color = b.Color,
+            FrameSize = b.BicycleDetail?.FrameSize,
+            FrameMaterial = b.BicycleDetail?.FrameMaterial,
+            WheelSize = b.BicycleDetail?.WheelSize,
+            BrakeType = b.BicycleDetail?.BrakeType,
+            Weight = b.BicycleDetail?.Weight,
+            Transmission = b.BicycleDetail?.Transmission
+        }).ToList();
+
+        return Result<List<BicycleDto>>.Success(dtos);
+    }
 }
