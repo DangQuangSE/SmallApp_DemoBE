@@ -253,6 +253,15 @@ public class UserManagerService : IUserManagerService
         user.Status = (byte)UserStatus.Deleted;
         user.IsVerified = false;
         _userRepo.Update(user);
+
+        // Remove the user profile to clear personal details (Privacy protection)
+        var profiles = await _profileRepo.FindAsync(p => p.UserId == userId, ct);
+        var profile = profiles.FirstOrDefault();
+        if (profile is not null)
+        {
+            _profileRepo.Delete(profile);
+        }
+
         await _uow.SaveChangesAsync(ct);
 
         _logger.LogInformation("User {UserId} ({Username}) soft-deleted by admin", userId, user.Username);
